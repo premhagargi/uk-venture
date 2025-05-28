@@ -2,8 +2,8 @@ import Link from 'next/link';
 import { BarChartBig, Menu } from 'lucide-react';
 import { NAV_LINKS, APP_NAME } from '@/lib/constants';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
-import { ModeToggle } from '@/components/layout/ModeToggle'; // Assuming you might add this later
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetClose } from '@/components/ui/sheet';
+// import { ModeToggle } from '@/components/layout/ModeToggle'; // Assuming you might add this later
 
 export function Header() {
   return (
@@ -40,19 +40,22 @@ export function Header() {
                 <SheetTitle><span className="sr-only">{APP_NAME} Menu</span></SheetTitle>
               </SheetHeader>
               <nav className="grid gap-6 text-lg font-medium mt-8">
-                <Link href="/" className="flex items-center gap-2 text-foreground mb-4">
-                  <BarChartBig className="h-6 w-6 text-primary" />
-                  <span className="font-bold text-lg">{APP_NAME}</span>
-                </Link>
-                {NAV_LINKS.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-primary"
-                  >
-                    <link.icon className="h-5 w-5" />
-                    {link.label}
+                <SheetClose asChild>
+                  <Link href="/" className="flex items-center gap-2 text-foreground mb-4">
+                    <BarChartBig className="h-6 w-6 text-primary" />
+                    <span className="font-bold text-lg">{APP_NAME}</span>
                   </Link>
+                </SheetClose>
+                {NAV_LINKS.map((link) => (
+                  <SheetClose asChild key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-primary"
+                    >
+                      <link.icon className="h-5 w-5" />
+                      {link.label}
+                    </Link>
+                  </SheetClose>
                 ))}
               </nav>
             </SheetContent>
