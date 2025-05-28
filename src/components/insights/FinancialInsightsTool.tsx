@@ -22,7 +22,10 @@ import { useState, useTransition, useRef, useEffect } from 'react';
 import { analyzeFinancialSummary, type AnalyzeFinancialSummaryOutput } from '@/ai/flows/financial-insights-summary';
 
 const insightsFormSchema = z.object({
-  financialSummary: z.string().min(50, { message: 'Financial summary must be at least 50 characters.' }).max(5000, {message: 'Financial summary must be less than 5000 characters.'}),
+  financialSummary: z
+    .string()
+    .min(50, { message: 'Financial summary must be at least 50 characters.' })
+    .max(5000, { message: 'Financial summary must be less than 5000 characters.' }),
 });
 
 type InsightsFormValues = z.infer<typeof insightsFormSchema>;
@@ -34,7 +37,7 @@ export function FinancialInsightsTool() {
   const [analysisError, setAnalysisError] = useState<string | null>(null);
 
   const formCardRef = useRef<HTMLDivElement>(null);
-  const keyInsightsCardRef = useRef<HTMLDivElement>(null); 
+  const keyInsightsCardRef = useRef<HTMLDivElement>(null); // For scrolling to results
 
   const form = useForm<InsightsFormValues>({
     resolver: zodResolver(insightsFormSchema),
@@ -43,7 +46,7 @@ export function FinancialInsightsTool() {
     },
   });
 
-  async function onSubmit(data: InsightsFormValues) {
+  const onSubmit = async (data: InsightsFormValues) => {
     setAnalysisResult(null);
     setAnalysisError(null);
     startTransition(async () => {
@@ -65,7 +68,7 @@ export function FinancialInsightsTool() {
         });
       }
     });
-  }
+  };
 
   useEffect(() => {
     if (analysisResult && keyInsightsCardRef.current) {
@@ -87,7 +90,7 @@ export function FinancialInsightsTool() {
       formCardRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   };
-  
+
   return (
     <div className="space-y-8">
       <Card className="shadow-xl" ref={formCardRef}>
@@ -132,10 +135,10 @@ export function FinancialInsightsTool() {
                     'Get Insights'
                   )}
                 </Button>
-                <Button 
-                  type="button" 
-                  variant="outline" 
-                  onClick={handleClear} 
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={handleClear}
                   disabled={isPending || (!form.formState.isDirty && !analysisResult && !analysisError)}
                   className="w-full sm:w-auto"
                 >
@@ -147,8 +150,8 @@ export function FinancialInsightsTool() {
           </Form>
         </CardContent>
       </Card>
-      
-      {analysisResult && (
+
+      {analysisResult && !isPending && (
         <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
           <Button
             onClick={scrollToInput}
@@ -194,8 +197,8 @@ export function FinancialInsightsTool() {
 
         {analysisResult && !isPending && (
           <div className="space-y-6 mt-8">
-            <Card 
-              ref={keyInsightsCardRef} 
+            <Card
+              ref={keyInsightsCardRef} // Target this card for scrolling
               className="shadow-lg bg-gradient-to-br from-primary/5 via-background to-accent/5"
             >
               <CardHeader>
@@ -220,11 +223,11 @@ export function FinancialInsightsTool() {
                 <p className="text-amber-800 dark:text-amber-400 whitespace-pre-wrap leading-relaxed">{analysisResult.potentialConcerns}</p>
               </CardContent>
             </Card>
-            
+
             <Card className="shadow-lg bg-blue-500/5 border-blue-500/50">
               <CardHeader>
                 <CardTitle className="text-2xl flex items-center gap-3 text-blue-700 dark:text-blue-500">
-                  <Lightbulb className="h-7 w-7" /> 
+                  <Lightbulb className="h-7 w-7" />
                   Steps to Take
                 </Title>
               </CardHeader>
