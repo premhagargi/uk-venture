@@ -1,3 +1,4 @@
+
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -77,13 +78,13 @@ export function FinancialInsightsTool() {
     setAnalysisResult(null);
     setAnalysisError(null);
     if (formCardRef.current) {
-        formCardRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        formCardRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   };
 
   const scrollToInput = () => {
     if (formCardRef.current) {
-      formCardRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      formCardRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   };
 
@@ -148,7 +149,7 @@ export function FinancialInsightsTool() {
       </Card>
       
       {analysisResult && (
-        <div className="fixed bottom-6 right-6 z-50">
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
           <Button
             onClick={scrollToInput}
             variant="secondary"
@@ -220,7 +221,6 @@ export function FinancialInsightsTool() {
             <Card className="shadow-lg bg-blue-500/5 border-blue-500/50">
               <CardHeader>
                 <CardTitle className="text-2xl flex items-center gap-3 text-blue-700 dark:text-blue-500">
-                  {/* Re-using Lightbulb or could be a different icon like CheckSquare */}
                   <Lightbulb className="h-7 w-7" /> 
                   Steps to Take
                 </CardTitle>
@@ -235,3 +235,4 @@ export function FinancialInsightsTool() {
     </div>
   );
 }
+

@@ -30,7 +30,7 @@ const AnalyzeFinancialSummaryOutputSchema = z.object({
     .describe('Identifies any potential areas of financial concern based on the provided summary.'),
   stepsToTake: z
     .string()
-    .describe('Actionable steps the user can take to address the potential concerns, or general financial health advice if no specific concerns are found. This should be plain text without markdown formatting.'),
+    .describe('Actionable steps the user can take to address the potential concerns, or general financial health advice if no specific concerns are found. This should be plain text, formatted as a list with each step on a new line. No markdown formatting like bold or italics.'),
 });
 
 export type AnalyzeFinancialSummaryOutput = z.infer<typeof AnalyzeFinancialSummaryOutputSchema>;
@@ -49,7 +49,7 @@ const analyzeFinancialSummaryPrompt = ai.definePrompt({
   Your response should include:
   1. Key Insights: A concise summary of the key financial insights derived from the provided financial summary.
   2. Potential Concerns: Identify any potential areas of financial concern based on the provided summary.
-  3. Steps to Take: Provide actionable steps the user can take to address the identified potential concerns. If no major concerns are found, suggest general good financial practices or areas for optimization. Ensure this 'Steps to Take' section is plain text and does not contain any markdown formatting like asterisks or underscores for bolding or italics.
+  3. Steps to Take: Provide actionable steps the user can take to address the identified potential concerns. If no major concerns are found, suggest general good financial practices or areas for optimization. Ensure this 'Steps to Take' section is plain text. Format the steps as a list where each step is on a new line. You can start each step with a number or a hyphen if that helps readability, but it's not strictly required as long as each step is on a distinct line. Do not use markdown formatting like double asterisks for bolding or underscores for italics.
 
   Analyze the following financial summary:
   {{financialSummary}}
@@ -68,3 +68,4 @@ const analyzeFinancialSummaryFlow = ai.defineFlow(
     return output!;
   }
 );
+
