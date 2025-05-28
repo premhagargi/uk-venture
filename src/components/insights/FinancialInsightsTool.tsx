@@ -37,7 +37,7 @@ export function FinancialInsightsTool() {
   const [analysisError, setAnalysisError] = useState<string | null>(null);
 
   const formCardRef = useRef<HTMLDivElement>(null);
-  const keyInsightsCardRef = useRef<HTMLDivElement>(null); // For scrolling to results
+  const keyInsightsCardRef = useRef<HTMLDivElement>(null); // Ref for the Key Insights card
 
   const form = useForm<InsightsFormValues>({
     resolver: zodResolver(insightsFormSchema),
@@ -72,6 +72,7 @@ export function FinancialInsightsTool() {
 
   useEffect(() => {
     if (analysisResult && keyInsightsCardRef.current) {
+      // Scroll to the "Key Insights" card, aligning its top with the viewport top
       keyInsightsCardRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }, [analysisResult]);
@@ -189,7 +190,7 @@ export function FinancialInsightsTool() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-destructive-foreground">{analysisError}</p>
+              <p className="text-foreground">{analysisError}</p>
               <p className="text-sm text-muted-foreground mt-2">Please try refining your summary or try again later.</p>
             </CardContent>
           </Card>
@@ -198,7 +199,7 @@ export function FinancialInsightsTool() {
         {analysisResult && !isPending && (
           <div className="space-y-6 mt-8">
             <Card
-              ref={keyInsightsCardRef} // Target this card for scrolling
+              ref={keyInsightsCardRef} // Assign ref here
               className="shadow-lg bg-gradient-to-br from-primary/5 via-background to-accent/5"
             >
               <CardHeader>
