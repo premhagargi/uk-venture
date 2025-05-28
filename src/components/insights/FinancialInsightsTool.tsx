@@ -15,7 +15,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Textarea } from '@/components/ui/textarea';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2, Lightbulb, AlertTriangleIcon, ArrowUpCircle, XCircle } from 'lucide-react';
 import { useState, useTransition, useRef, useEffect } from 'react';
@@ -34,7 +34,7 @@ export function FinancialInsightsTool() {
   const [analysisError, setAnalysisError] = useState<string | null>(null);
 
   const formCardRef = useRef<HTMLDivElement>(null);
-  const resultsContainerRef = useRef<HTMLDivElement>(null);
+  const keyInsightsCardRef = useRef<HTMLDivElement>(null); 
 
   const form = useForm<InsightsFormValues>({
     resolver: zodResolver(insightsFormSchema),
@@ -68,8 +68,8 @@ export function FinancialInsightsTool() {
   }
 
   useEffect(() => {
-    if (analysisResult && resultsContainerRef.current) {
-      resultsContainerRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (analysisResult && keyInsightsCardRef.current) {
+      keyInsightsCardRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }, [analysisResult]);
 
@@ -87,7 +87,7 @@ export function FinancialInsightsTool() {
       formCardRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   };
-
+  
   return (
     <div className="space-y-8">
       <Card className="shadow-xl" ref={formCardRef}>
@@ -162,7 +162,7 @@ export function FinancialInsightsTool() {
         </div>
       )}
 
-      <div ref={resultsContainerRef}>
+      <div>
         {isPending && (
           <Card className="shadow-md animate-pulse mt-8">
             <CardHeader>
@@ -194,7 +194,10 @@ export function FinancialInsightsTool() {
 
         {analysisResult && !isPending && (
           <div className="space-y-6 mt-8">
-            <Card className="shadow-lg bg-gradient-to-br from-primary/5 via-background to-accent/5">
+            <Card 
+              ref={keyInsightsCardRef} 
+              className="shadow-lg bg-gradient-to-br from-primary/5 via-background to-accent/5"
+            >
               <CardHeader>
                 <CardTitle className="text-2xl flex items-center gap-3">
                   <Lightbulb className="h-7 w-7 text-primary" />
@@ -223,7 +226,7 @@ export function FinancialInsightsTool() {
                 <CardTitle className="text-2xl flex items-center gap-3 text-blue-700 dark:text-blue-500">
                   <Lightbulb className="h-7 w-7" /> 
                   Steps to Take
-                </CardTitle>
+                </Title>
               </CardHeader>
               <CardContent>
                 <p className="text-blue-800 dark:text-blue-400 whitespace-pre-wrap leading-relaxed">{analysisResult.stepsToTake}</p>
@@ -235,4 +238,3 @@ export function FinancialInsightsTool() {
     </div>
   );
 }
-
