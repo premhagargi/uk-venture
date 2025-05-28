@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,7 +14,7 @@
     --popover: 0 0% 100%; /* White */
     --popover-foreground: 215 40% 25%; /* Consistent with main foreground */
 
-    --primary: 205 75% 45%; /* #3498DB - A professional, calming blue */
+    --primary: 338 88% 49%; /* #EB1165 - Brighter Pink/Magenta */
     --primary-foreground: 0 0% 100%; /* White */
 
     --secondary: 170 50% 50%; /* #48C9B0 - A muted, friendly teal/mint */
@@ -22,7 +23,7 @@
     --muted: 220 20% 92%; /* #E2E8F0 - Light gray */
     --muted-foreground: 215 25% 55%; /* #64748B - Slate Gray */
 
-    --accent: 200 80% 60%; /* #5DADE2 - A slightly lighter, brighter blue than primary for highlights */
+    --accent: 330 63% 42%; /* #AE275F - Darker Pink/Magenta */
     --accent-foreground: 0 0% 100%; /* White */
 
     --destructive: 0 72% 51%; /* #E53E3E - Standard red */
@@ -30,9 +31,9 @@
 
     --border: 220 15% 88%; /* #DCDFE4 - Light Gray border */
     --input: 220 15% 88%; /* Light Gray input */
-    --ring: 205 75% 55%; /* Slightly brighter primary for focus rings */
+    --ring: 338 88% 59%; /* Brighter version of new primary #EB1165 */
 
-    --chart-1: 205 75% 45%; /* primary */
+    --chart-1: 338 88% 49%; /* primary - #EB1165 */
     --chart-2: 170 50% 50%; /* secondary */
     --chart-3: 25 80% 60%;  /* warm accent - orange */
     --chart-4: 260 60% 65%; /* cool accent - purple */
@@ -60,7 +61,7 @@
     --popover: 220 20% 18%; /* Darker Popover */
     --popover-foreground: 220 25% 90%; /* Consistent with main foreground */
 
-    --primary: 205 70% 60%; /* #5DADE2 - Lighter version of primary blue */
+    --primary: 338 85% 60%; /* Lighter/more saturated #EB1165 for dark mode */
     --primary-foreground: 220 20% 10%; /* Very dark for contrast on primary */
 
     --secondary: 170 50% 65%; /* #76D7C4 - Lighter teal/mint */
@@ -69,7 +70,7 @@
     --muted: 220 15% 25%; /* #333C4F - Darker Muted */
     --muted-foreground: 220 15% 70%; /* #A0AEC0 - Lighter Muted Foreground */
 
-    --accent: 200 80% 70%; /* #85C1E9 - Lighter accent blue */
+    --accent: 330 60% 55%; /* Lighter #AE275F for dark mode */
     --accent-foreground: 220 20% 10%; /* Very dark for contrast on accent */
 
     --destructive: 0 65% 55%; /* #F56565 - Softer Red */
@@ -77,9 +78,9 @@
 
     --border: 220 15% 30%; /* #3E4C5F - Dark Border */
     --input: 220 15% 30%; /* Dark Input */
-    --ring: 205 70% 70%; /* Lighter primary for focus rings */
+    --ring: 338 85% 70%; /* Brighter version of new dark primary */
 
-    --chart-1: 205 70% 60%;
+    --chart-1: 338 85% 60%; /* dark primary - #EB1165 adjusted */
     --chart-2: 170 50% 65%;
     --chart-3: 30 75% 70%;
     --chart-4: 255 65% 75%;
