@@ -37,7 +37,7 @@ export function FinancialInsightsTool() {
   const [analysisError, setAnalysisError] = useState<string | null>(null);
 
   const formCardRef = useRef<HTMLDivElement>(null);
-  const keyInsightsCardRef = useRef<HTMLDivElement>(null); // Ref for the Key Insights card
+  const keyInsightsCardRef = useRef<HTMLDivElement>(null);
 
   const form = useForm<InsightsFormValues>({
     resolver: zodResolver(insightsFormSchema),
@@ -71,15 +71,24 @@ export function FinancialInsightsTool() {
   };
 
   useEffect(() => {
-    if (analysisResult && keyInsightsCardRef.current) {
-      // Ensure DOM update is complete before scrolling by using a short timeout
-      setTimeout(() => {
-        if (keyInsightsCardRef.current) { // Re-check ref inside timeout
-          keyInsightsCardRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    let timerId: NodeJS.Timeout | undefined = undefined;
+    // Scroll to results when they appear and loading is finished
+    if (analysisResult && !isPending) {
+      timerId = setTimeout(() => {
+        if (keyInsightsCardRef.current) {
+          // Try with minimal options first
+          keyInsightsCardRef.current.scrollIntoView({ block: 'start' });
+          // If the above works consistently, you can re-add behavior: 'smooth'
+          // keyInsightsCardRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-      }, 0); // 0ms timeout pushes to next event loop tick
+      }, 100); // 100ms delay
     }
-  }, [analysisResult]);
+    return () => {
+      if (timerId) {
+        clearTimeout(timerId);
+      }
+    };
+  }, [analysisResult, isPending]); // Effect runs when analysisResult or isPending changes
 
   const handleClear = () => {
     form.reset({ financialSummary: '' });
@@ -203,7 +212,7 @@ export function FinancialInsightsTool() {
         {analysisResult && !isPending && (
           <div className="space-y-6 mt-8">
             <Card
-              ref={keyInsightsCardRef} // Assign ref here
+              ref={keyInsightsCardRef}
               className="shadow-lg bg-gradient-to-br from-primary/5 via-background to-accent/5"
             >
               <CardHeader>
@@ -246,4 +255,3 @@ export function FinancialInsightsTool() {
     </div>
   );
 }
-
