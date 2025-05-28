@@ -72,8 +72,12 @@ export function FinancialInsightsTool() {
 
   useEffect(() => {
     if (analysisResult && keyInsightsCardRef.current) {
-      // Scroll to the "Key Insights" card, aligning its top with the viewport top
-      keyInsightsCardRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // Ensure DOM update is complete before scrolling by using a short timeout
+      setTimeout(() => {
+        if (keyInsightsCardRef.current) { // Re-check ref inside timeout
+          keyInsightsCardRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 0); // 0ms timeout pushes to next event loop tick
     }
   }, [analysisResult]);
 
@@ -230,7 +234,7 @@ export function FinancialInsightsTool() {
                 <CardTitle className="text-2xl flex items-center gap-3 text-blue-700 dark:text-blue-500">
                   <Lightbulb className="h-7 w-7" />
                   Steps to Take
-                </Title>
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-blue-800 dark:text-blue-400 whitespace-pre-wrap leading-relaxed">{analysisResult.stepsToTake}</p>
@@ -242,3 +246,4 @@ export function FinancialInsightsTool() {
     </div>
   );
 }
+
