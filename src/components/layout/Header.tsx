@@ -1,9 +1,9 @@
 import Link from 'next/link';
-import { BarChartBig, Menu } from 'lucide-react';
+import { BarChartBig, Menu, Linkedin, Twitter, Facebook } from 'lucide-react';
 import { NAV_LINKS, APP_NAME } from '@/lib/constants';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetClose } from '@/components/ui/sheet';
-// import { ModeToggle } from '@/components/layout/ModeToggle'; // Assuming you might add this later
+import { Separator } from '@/components/ui/separator';
 
 export function Header() {
   return (
@@ -35,7 +35,7 @@ export function Header() {
                 <span className="sr-only">Toggle navigation menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right">
+            <SheetContent side="right" className="flex flex-col">
               <SheetHeader>
                 <SheetTitle><span className="sr-only">{APP_NAME} Menu</span></SheetTitle>
               </SheetHeader>
@@ -58,6 +58,39 @@ export function Header() {
                   </SheetClose>
                 ))}
               </nav>
+              <div className="mt-auto pt-6">
+                <Separator className="mb-6" />
+                <div className="flex justify-center items-center gap-6 px-2.5">
+                  <a 
+                    href="#" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    aria-label="LinkedIn profile of Axis Portfolio Pulse" 
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    <Linkedin className="h-6 w-6" />
+                  </a>
+                  <a 
+                    href="#" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    aria-label="Twitter profile of Axis Portfolio Pulse" 
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    <Twitter className="h-6 w-6" />
+                  </a>
+                  <a 
+                    href="#" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    aria-label="Facebook page of Axis Portfolio Pulse" 
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    <Facebook className="h-6 w-6" />
+                  </a>
+                </div>
+                 <p className="text-xs text-muted-foreground text-center mt-4">Follow us</p>
+              </div>
             </SheetContent>
           </Sheet>
         </div>
