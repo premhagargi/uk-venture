@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function InsightsPage() {
   return (
-    <div className="container px-4 md:px-6 py-12 md:py-16 lg:py-20">
+    <div className="container px-4 md:px-6 py-12 md:py-16 lg:py-20 md:pt-20">
       <div className="text-center mb-12 md:mb-16">
         <Lightbulb className="h-16 w-16 text-primary mx-auto mb-4" />
         <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl text-foreground">

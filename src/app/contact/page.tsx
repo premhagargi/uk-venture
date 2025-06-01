@@ -19,7 +19,7 @@ const contactDetails = [
 
 export default function ContactPage() {
   return (
-    <div className="container px-4 md:px-6 py-12 md:py-16 lg:py-20">
+    <div className="container px-4 md:px-6 py-12 md:py-16 lg:py-20 md:pt-20">
       <div className="text-center mb-12 md:mb-16">
         <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl text-foreground">
           Contact ${APP_NAME}

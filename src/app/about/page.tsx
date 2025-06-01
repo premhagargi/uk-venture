@@ -29,7 +29,7 @@ const historyItems = [
 
 export default function AboutPage() {
   return (
-    <div className="container px-4 md:px-6 py-12 md:py-16 lg:py-20">
+    <div className="container px-4 md:px-6 py-12 md:py-16 lg:py-20 md:pt-20">
       <div className="text-center mb-12 md:mb-16">
         <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl text-foreground">
           About ${APP_NAME}
@@ -91,7 +91,7 @@ export default function AboutPage() {
                 <div
                   key={item.year}
                   className={cn(
-                    "relative", 
+                    "relative",
                     "md:flex md:items-center",
                     index % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"
                   )}
@@ -104,9 +104,9 @@ export default function AboutPage() {
                   </div>
                   <div
                     className={cn(
-                      "ml-10 p-4 rounded-lg shadow-lg bg-card text-left", 
-                      "md:w-5/12 md:ml-0", 
-                      index % 2 === 0 ? "md:text-left" : "md:text-right" 
+                      "ml-10 p-4 rounded-lg shadow-lg bg-card text-left",
+                      "md:w-5/12 md:ml-0",
+                      index % 2 === 0 ? "md:text-left" : "md:text-right"
                     )}
                   >
                     <h3 className="text-xl font-bold text-primary">{item.year} - {item.event}</h3>

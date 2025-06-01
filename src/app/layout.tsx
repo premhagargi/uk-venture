@@ -34,8 +34,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}>
         <Header />
-        {/* pt-16 for mobile header (4rem = h-16), md:pt-20 for desktop header (5rem = h-20) */}
-        <main className="flex-grow pt-16 md:pt-20">{children}</main>
+        <main className="flex-grow pt-16 md:pt-0">{children}</main>
         <Footer />
         <Toaster />
       </body>

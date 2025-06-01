@@ -7,7 +7,7 @@ import { NAV_LINKS, APP_NAME } from '@/lib/constants';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetClose, SheetFooter } from '@/components/ui/sheet';
 import { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
 
@@ -15,8 +15,13 @@ export function Header() {
   const [isMobileSheetOpen, setIsMobileSheetOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const lastScrollYRef = useRef(0);
-  const headerHeightThreshold = 80; // Threshold to start hiding header
+  const headerHeightThreshold = 80;
   const pathname = usePathname();
+  const [activePill, setActivePill] = useState(pathname);
+
+  useEffect(() => {
+    setActivePill(pathname);
+  }, [pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,6 +42,11 @@ export function Header() {
     };
   }, [headerHeightThreshold]);
 
+  const pillAnimation = {
+    initial: { opacity: 0, y: -10 },
+    animate: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 300, damping: 30 } },
+    exit: { opacity: 0, y: 10 },
+  };
 
   return (
     <header
@@ -64,11 +74,11 @@ export function Header() {
           <SheetContent
             side="right"
             className={cn(
-                "!w-screen !h-screen !max-w-none !border-0", // Full screen
-                "!bg-card !rounded-none", // Override default rounding for full screen
+                "!w-screen !h-screen !max-w-none !border-0",
+                "!bg-card !rounded-none",
                 "data-[state=open]:animate-spread-in-tr data-[state=closed]:animate-spread-out-tr",
                 "data-[state=closed]:duration-300 data-[state=open]:duration-500",
-                "p-6 flex flex-col" 
+                "p-6 flex flex-col"
             )}
           >
             <SheetHeader className="mb-8 text-center">
@@ -89,13 +99,21 @@ export function Header() {
                   <Link
                     href={link.href}
                     className={cn(
-                      "text-xl sm:text-2xl uppercase font-semibold py-3 px-6 rounded-full transition-all duration-300 ease-in-out transform hover:scale-105 w-full text-center",
+                      "text-xl sm:text-2xl uppercase font-semibold py-3 px-6 rounded-full transition-all duration-300 ease-in-out transform hover:scale-105 w-full text-center relative",
                       isActive
-                        ? "bg-primary text-primary-foreground shadow-lg"
+                        ? "text-primary-foreground"
                         : "text-muted-foreground hover:text-primary hover:bg-primary/10"
                     )}
+                    onClick={() => setActivePill(link.href)}
                   >
-                    {link.label}
+                    {isActive && (
+                        <motion.div
+                            layoutId="active-mobile-pill"
+                            className="absolute inset-0 bg-primary rounded-full z-[-1]"
+                            transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+                        />
+                    )}
+                    <span className="relative z-10">{link.label}</span>
                   </Link>
                 </SheetClose>
               );
@@ -108,47 +126,61 @@ export function Header() {
         </Sheet>
       </div>
 
-      {/* Desktop Header - Full Width Top Bar */}
-      <div className="hidden md:block bg-background shadow-sm">
-        <div className="container mx-auto px-4 md:px-6">
-          <nav className="flex items-center justify-between h-16 md:h-20">
-            {/* Left: Logo & App Name */}
-            <Link href="/" className="flex items-center gap-2 shrink-0">
-              <div className="flex items-center justify-center w-10 h-10 bg-primary text-primary-foreground rounded-full">
+      {/* Desktop Header - Pill Navigation */}
+      <AnimatePresence>
+      {isVisible && (
+        <motion.div
+          className="hidden md:flex justify-center pt-4 sm:pt-6"
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          variants={pillAnimation}
+        >
+          <motion.nav
+            className="flex items-center gap-1 p-1.5 bg-foreground/90 backdrop-blur-md rounded-full shadow-xl"
+            initial={{ y: -100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1, transition: { type: 'spring', stiffness: 200, damping: 25, delay: 0.1 } }}
+          >
+            <Link href="/" className="flex-shrink-0">
+              <motion.div
+                className="flex items-center justify-center w-10 h-10 bg-background text-primary rounded-full cursor-pointer"
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 15 }}
+              >
                 <BarChartBig className="h-5 w-5" />
-              </div>
-              <span className="font-bold text-xl text-foreground">{APP_NAME}</span>
+              </motion.div>
             </Link>
 
-            {/* Center: Navigation Links */}
-            <ul className="flex items-center space-x-6 lg:space-x-8">
+            <div className="flex items-center gap-1">
               {NAV_LINKS.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
+                <Link href={link.href} key={link.href} legacyBehavior>
+                  <a
+                    onClick={() => setActivePill(link.href)}
                     className={cn(
-                      "text-base font-medium transition-colors hover:text-primary",
-                      pathname === link.href ? "text-primary font-semibold" : "text-foreground"
+                      "relative px-4 py-1.5 text-sm font-medium rounded-full transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-foreground/90",
+                      activePill === link.href
+                        ? "text-foreground" // Active text color
+                        : "text-muted-foreground hover:text-background"
                     )}
                   >
-                    {link.label}
-                  </Link>
-                </li>
+                    {activePill === link.href && (
+                      <motion.div
+                        layoutId="active-desktop-pill"
+                        className="absolute inset-0 bg-background rounded-full z-[-1]"
+                        transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                      />
+                    )}
+                    <span className="relative z-10">{link.label}</span>
+                  </a>
+                </Link>
               ))}
-            </ul>
-
-            {/* Right: Action Buttons */}
-            <div className="flex items-center gap-3">
-              <Button variant="outline" asChild>
-                <Link href="/about">Learn More</Link>
-              </Button>
-              <Button asChild>
-                <Link href="/contact">Get Started</Link>
-              </Button>
             </div>
-          </nav>
-        </div>
-      </div>
+            {/* "Get Started" button removed as per previous request */}
+          </motion.nav>
+        </motion.div>
+      )}
+      </AnimatePresence>
     </header>
   );
 }
