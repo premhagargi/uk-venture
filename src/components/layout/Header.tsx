@@ -9,11 +9,13 @@ import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetClose 
 import { Separator } from '@/components/ui/separator';
 import { useState, useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
+import { usePathname } from 'next/navigation';
 
 export function Header() {
   const [isVisible, setIsVisible] = useState(true);
   const lastScrollYRef = useRef(0);
-  const headerHeightThreshold = 70; // A bit more than h-16 (64px)
+  const headerHeightThreshold = 70; 
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,9 +23,9 @@ export function Header() {
 
       if (currentScrollY < headerHeightThreshold) {
         setIsVisible(true);
-      } else if (currentScrollY > lastScrollYRef.current) { // Scrolling Down
+      } else if (currentScrollY > lastScrollYRef.current) { 
         setIsVisible(false);
-      } else { // Scrolling Up
+      } else { 
         setIsVisible(true);
       }
       lastScrollYRef.current = currentScrollY;
@@ -50,15 +52,21 @@ export function Header() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-6">
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {NAV_LINKS.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={cn(
+                  "text-sm font-medium transition-colors hover:text-primary",
+                  isActive ? "text-primary font-semibold" : "text-muted-foreground"
+                )}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="flex items-center gap-2">
@@ -70,37 +78,48 @@ export function Header() {
                 <span className="sr-only">Toggle navigation menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="flex flex-col">
+            <SheetContent 
+              side="right" 
+              className="flex flex-col bg-gradient-to-b from-primary/5 via-background to-accent/5 dark:from-primary/10 dark:via-background dark:to-accent/10"
+            >
               <SheetHeader>
                 <SheetTitle><span className="sr-only">{APP_NAME} Menu</span></SheetTitle>
               </SheetHeader>
-              <nav className="grid gap-6 text-lg font-medium mt-8">
+              <nav className="grid gap-4 text-lg font-medium mt-8">
                 <SheetClose asChild>
-                  <Link href="/" className="flex items-center gap-2 text-foreground mb-4">
+                  <Link href="/" className="flex items-center gap-2 text-foreground mb-4 px-2.5">
                     <BarChartBig className="h-6 w-6 text-primary" />
                     <span className="font-bold text-lg">{APP_NAME}</span>
                   </Link>
                 </SheetClose>
-                {NAV_LINKS.map((link) => (
-                  <SheetClose asChild key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-primary"
-                    >
-                      <link.icon className="h-5 w-5" />
-                      {link.label}
-                    </Link>
-                  </SheetClose>
-                ))}
+                {NAV_LINKS.map((link) => {
+                  const isActive = pathname === link.href;
+                  return (
+                    <SheetClose asChild key={link.href}>
+                      <Link
+                        href={link.href}
+                        className={cn(
+                          "flex items-center gap-4 px-2.5 py-3 text-base uppercase rounded-md transition-all duration-200 ease-in-out transform hover:scale-105",
+                          isActive
+                            ? "bg-primary/10 text-primary font-bold shadow-sm"
+                            : "text-muted-foreground hover:text-primary hover:bg-muted/30"
+                        )}
+                      >
+                        <link.icon className="h-5 w-5" />
+                        {link.label}
+                      </Link>
+                    </SheetClose>
+                  );
+                })}
               </nav>
               <div className="mt-auto pt-6">
-                <Separator className="mb-6" />
+                <Separator className="mb-6 bg-border/50" />
                 <div className="flex justify-center items-center gap-6 px-2.5">
                   <a
                     href="#"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="LinkedIn profile of UK Venture"
+                    aria-label={`LinkedIn profile of ${APP_NAME}`}
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
                     <Linkedin className="h-6 w-6" />
@@ -109,7 +128,7 @@ export function Header() {
                     href="#"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Twitter profile of UK Venture"
+                    aria-label={`Twitter profile of ${APP_NAME}`}
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
                     <Twitter className="h-6 w-6" />
@@ -118,7 +137,7 @@ export function Header() {
                     href="#"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Facebook page of UK Venture"
+                    aria-label={`Facebook page of ${APP_NAME}`}
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
                     <Facebook className="h-6 w-6" />
