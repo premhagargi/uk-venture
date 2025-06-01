@@ -19,7 +19,7 @@ const contactDetails = [
 
 export default function ContactPage() {
   return (
-    <div className="container px-4 md:px-6 py-12 md:py-16 lg:py-20 md:pt-20">
+    <div className="container px-4 md:px-6 py-12 md:py-16 lg:py-20">
       <div className="text-center mb-12 md:mb-16">
         <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl text-foreground">
           Contact ${APP_NAME}
@@ -31,7 +31,7 @@ export default function ContactPage() {
 
       <div className="grid md:grid-cols-5 gap-12">
         <div className="md:col-span-3">
-          <Card className="shadow-xl">
+          <Card className="shadow-xl rounded-xl">
             <CardHeader>
               <CardTitle className="text-2xl">Send Us a Message</CardTitle>
               <CardDescription>Fill out the form below and we'll get back to you as soon as possible.</CardDescription>
@@ -43,7 +43,7 @@ export default function ContactPage() {
         </div>
 
         <div className="md:col-span-2">
-          <Card className="shadow-xl h-full">
+          <Card className="shadow-xl h-full rounded-xl">
             <CardHeader>
               <CardTitle className="text-2xl">Our Contact Information</CardTitle>
               <CardDescription>You can also reach us through the following channels:</CardDescription>

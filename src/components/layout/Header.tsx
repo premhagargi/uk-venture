@@ -2,26 +2,21 @@
 'use client';
 
 import Link from 'next/link';
-import { BarChartBig, Menu, ChevronRight } from 'lucide-react'; // Removed Linkedin, Twitter, Facebook as they are not used
+import { BarChartBig, Menu } from 'lucide-react';
 import { NAV_LINKS, APP_NAME } from '@/lib/constants';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetClose, SheetFooter } from '@/components/ui/sheet';
-// import { Separator } from '@/components/ui/separator'; // Not used
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
 
 export function Header() {
+  const [isMobileSheetOpen, setIsMobileSheetOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const lastScrollYRef = useRef(0);
-  const headerHeightThreshold = 80;
+  const headerHeightThreshold = 80; // Threshold to start hiding header
   const pathname = usePathname();
-  const [activePill, setActivePill] = useState(pathname); // For desktop pill animation
-
-  useEffect(() => {
-    setActivePill(pathname);
-  }, [pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,6 +37,7 @@ export function Header() {
     };
   }, [headerHeightThreshold]);
 
+
   return (
     <header
       className={cn(
@@ -49,7 +45,7 @@ export function Header() {
         isVisible ? "translate-y-0" : "-translate-y-full"
       )}
     >
-      {/* Mobile Header */}
+      {/* Mobile Header - Top Bar */}
       <div className="md:hidden flex items-center justify-between p-4 h-16 bg-background shadow-sm container mx-auto">
         <Link href="/" className="flex items-center gap-2 shrink-0">
           <div className="flex items-center justify-center w-8 h-8 bg-primary text-primary-foreground rounded-full">
@@ -58,7 +54,7 @@ export function Header() {
           <span className="font-bold text-lg text-foreground">{APP_NAME}</span>
         </Link>
 
-        <Sheet>
+        <Sheet open={isMobileSheetOpen} onOpenChange={setIsMobileSheetOpen}>
           <SheetTrigger asChild>
             <Button variant="ghost" size="icon" className="text-foreground hover:bg-accent">
               <Menu className="h-6 w-6" />
@@ -68,14 +64,15 @@ export function Header() {
           <SheetContent
             side="right"
             className={cn(
-                "!inset-auto !right-4 !top-4 !bottom-4 !h-auto max-h-[calc(100dvh-2rem)] !w-auto max-w-md !bg-card !rounded-2xl !shadow-2xl",
+                "!w-screen !h-screen !max-w-none !border-0", // Full screen
+                "!bg-card !rounded-none", // Override default rounding for full screen
                 "data-[state=open]:animate-spread-in-tr data-[state=closed]:animate-spread-out-tr",
                 "data-[state=closed]:duration-300 data-[state=open]:duration-500",
-                "p-6 flex flex-col" // Keep padding and flex for internal layout
+                "p-6 flex flex-col" 
             )}
           >
             <SheetHeader className="mb-8 text-center">
-              <SheetClose asChild>
+               <SheetClose asChild>
                 <Link href="/" className="inline-flex flex-col items-center gap-3 text-foreground group">
                   <div className="p-3 bg-primary/10 rounded-full group-hover:bg-primary/20 transition-colors">
                     <BarChartBig className="h-10 w-10 text-primary" />
@@ -84,7 +81,7 @@ export function Header() {
                 </Link>
               </SheetClose>
             </SheetHeader>
-            <nav className="flex flex-col gap-4 items-center flex-grow overflow-y-auto py-4"> {/* Added flex-grow and overflow */}
+            <nav className="flex flex-col gap-4 items-center flex-grow overflow-y-auto py-4">
               {NAV_LINKS.map((link) => {
                  const isActive = pathname === link.href;
                 return (
@@ -92,7 +89,7 @@ export function Header() {
                   <Link
                     href={link.href}
                     className={cn(
-                      "text-lg sm:text-xl uppercase font-semibold py-3 px-6 rounded-full transition-all duration-300 ease-in-out transform hover:scale-105 w-full text-center", // Added w-full and text-center
+                      "text-xl sm:text-2xl uppercase font-semibold py-3 px-6 rounded-full transition-all duration-300 ease-in-out transform hover:scale-105 w-full text-center",
                       isActive
                         ? "bg-primary text-primary-foreground shadow-lg"
                         : "text-muted-foreground hover:text-primary hover:bg-primary/10"
@@ -111,51 +108,45 @@ export function Header() {
         </Sheet>
       </div>
 
-      {/* Desktop Header (Floating Pill) */}
-      <div className="hidden md:flex justify-center pt-4 sm:pt-6">
-        <div className="container px-4 md:px-6">
-          <motion.nav
-            className="relative flex items-center justify-between w-full max-w-2xl mx-auto py-1.5 px-2 bg-foreground text-background rounded-full shadow-xl" // Adjusted padding and max-width
-            initial={{ y: -20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ type: "spring", stiffness: 80, damping: 20, delay: 0.1, duration: 0.5 }}
-          >
-            <Link href="/" className="flex-shrink-0">
-              <motion.div
-                className="flex items-center justify-center w-10 h-10 bg-background rounded-full cursor-pointer" // Adjusted size
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ type: "spring", stiffness: 400, damping: 15 }}
-              >
-                <BarChartBig className="h-5 w-5 text-primary" /> {/* Adjusted size */}
-              </motion.div>
-              <span className="sr-only">{APP_NAME} Home</span>
+      {/* Desktop Header - Full Width Top Bar */}
+      <div className="hidden md:block bg-background shadow-sm">
+        <div className="container mx-auto px-4 md:px-6">
+          <nav className="flex items-center justify-between h-16 md:h-20">
+            {/* Left: Logo & App Name */}
+            <Link href="/" className="flex items-center gap-2 shrink-0">
+              <div className="flex items-center justify-center w-10 h-10 bg-primary text-primary-foreground rounded-full">
+                <BarChartBig className="h-5 w-5" />
+              </div>
+              <span className="font-bold text-xl text-foreground">{APP_NAME}</span>
             </Link>
 
-            <ul className="flex items-center space-x-1 relative"> {/* Ensure it's centered or spaced appropriately */}
+            {/* Center: Navigation Links */}
+            <ul className="flex items-center space-x-6 lg:space-x-8">
               {NAV_LINKS.map((link) => (
-                <li key={link.href} className="relative">
+                <li key={link.href}>
                   <Link
                     href={link.href}
                     className={cn(
-                      "relative z-10 px-3 py-1.5 text-sm font-medium rounded-full transition-colors duration-300", // Adjusted padding
-                      activePill === link.href ? "text-foreground" : "text-muted-foreground hover:text-background"
+                      "text-base font-medium transition-colors hover:text-primary",
+                      pathname === link.href ? "text-primary font-semibold" : "text-foreground"
                     )}
                   >
                     {link.label}
                   </Link>
-                  {activePill === link.href && (
-                    <motion.div
-                      layoutId="active-pill-desktop"
-                      className="absolute inset-0 bg-background rounded-full z-0"
-                      transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                    />
-                  )}
                 </li>
               ))}
             </ul>
-            {/* "Get Started" button removed */}
-          </motion.nav>
+
+            {/* Right: Action Buttons */}
+            <div className="flex items-center gap-3">
+              <Button variant="outline" asChild>
+                <Link href="/about">Learn More</Link>
+              </Button>
+              <Button asChild>
+                <Link href="/contact">Get Started</Link>
+              </Button>
+            </div>
+          </nav>
         </div>
       </div>
     </header>

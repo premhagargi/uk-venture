@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function ServicesPage() {
   return (
-    <div className="container px-4 md:px-6 py-12 md:py-16 lg:py-20 md:pt-20">
+    <div className="container px-4 md:px-6 py-12 md:py-16 lg:py-20">
       <div className="text-center mb-12 md:mb-16">
         <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl text-foreground">
           Our Financial Services
@@ -23,7 +23,7 @@ export default function ServicesPage() {
 
       <div className="space-y-12 md:space-y-16">
         {SERVICES_DATA.map((service, index) => (
-          <Card key={service.id} id={service.id} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <Card key={service.id} id={service.id} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-xl">
             <div className={`grid md:grid-cols-2 gap-6 md:gap-8 items-center ${index % 2 !== 0 ? 'md:grid-flow-row-dense' : ''}`}>
               <div className={`p-6 md:p-8 ${index % 2 !== 0 ? 'md:col-start-2' : ''}`}>
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-6">

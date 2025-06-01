@@ -4,7 +4,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { APP_NAME } from '@/lib/constants';
-import { Target, History, Users, Briefcase, Linkedin } from 'lucide-react';
+import { Target, History, Users, Linkedin } from 'lucide-react';
 import type { Metadata } from 'next';
 import { cn } from '@/lib/utils';
 
@@ -29,7 +29,7 @@ const historyItems = [
 
 export default function AboutPage() {
   return (
-    <div className="container px-4 md:px-6 py-12 md:py-16 lg:py-20 md:pt-20">
+    <div className="container px-4 md:px-6 py-12 md:py-16 lg:py-20">
       <div className="text-center mb-12 md:mb-16">
         <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl text-foreground">
           About ${APP_NAME}
@@ -85,9 +85,7 @@ export default function AboutPage() {
             </p>
         </div>
          <div className="relative mt-8">
-            {/* Timeline Bar: Positioned left on small screens, center on medium+ */}
             <div className="absolute top-0 bottom-0 w-0.5 bg-border left-3 md:left-1/2 md:w-1 md:-translate-x-1/2"></div>
-
             <div className="space-y-8 md:space-y-12">
               {historyItems.map((item, index) => (
                 <div
@@ -98,19 +96,12 @@ export default function AboutPage() {
                     index % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"
                   )}
                 >
-                  {/* Spacer for medium screens (alternating layout) */}
                   <div className="hidden md:block md:w-5/12"></div>
-
-                  {/* Dot container for medium screens (part of flex flow) */}
                   <div className="hidden md:flex md:w-2/12 justify-center">
                     <div className="w-6 h-6 rounded-full bg-primary ring-4 ring-background shadow-md"></div>
                   </div>
-                  
-                  {/* Dot for small screens (absolutely positioned) */}
                   <div className="absolute left-3 top-1 w-6 h-6 rounded-full bg-primary ring-4 ring-background shadow-md md:hidden transform -translate-x-1/2">
                   </div>
-
-                  {/* Content Card */}
                   <div
                     className={cn(
                       "ml-10 p-4 rounded-lg shadow-lg bg-card text-left", 
@@ -142,7 +133,7 @@ export default function AboutPage() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {teamMembers.map((member) => (
-            <Card key={member.name} className="text-center shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <Card key={member.name} className="text-center shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-xl">
               <CardContent className="p-6">
                 <Avatar className="w-24 h-24 mx-auto mb-4 ring-2 ring-primary ring-offset-2 ring-offset-background">
                   <AvatarImage src={member.avatarSrc} alt={member.name} data-ai-hint={member.avatarHint} />
