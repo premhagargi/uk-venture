@@ -14,7 +14,7 @@ import { usePathname } from 'next/navigation';
 export function Header() {
   const [isVisible, setIsVisible] = useState(true);
   const lastScrollYRef = useRef(0);
-  const headerHeightThreshold = 70; 
+  const headerHeightThreshold = 70;
   const pathname = usePathname();
 
   useEffect(() => {
@@ -23,9 +23,9 @@ export function Header() {
 
       if (currentScrollY < headerHeightThreshold) {
         setIsVisible(true);
-      } else if (currentScrollY > lastScrollYRef.current) { 
+      } else if (currentScrollY > lastScrollYRef.current) {
         setIsVisible(false);
-      } else { 
+      } else {
         setIsVisible(true);
       }
       lastScrollYRef.current = currentScrollY;
@@ -78,9 +78,9 @@ export function Header() {
                 <span className="sr-only">Toggle navigation menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent 
-              side="right" 
-              className="flex flex-col bg-gradient-to-b from-primary/5 via-background to-accent/5 dark:from-primary/10 dark:via-background dark:to-accent/10"
+            <SheetContent
+              side="right"
+              className="!inset-auto !right-4 !top-4 !bottom-4 !h-auto max-h-[calc(100dvh-2rem)] !w-auto max-w-sm bg-card !rounded-xl !shadow-2xl flex flex-col p-6"
             >
               <SheetHeader>
                 <SheetTitle><span className="sr-only">{APP_NAME} Menu</span></SheetTitle>
