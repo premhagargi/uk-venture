@@ -8,13 +8,13 @@ import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: `Our Services `,
+  title: `Our Services`,
   description: `Explore ${APP_NAME}'s comprehensive financial services: Equity Investing, Derivatives Trading, Mutual Funds, IPOs, and more, designed for modern investors with a focus on technology, transparency, and trust.`,
 };
 
 export default function ServicesPage() {
   return (
-    <div className="container px-4 md:px-6 pt-12 md:pt-32 pb-16 md:pb-20 lg:pb-24">
+    <div className="container px-4 md:px-6 pt-12 md:pt-36 pb-16 md:pb-20 lg:pb-24">
       <div className="text-center mb-12 md:mb-16">
         <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl text-foreground">
           Our Financial Services
