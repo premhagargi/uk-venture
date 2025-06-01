@@ -1,11 +1,29 @@
-import { Loader2 } from 'lucide-react';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { Skeleton } from '@/components/ui/skeleton';
 
 export default function Loading() {
   return (
-    <div className="flex min-h-[calc(100vh-10rem)] flex-col items-center justify-center text-center p-4">
-      <Loader2 className="h-16 w-16 animate-spin text-primary mb-4" />
-      <h1 className="text-2xl font-semibold text-foreground">Loading Page...</h1>
-      <p className="text-muted-foreground">Please wait while we prepare the content for you.</p>
+    <div className="container flex min-h-[calc(100vh-10rem)] flex-col items-center p-4 py-8 md:py-12 lg:py-24">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 w-full max-w-4xl">
+        {[...Array(6)].map((_, index) => (
+          <Card key={index} className="flex flex-col animate-pulse">
+            <CardHeader>
+              <Skeleton className="h-6 w-3/4 mb-2" />
+              <Skeleton className="h-4 w-1/2" />
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-2">
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-[90%]" />
+                <Skeleton className="h-4 w-[80%]" />
+              </div>
+            </CardContent>
+            <div className="mt-auto p-4 flex justify-end">
+              <Skeleton className="h-10 w-24" />
+            </div>
+          </Card>
+        ))}
+      </div>
     </div>
   );
 }
