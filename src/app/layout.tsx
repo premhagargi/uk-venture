@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     default: APP_NAME,
     template: `%s | ${APP_NAME}`,
   },
-  description: `Expert financial planning and portfolio management by ${APP_NAME}. Secure your financial future with us.`,
+  description: `UK Venture: A cutting-edge financial services company offering stock broking and investment solutions with a focus on technology, transparency, and trust.`,
 };
 
 export default function RootLayout({

@@ -6,7 +6,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: `Home | ${APP_NAME}`,
-  description: `Welcome to ${APP_NAME}. We offer expert financial planning, investment management, and personalized financial advice.`,
+  description: `Welcome to ${APP_NAME}. Cutting-edge stock broking and investment solutions focused on technology, transparency, and trust to simplify your wealth creation.`,
 };
 
 export default function HomePage() {

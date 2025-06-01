@@ -1,12 +1,15 @@
 
 import Image from 'next/image';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { SERVICES_DATA, APP_NAME } from '@/lib/constants';
 import type { Metadata } from 'next';
+import Link from 'next/link';
+import { ChevronRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: `Our Services `,
-  description: `Explore the range of financial services offered by ${APP_NAME}, including financial planning, investment management, retirement planning, and insurance solutions.`,
+  description: `Explore ${APP_NAME}'s comprehensive financial services: Equity, Derivatives, Mutual Funds, IPOs, Demat Accounts, PMS, and more, all designed for the modern investor.`,
 };
 
 export default function ServicesPage() {
@@ -17,15 +20,15 @@ export default function ServicesPage() {
           Our Financial Services
         </h1>
         <p className="mt-4 max-w-3xl mx-auto text-muted-foreground md:text-xl">
-          At ${APP_NAME}, we provide a comprehensive suite of financial services designed to meet your unique needs and help you achieve your long-term goals.
+          At ${APP_NAME}, we offer a comprehensive suite of stock broking and investment solutions. We combine financial expertise with digital innovation to simplify wealth creation for every individual, focusing on technology, transparency, and trust.
         </p>
       </div>
 
       <div className="space-y-12 md:space-y-16">
         {SERVICES_DATA.map((service, index) => (
           <Card key={service.id} id={service.id} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-xl">
-            <div className={`grid md:grid-cols-2 gap-6 md:gap-8 items-center ${index % 2 !== 0 ? 'md:grid-flow-row-dense' : ''}`}>
-              <div className={`p-6 md:p-8 ${index % 2 !== 0 ? 'md:col-start-2' : ''}`}>
+            <div className={`grid md:grid-cols-2 gap-0 items-stretch`}>
+              <div className={`p-6 md:p-8 flex flex-col justify-center ${index % 2 !== 0 ? 'md:col-start-2' : ''}`}>
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-6">
                   <service.icon className="w-8 h-8" />
                 </div>
@@ -33,12 +36,27 @@ export default function ServicesPage() {
                   <CardTitle className="text-3xl font-semibold text-foreground">{service.title}</CardTitle>
                 </CardHeader>
                 <CardContent className="p-0">
-                  <CardDescription className="text-base text-muted-foreground leading-relaxed">
+                  <CardDescription className="text-base text-muted-foreground leading-relaxed mb-4">
                     {service.longDescription}
                   </CardDescription>
+                  {service.features && service.features.length > 0 && (
+                    <div className="mb-4 space-y-2">
+                      <h4 className="font-semibold text-foreground">Key Highlights:</h4>
+                      <ul className="list-disc list-inside text-muted-foreground space-y-1">
+                        {service.features.map((feature, idx) => (
+                          <li key={idx}>{feature}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                   <Button variant="link" asChild className="text-primary hover:text-primary/80 px-0">
+                     <Link href={`/contact?service=${service.id}`}>
+                       Inquire Now <ChevronRight className="ml-1 h-4 w-4" />
+                     </Link>
+                   </Button>
                 </CardContent>
               </div>
-              <div className={`relative h-64 md:h-full ${index % 2 !== 0 ? 'md:col-start-1' : ''}`}>
+              <div className={`relative h-64 md:h-auto ${index % 2 !== 0 ? 'md:col-start-1 md:row-start-1' : ''}`}>
                 <Image
                   src={service.imageSrc}
                   alt={service.title}

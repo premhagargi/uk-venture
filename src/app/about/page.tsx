@@ -1,16 +1,16 @@
 
 import Image from 'next/image';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { APP_NAME } from '@/lib/constants';
-import { Target, History, Users, Linkedin } from 'lucide-react';
+import { Target, History, Users, Linkedin, Lightbulb, ShieldCheck, GraduationCap, TrendingUp, Handshake, Goal, UsersRound } from 'lucide-react';
 import type { Metadata } from 'next';
 import { cn } from '@/lib/utils';
 
 export const metadata: Metadata = {
   title: `About Us`,
-  description: `Learn about {APP_NAME}'s mission, history, and the dedicated team committed to your financial success.`,
+  description: `Learn about ${APP_NAME}, founded in 2024, our mission to make investing easy and fair, and our commitment to client-centric financial empowerment.`,
 };
 
 const teamMembers = [
@@ -21,10 +21,15 @@ const teamMembers = [
 ];
 
 const historyItems = [
-  { year: "2010", event: "Foundation & Vision", description: `${APP_NAME} was founded with a vision to democratize financial planning.` },
-  { year: "2015", event: "Expansion of Services", description: "Introduced comprehensive investment management and retirement solutions." },
-  { year: "2020", event: "Technology Integration", description: "Launched our first AI-driven financial insights tool for clients." },
-  { year: "2024", event: "Continued Growth", description: "Celebrating over a decade of client success and financial empowerment." },
+  { year: "2024", event: "Foundation & Vision", description: `${APP_NAME} was founded as a cutting-edge financial services company, aiming to empower investors through technology, transparency, and trust.` },
+  { year: "Future", event: "Innovation & Growth", description: "Continuously enhancing our offerings and technology to lead in digital finance and client empowerment." },
+];
+
+const investmentPhilosophyItems = [
+  { title: "Client Centricity", description: "Our client’s financial well being drives every decision we make.", icon: Handshake },
+  { title: "Integrity", description: "We operate with honesty and transparency in all our dealings.", icon: ShieldCheck },
+  { title: "Education and Awareness", description: "We promote informed investing by educating clients about risks, opportunites and financial planning.", icon: GraduationCap },
+  { title: "Long term Vision", description: "We aim not just for short-term gains but for lasting financial growth built on trust.", icon: Goal },
 ];
 
 export default function AboutPage() {
@@ -34,55 +39,83 @@ export default function AboutPage() {
         <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl text-foreground">
           About ${APP_NAME}
         </h1>
-        <p className="mt-4 max-w-2xl mx-auto text-muted-foreground md:text-xl">
-          Discover our story, our values, and the people dedicated to empowering your financial journey.
+        <p className="mt-4 max-w-3xl mx-auto text-muted-foreground md:text-xl">
+          ${APP_NAME} was founded in 2024 as a Financial services company. It is a cutting edge financial services company offering comprehensive stock broking and investment solutions tailored to the needs of modern investors with a strong focus on technology, transparency and trust. ${APP_NAME}  aims to empower individuals and institutional plans to make informed investment decisions. We combine financial expertise with digital innovation to simplify wealth creation for every individual.
         </p>
       </div>
 
-      {/* Mission and Vision Section */}
       <section className="mb-16">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
+        <div className="grid md:grid-cols-2 gap-12 items-start">
+          <div className="space-y-8">
+            <div>
+              <div className="flex items-center gap-4 mb-3">
+                <Target className="h-10 w-10 text-primary" />
+                <h2 className="text-3xl font-semibold text-foreground">Our Mission</h2>
+              </div>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Our goal is to make investing easy and fair for everyone by using technology to offer clear, accessible, and trustworthy financial services that help our clients grow their wealth over time.
+              </p>
+            </div>
+            <div>
+              <div className="flex items-center gap-4 mb-3">
+                 <Lightbulb className="h-10 w-10 text-primary" />
+                <h2 className="text-3xl font-semibold text-foreground">Our Vision</h2>
+              </div>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Our vision is to be a top name in retail broking by using cutting-edge technology and standing out through exceptional customer experience, innovation, high productivity, and streamlined operations.
+              </p>
+            </div>
+          </div>
+           <div>
             <Image
               src="https://placehold.co/600x400.png"
               width={600}
               height={400}
-              alt="Team collaboration"
-              data-ai-hint="team meeting"
+              alt="Team discussing strategy"
+              data-ai-hint="team strategy meeting"
               className="rounded-xl shadow-xl object-cover aspect-[3/2]"
             />
           </div>
-          <div className="space-y-6">
-            <div className="flex items-center gap-4">
-              <Target className="h-10 w-10 text-primary" />
-              <h2 className="text-3xl font-semibold text-foreground">Our Mission</h2>
-            </div>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              To provide transparent, expert, and personalized financial guidance that empowers our clients to achieve their life goals with confidence and clarity. We are committed to building long-term relationships based on trust and integrity.
-            </p>
-            <div className="flex items-center gap-4 mt-6">
-               <History className="h-10 w-10 text-primary" />
-              <h2 className="text-3xl font-semibold text-foreground">Our Vision</h2>
-            </div>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              To be the most trusted financial partner, recognized for our innovative solutions, client-centric approach, and unwavering commitment to financial well-being in our community and beyond.
-            </p>
+        </div>
+      </section>
+      
+      <Separator className="my-16" />
+
+      <section className="mb-16">
+        <div className="text-center mb-10">
+          <div className="inline-flex items-center gap-3 bg-primary/10 px-4 py-2 rounded-full mb-4">
+            <TrendingUp className="h-6 w-6 text-primary" />
+            <h2 className="text-3xl font-semibold text-foreground">Our Investment Philosophy</h2>
           </div>
+          <p className="mt-2 max-w-3xl mx-auto text-muted-foreground md:text-lg">
+            We believe that financial empowerment is a right, not a privilege. Our philosophy is rooted in the idea of trust, knowledge and accessibility to form the foundation of successful investment. We are committed to simplifying finance through innovation, ensuring that every client - whether a first time investor or a seasoned trader - has access to the tools, guidance and support they need to grow their wealth with confidence.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+          {investmentPhilosophyItems.map((item) => (
+            <Card key={item.title} className="shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-xl">
+              <CardHeader className="flex flex-row items-center gap-4">
+                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+                  <item.icon className="w-6 h-6" />
+                </div>
+                <CardTitle className="text-2xl text-foreground">{item.title}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">{item.description}</p>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </section>
 
       <Separator className="my-16" />
 
-      {/* Our History Section */}
       <section className="mb-16">
          <div className="text-center mb-10">
              <div className="inline-flex items-center gap-3 bg-primary/10 px-4 py-2 rounded-full mb-4">
                 <History className="h-6 w-6 text-primary" />
                 <h2 className="text-3xl font-semibold text-foreground">Our History</h2>
              </div>
-            <p className="mt-2 max-w-3xl mx-auto text-muted-foreground md:text-lg">
-              Founded with a passion for making expert financial advice accessible, ${APP_NAME} has grown from a small advisory firm to a respected name in portfolio management. Our journey is marked by a relentless pursuit of excellence and a deep understanding of our clients' evolving needs. We continuously adapt to the dynamic financial landscape to offer cutting-edge strategies and timeless wisdom.
-            </p>
         </div>
          <div className="relative mt-8">
            <div className="absolute top-0 bottom-0 w-0.5 bg-border left-3 md:left-1/2 md:w-1 md:-translate-x-1/2"></div>
@@ -120,11 +153,10 @@ export default function AboutPage() {
 
       <Separator className="my-16" />
 
-      {/* Meet Our Team Section */}
       <section>
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-3 bg-primary/10 px-4 py-2 rounded-full mb-4">
-            <Users className="h-8 w-8 text-primary" />
+            <UsersRound className="h-8 w-8 text-primary" />
             <h2 className="text-3xl font-semibold text-foreground">Meet Our Team</h2>
           </div>
           <p className="mt-2 max-w-2xl mx-auto text-muted-foreground md:text-lg">
