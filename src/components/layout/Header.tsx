@@ -105,7 +105,7 @@ export function Header() {
                   >
                     {isActive && (
                         <motion.div
-                            layoutId="active-mobile-pill" 
+                            layoutId="active-mobile-pill"
                             className="absolute inset-0 bg-primary rounded-full z-[-1]"
                             transition={{ type: 'spring', stiffness: 300, damping: 25 }}
                         />
@@ -127,23 +127,22 @@ export function Header() {
       <AnimatePresence>
       {isVisible && (
         <motion.div
-          className="hidden md:flex justify-center pt-4 sm:pt-6" 
+          className="hidden md:flex justify-center pt-4 sm:pt-6"
           initial="initial"
           animate="animate"
           exit="exit"
           variants={pillAnimation}
         >
           <motion.nav
-            className="flex items-center gap-3 p-1.5 px-3 bg-foreground/90 backdrop-blur-md rounded-full shadow-xl"
+            className="flex items-center gap-4 p-1.5 px-5 bg-black backdrop-blur-md rounded-full shadow-xl"
             initial={{ y: -100, opacity: 0 }}
             animate={{ y: 0, opacity: 1, transition: { type: 'spring', stiffness: 200, damping: 25, delay: 0.1 } }}
           >
-             <Link href="/" className="flex-shrink-0">
+             <Link href="/" className="flex-shrink-0" onClick={() => setActivePill('/')}>
               <motion.div
                 className="text-background font-semibold text-lg px-3 py-1.5 rounded-full hover:bg-white/10 transition-colors"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={() => setActivePill('/')}
               >
                 {APP_NAME}
               </motion.div>
@@ -155,10 +154,10 @@ export function Header() {
                   <a
                     onClick={() => setActivePill(link.href)}
                     className={cn(
-                      "relative px-4 py-1.5 text-sm font-medium rounded-full transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-foreground/90",
+                      "relative px-4 py-1.5 text-sm font-medium rounded-full transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-black",
                       activePill === link.href
-                        ? "text-foreground" 
-                        : "text-muted-foreground hover:text-background"
+                        ? "text-foreground"
+                        : "text-background opacity-70 hover:opacity-100"
                     )}
                   >
                     {activePill === link.href && (
