@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { SERVICES_DATA, APP_NAME } from '@/lib/constants';
@@ -10,13 +11,13 @@ export const metadata: Metadata = {
 
 export default function ServicesPage() {
   return (
-    <div className="container px-4 md:px-6 py-12 md:py-16 lg:py-20">
+    <div className="container px-4 md:px-6 py-12 md:py-16 lg:py-20 md:pt-20">
       <div className="text-center mb-12 md:mb-16">
         <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl text-foreground">
           Our Financial Services
         </h1>
         <p className="mt-4 max-w-3xl mx-auto text-muted-foreground md:text-xl">
-          At {APP_NAME}, we provide a comprehensive suite of financial services designed to meet your unique needs and help you achieve your long-term goals.
+          At ${APP_NAME}, we provide a comprehensive suite of financial services designed to meet your unique needs and help you achieve your long-term goals.
         </p>
       </div>
 

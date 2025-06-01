@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -28,10 +29,10 @@ const historyItems = [
 
 export default function AboutPage() {
   return (
-    <div className="container px-4 md:px-6 py-12 md:py-16 lg:py-20">
+    <div className="container px-4 md:px-6 py-12 md:py-16 lg:py-20 md:pt-20">
       <div className="text-center mb-12 md:mb-16">
         <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl text-foreground">
-          About {APP_NAME}
+          About ${APP_NAME}
         </h1>
         <p className="mt-4 max-w-2xl mx-auto text-muted-foreground md:text-xl">
           Discover our story, our values, and the people dedicated to empowering your financial journey.
@@ -80,7 +81,7 @@ export default function AboutPage() {
                 <h2 className="text-3xl font-semibold text-foreground">Our History</h2>
              </div>
             <p className="mt-2 max-w-3xl mx-auto text-muted-foreground md:text-lg">
-              Founded with a passion for making expert financial advice accessible, {APP_NAME} has grown from a small advisory firm to a respected name in portfolio management. Our journey is marked by a relentless pursuit of excellence and a deep understanding of our clients' evolving needs. We continuously adapt to the dynamic financial landscape to offer cutting-edge strategies and timeless wisdom.
+              Founded with a passion for making expert financial advice accessible, ${APP_NAME} has grown from a small advisory firm to a respected name in portfolio management. Our journey is marked by a relentless pursuit of excellence and a deep understanding of our clients' evolving needs. We continuously adapt to the dynamic financial landscape to offer cutting-edge strategies and timeless wisdom.
             </p>
         </div>
          <div className="relative mt-8">
@@ -92,7 +93,7 @@ export default function AboutPage() {
                 <div
                   key={item.year}
                   className={cn(
-                    "relative", // For absolute positioning of the dot on small screens
+                    "relative", 
                     "md:flex md:items-center",
                     index % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"
                   )}
@@ -112,9 +113,9 @@ export default function AboutPage() {
                   {/* Content Card */}
                   <div
                     className={cn(
-                      "ml-10 p-4 rounded-lg shadow-lg bg-card text-left", // ml-10 for small screens to clear dot and line, text-left default
-                      "md:w-5/12 md:ml-0", // Reset margin for medium screens
-                      index % 2 === 0 ? "md:text-left" : "md:text-right" // Alternating text alignment for medium
+                      "ml-10 p-4 rounded-lg shadow-lg bg-card text-left", 
+                      "md:w-5/12 md:ml-0", 
+                      index % 2 === 0 ? "md:text-left" : "md:text-right" 
                     )}
                   >
                     <h3 className="text-xl font-bold text-primary">{item.year} - {item.event}</h3>
