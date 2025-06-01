@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 const teamMembers = [
   {
-    name: "Akhil Paranjape",
+    name: "Hrishikesh Terani",
     role: "CEO/Founder",
     avatarSrc: "https://placehold.co/100x100.png", // Replace with the actual URL of Naveen K R's photo once hosted
     avatarHint: "CEO/Founder",
@@ -33,7 +33,7 @@ const teamMembers = [
 ];
 
 const historyItems = [
-  { year: "2024", event: "Foundation & Vision", description: `{APP_NAME} was founded as a cutting-edge financial services company, aiming to empower investors through technology, transparency, and trust.` },
+  { year: "2024", event: "Foundation & Vision", description: `UK Venture was founded as a cutting-edge financial services company, aiming to empower investors through technology, transparency, and trust.` },
   { year: "Future", event: "Innovation & Growth", description: "Continuously enhancing our offerings and technology to lead in digital finance and client empowerment." },
 ];
 
