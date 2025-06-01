@@ -1,4 +1,11 @@
-<svg width="65" height="48" viewBox="0 0 65 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M2 48L27 2H41L16 48Z" fill="#8B0000"/>
-  <path d="M40 23L65 23L57 48L32 48Z" fill="#8B0000"/>
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
+<g id="g872_3_">
+	<g id="g878_3_" transform="translate(152.12037,128.09225)">
+		<path id="path880_3_" fill="#800000" d="M667.4,636.8H477.3L361.9,435.5h190.1L667.4,636.8z"/>
+	</g>
+	<g id="g882_3_" transform="translate(119.40257,184.69385)">
+		<path id="path884_3_" fill="#800000" d="M393.9,50.4l95.3,163.9L278.6,580.2H88.9L393.9,50.4z"/>
+	</g>
+</g>
 </svg>

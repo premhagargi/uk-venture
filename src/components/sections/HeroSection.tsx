@@ -16,7 +16,7 @@ export function HeroSection() {
                 Cutting-Edge Financial Services for <span className="text-primary">Modern Investors</span>
               </h1>
               <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                {APP_NAME} combines financial expertise with digital innovation to simplify wealth creation. Invest with technology, transparency, and trust.
+                {APP_NAME} combines financial expertise with digital innovation to simplify wealth creation, focusing on technology, transparency, and trust.
               </p>
             </div>
             <div className="flex flex-col gap-3 min-[400px]:flex-row">
@@ -35,8 +35,8 @@ export function HeroSection() {
           </div>
           <Image
             src="/uk-venture-logo.svg"
-            width={325}
-            height={240}
+            width={300}
+            height={300}
             alt="UK Venture Logo"
             className="mx-auto sm:w-full object-contain lg:order-last max-h-[240px] md:max-h-[300px]"
           />
