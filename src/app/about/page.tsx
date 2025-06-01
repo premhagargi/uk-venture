@@ -55,18 +55,18 @@ const fadeInUp = {
 
 const cardVariants = (index: number) => ({
   initial: { opacity: 0, y: 30 },
-  whileInView: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { delay: index * 0.1, duration: 0.5, ease: 'easeOut' } 
+  whileInView: {
+    opacity: 1,
+    y: 0,
+    transition: { delay: index * 0.1, duration: 0.5, ease: 'easeOut' }
   }
 });
 
 
 export default function AboutPage() {
   return (
-    <motion.div 
-      className="container px-4 md:px-6 pt-12 md:pt-36 pb-16 md:pb-20 lg:pb-24"
+    <motion.div
+      className="container px-4 md:px-6 pt-12 md:pt-40 pb-16 md:pb-20 lg:pb-24"
       initial="initial"
       animate="whileInView"
       variants={{ initial: {}, whileInView: {transition: {staggerChildren: 0.2}}}}
@@ -115,7 +115,7 @@ export default function AboutPage() {
           </motion.div>
         </div>
       </motion.section>
-      
+
       <Separator className="my-16" />
 
       <motion.section className="mb-16" variants={fadeInUp}>
@@ -231,7 +231,7 @@ export default function AboutPage() {
   );
 }
 
-export const metadata: Metadata = { // This can be uncommented if you want to keep static metadata here
-  title: `About Us`,
-  description: `Learn about ${APP_NAME}, founded in 2024, our mission to make investing easy and fair, our investment philosophy, and our commitment to client-centric financial empowerment.`,
-};
+// export const metadata: Metadata = { // This can be uncommented if you want to keep static metadata here
+//   title: `About Us`,
+//   description: `Learn about ${APP_NAME}, founded in 2024, our mission to make investing easy and fair, our investment philosophy, and our commitment to client-centric financial empowerment.`,
+// };

@@ -28,17 +28,17 @@ const fadeInUp = {
 
 const cardVariants = (index: number) => ({
   initial: { opacity: 0, y: 30 },
-  whileInView: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { delay: index * 0.15, duration: 0.5, ease: 'easeOut' } 
+  whileInView: {
+    opacity: 1,
+    y: 0,
+    transition: { delay: index * 0.15, duration: 0.5, ease: 'easeOut' }
   }
 });
 
 export default function ContactPage() {
   return (
-    <motion.div 
-      className="container px-4 md:px-6 pt-12 md:pt-36 pb-16 md:pb-20 lg:pb-24"
+    <motion.div
+      className="container px-4 md:px-6 pt-12 md:pt-40 pb-16 md:pb-20 lg:pb-24"
       initial="initial"
       animate="whileInView"
       variants={{ initial: {}, whileInView: {transition: {staggerChildren: 0.2}}}}
@@ -106,8 +106,7 @@ export default function ContactPage() {
   );
 }
 
-export const metadata: Metadata = {
-  title: `Contact Us`,
-  description: `Get in touch with ${APP_NAME} for financial advice, support, or inquiries. Fill out our contact form or reach us via phone or email.`,
-};
-
+// export const metadata: Metadata = {
+//   title: `Contact Us`,
+//   description: `Get in touch with ${APP_NAME} for financial advice, support, or inquiries. Fill out our contact form or reach us via phone or email.`,
+// };

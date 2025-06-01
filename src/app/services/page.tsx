@@ -23,17 +23,17 @@ const fadeInUp = {
 
 const cardVariants = (index: number) => ({
   initial: { opacity: 0, y: 30 },
-  whileInView: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { delay: index * 0.1, duration: 0.5, ease: 'easeOut' } 
+  whileInView: {
+    opacity: 1,
+    y: 0,
+    transition: { delay: index * 0.1, duration: 0.5, ease: 'easeOut' }
   }
 });
 
 export default function ServicesPage() {
   return (
-    <motion.div 
-      className="container px-4 md:px-6 pt-12 md:pt-36 pb-16 md:pb-20 lg:pb-24"
+    <motion.div
+      className="container px-4 md:px-6 pt-12 md:pt-40 pb-16 md:pb-20 lg:pb-24"
       initial="initial"
       animate="whileInView"
       variants={{ initial: {}, whileInView: {transition: {staggerChildren: 0.2}}}}
@@ -50,8 +50,8 @@ export default function ServicesPage() {
 
       <div className="space-y-12 md:space-y-16">
         {SERVICES_DATA.map((service, index) => (
-          <motion.div 
-            key={service.id} 
+          <motion.div
+            key={service.id}
             id={service.id}
             variants={cardVariants(index)}
             initial="initial"
@@ -106,7 +106,7 @@ export default function ServicesPage() {
   );
 }
 
-export const metadata: Metadata = { 
-  title: `Our Services`,
-  description: `Explore ${APP_NAME}'s comprehensive financial services: Equity Investing, Derivatives Trading, Mutual Funds, IPOs, and more, designed for modern investors with a focus on technology, transparency, and trust.`,
-};
+// export const metadata: Metadata = {
+//   title: `Our Services`,
+//   description: `Explore ${APP_NAME}'s comprehensive financial services: Equity Investing, Derivatives Trading, Mutual Funds, IPOs, and more, designed for modern investors with a focus on technology, transparency, and trust.`,
+// };

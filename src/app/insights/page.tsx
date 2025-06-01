@@ -20,8 +20,8 @@ const fadeInUp = {
 
 export default function InsightsPage() {
   return (
-    <motion.div 
-      className="container px-4 md:px-6 pt-12 md:pt-36 pb-16 md:pb-20 lg:pb-24"
+    <motion.div
+      className="container px-4 md:px-6 pt-12 md:pt-40 pb-16 md:pb-20 lg:pb-24"
       initial="initial"
       animate="whileInView"
       variants={{ initial: {}, whileInView: {transition: {staggerChildren: 0.2}}}}
@@ -31,13 +31,13 @@ export default function InsightsPage() {
         <motion.div variants={fadeInUp}>
           <Lightbulb className="h-16 w-16 text-primary mx-auto mb-4" />
         </motion.div>
-        <motion.h1 
+        <motion.h1
           className="text-4xl font-bold tracking-tighter sm:text-5xl text-foreground"
           variants={fadeInUp}
         >
           Unlock Your Financial Potential
         </motion.h1>
-        <motion.p 
+        <motion.p
           className="mt-4 max-w-2xl mx-auto text-muted-foreground md:text-xl"
           variants={fadeInUp}
         >
@@ -51,7 +51,7 @@ export default function InsightsPage() {
   );
 }
 
-export const metadata: Metadata = {
-  title: `Smart Financial Insights `,
-  description: `Utilize our AI-driven tool on ${APP_NAME} to analyze your financial summary and receive key insights and potential areas of concern.`,
-};
+// export const metadata: Metadata = {
+//   title: `Smart Financial Insights `,
+//   description: `Utilize our AI-driven tool on ${APP_NAME} to analyze your financial summary and receive key insights and potential areas of concern.`,
+// };
