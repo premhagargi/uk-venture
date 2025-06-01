@@ -12,7 +12,7 @@ export function TestimonialsSection() {
             What Our Clients Say
           </h2>
           <p className="mt-4 max-w-2xl mx-auto text-muted-foreground md:text-xl">
-            Real stories from clients who trust Axis Portfolio Pulse with their financial future.
+            Real stories from clients who trust UK Venture with their financial future.
           </p>
         </div>
         <div className="grid gap-8 md:grid-cols-1 lg:grid-cols-3">

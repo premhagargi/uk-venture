@@ -100,7 +100,7 @@ export function Header() {
                     href="#"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="LinkedIn profile of Axis Portfolio Pulse"
+                    aria-label="LinkedIn profile of UK Venture"
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
                     <Linkedin className="h-6 w-6" />
@@ -109,7 +109,7 @@ export function Header() {
                     href="#"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Twitter profile of Axis Portfolio Pulse"
+                    aria-label="Twitter profile of UK Venture"
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
                     <Twitter className="h-6 w-6" />
@@ -118,7 +118,7 @@ export function Header() {
                     href="#"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Facebook page of Axis Portfolio Pulse"
+                    aria-label="Facebook page of UK Venture"
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
                     <Facebook className="h-6 w-6" />

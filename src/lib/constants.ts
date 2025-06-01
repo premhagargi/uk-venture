@@ -77,7 +77,7 @@ export interface Testimonial {
 export const TESTIMONIALS_DATA: Testimonial[] = [
   {
     id: 'testimonial-1',
-    quote: "Axis Portfolio Pulse transformed my financial outlook. Their personalized approach and expert advice have been invaluable.",
+    quote: "UK Venture transformed my financial outlook. Their personalized approach and expert advice have been invaluable.",
     author: 'Priya Sharma',
     company: 'Tech Innovators Inc.',
     avatarSrc: 'https://placehold.co/100x100.png',
@@ -86,7 +86,7 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
   },
   {
     id: 'testimonial-2',
-    quote: "The team at Axis Portfolio Pulse is knowledgeable, responsive, and truly cares about their clients' success. Highly recommended!",
+    quote: "The team at UK Venture is knowledgeable, responsive, and truly cares about their clients' success. Highly recommended!",
     author: 'Rajesh Kumar',
     company: 'GreenScape Solutions',
     avatarSrc: 'https://placehold.co/100x100.png',
@@ -95,7 +95,7 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
   },
   {
     id: 'testimonial-3',
-    quote: "Thanks to Axis Portfolio Pulse, I feel much more confident about my retirement plans. Their insights are top-notch.",
+    quote: "Thanks to UK Venture, I feel much more confident about my retirement plans. Their insights are top-notch.",
     author: 'Anita Desai',
     company: 'Creative Designs Co.',
     avatarSrc: 'https://placehold.co/100x100.png',
@@ -104,4 +104,4 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
   },
 ];
 
-export const APP_NAME = "Axis Portfolio Pulse";
+export const APP_NAME = "UK Venture";

@@ -79,7 +79,7 @@ export default function AboutPage() {
             <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-border -translate-x-1/2"></div>
             <div className="space-y-12">
               {[
-                { year: "2010", event: "Foundation & Vision", description: "Axis Portfolio Pulse was founded with a vision to democratize financial planning." },
+                { year: "2010", event: "Foundation & Vision", description: "UK Venture was founded with a vision to democratize financial planning." },
                 { year: "2015", event: "Expansion of Services", description: "Introduced comprehensive investment management and retirement solutions." },
                 { year: "2020", event: "Technology Integration", description: "Launched our first AI-driven financial insights tool for clients." },
                 { year: "2024", event: "Continued Growth", description: "Celebrating over a decade of client success and financial empowerment." },
