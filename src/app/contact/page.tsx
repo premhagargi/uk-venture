@@ -13,16 +13,16 @@ export const metadata: Metadata = {
 
 const contactDetails = [
   { icon: Phone, label: "Phone", value: "+1 (555) 123-4567", href: "tel:+15551234567" },
-  { icon: Mail, label: "Email", value: "support@axispulse.com", href: "mailto:support@axispulse.com" },
+  { icon: Mail, label: "Email", value: "support@ukventure.com", href: "mailto:support@ukventure.com" }, // Updated email
   { icon: MapPin, label: "Address", value: "123 Finance Street, Wealth City, TX 75001" },
 ];
 
 export default function ContactPage() {
   return (
-    <div className="container px-4 md:px-6 pt-12 md:pt-28 pb-16 md:pb-20 lg:pb-24">
+    <div className="container px-4 md:px-6 pt-12 md:pt-32 pb-16 md:pb-20 lg:pb-24">
       <div className="text-center mb-12 md:mb-16">
         <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl text-foreground">
-          Contact {APP_NAME}
+          Contact ${APP_NAME}
         </h1>
         <p className="mt-4 max-w-2xl mx-auto text-muted-foreground md:text-xl">
           We're here to help you with your financial journey. Reach out to us with any questions or to schedule a consultation.

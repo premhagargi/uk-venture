@@ -10,7 +10,7 @@ import { cn } from '@/lib/utils';
 
 export const metadata: Metadata = {
   title: `About Us`,
-  description: `Learn about ${APP_NAME}, founded in 2024, our mission to make investing easy and fair, and our commitment to client-centric financial empowerment.`,
+  description: `Learn about ${APP_NAME}, founded in 2024, our mission to make investing easy and fair, our investment philosophy, and our commitment to client-centric financial empowerment.`,
 };
 
 const teamMembers = [
@@ -34,13 +34,13 @@ const investmentPhilosophyItems = [
 
 export default function AboutPage() {
   return (
-    <div className="container px-4 md:px-6 pt-12 md:pt-28 pb-16 md:pb-20 lg:pb-24">
+    <div className="container px-4 md:px-6 pt-12 md:pt-32 pb-16 md:pb-20 lg:pb-24">
       <div className="text-center mb-12 md:mb-16">
         <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl text-foreground">
           About ${APP_NAME}
         </h1>
         <p className="mt-4 max-w-3xl mx-auto text-muted-foreground md:text-xl">
-          ${APP_NAME} was founded in 2024 as a Financial services company. It is a cutting edge financial services company offering comprehensive stock broking and investment solutions tailored to the needs of modern investors with a strong focus on technology, transparency and trust. ${APP_NAME}  aims to empower individuals and institutional plans to make informed investment decisions. We combine financial expertise with digital innovation to simplify wealth creation for every individual.
+          ${APP_NAME} was founded in 2024 as a Financial services company. It is a cutting edge financial services company offering comprehensive stock broking and investment solutions tailored to the needs of modern investors with a strong focus on technology, transparency and trust. ${APP_NAME} aims to empower individuals and institutional plans to make informed investment decisions. We combine financial expertise with digital innovation to simplify wealth creation for every individual.
         </p>
       </div>
 
@@ -88,7 +88,7 @@ export default function AboutPage() {
             <h2 className="text-3xl font-semibold text-foreground">Our Investment Philosophy</h2>
           </div>
           <p className="mt-2 max-w-3xl mx-auto text-muted-foreground md:text-lg">
-            We believe that financial empowerment is a right, not a privilege. Our philosophy is rooted in the idea of trust, knowledge and accessibility to form the foundation of successful investment. We are committed to simplifying finance through innovation, ensuring that every client - whether a first time investor or a seasoned trader - has access to the tools, guidance and support they need to grow their wealth with confidence.
+             We believe that financial empowerment is a right, not a privilege. Our philosophy is rooted in the idea of trust, knowledge and accessibility to form the foundation of successful investment. We are committed to simplifying finance through innovation, ensuring that every client - whether a first time investor or a seasoned trader - has access to the tools, guidance and support they need to grow their wealth with confidence.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
