@@ -5,6 +5,7 @@ import { Separator } from '@/components/ui/separator';
 import { APP_NAME } from '@/lib/constants';
 import { Target, History, Users, Briefcase, Linkedin } from 'lucide-react';
 import type { Metadata } from 'next';
+import { cn } from '@/lib/utils';
 
 export const metadata: Metadata = {
   title: `About Us | ${APP_NAME}`,
@@ -16,6 +17,13 @@ const teamMembers = [
   { name: "Samantha Lee", role: "Chief Financial Analyst", avatarSrc: "https://placehold.co/100x100.png", avatarHint: "analyst portrait", initials: "SL", linkedin: "#" },
   { name: "Michael Chen", role: "Head of Investment Strategy", avatarSrc: "https://placehold.co/100x100.png", avatarHint: "investor portrait", initials: "MC", linkedin: "#" },
   { name: "Jessica Davis", role: "Client Relations Manager", avatarSrc: "https://placehold.co/100x100.png", avatarHint: "manager portrait", initials: "JD", linkedin: "#" },
+];
+
+const historyItems = [
+  { year: "2010", event: "Foundation & Vision", description: `${APP_NAME} was founded with a vision to democratize financial planning.` },
+  { year: "2015", event: "Expansion of Services", description: "Introduced comprehensive investment management and retirement solutions." },
+  { year: "2020", event: "Technology Integration", description: "Launched our first AI-driven financial insights tool for clients." },
+  { year: "2024", event: "Continued Growth", description: "Celebrating over a decade of client success and financial empowerment." },
 ];
 
 export default function AboutPage() {
@@ -76,20 +84,39 @@ export default function AboutPage() {
             </p>
         </div>
          <div className="relative mt-8">
-            <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-border -translate-x-1/2"></div>
-            <div className="space-y-12">
-              {[
-                { year: "2010", event: "Foundation & Vision", description: "UK Venture was founded with a vision to democratize financial planning." },
-                { year: "2015", event: "Expansion of Services", description: "Introduced comprehensive investment management and retirement solutions." },
-                { year: "2020", event: "Technology Integration", description: "Launched our first AI-driven financial insights tool for clients." },
-                { year: "2024", event: "Continued Growth", description: "Celebrating over a decade of client success and financial empowerment." },
-              ].map((item, index) => (
-                <div key={item.year} className={`flex items-center ${index % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
-                  <div className="md:w-5/12"></div>
-                  <div className="md:w-2/12 flex justify-center">
+            {/* Timeline Bar: Positioned left on small screens, center on medium+ */}
+            <div className="absolute top-0 bottom-0 w-0.5 bg-border left-3 md:left-1/2 md:w-1 md:-translate-x-1/2"></div>
+
+            <div className="space-y-8 md:space-y-12">
+              {historyItems.map((item, index) => (
+                <div
+                  key={item.year}
+                  className={cn(
+                    "relative", // For absolute positioning of the dot on small screens
+                    "md:flex md:items-center",
+                    index % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"
+                  )}
+                >
+                  {/* Spacer for medium screens (alternating layout) */}
+                  <div className="hidden md:block md:w-5/12"></div>
+
+                  {/* Dot container for medium screens (part of flex flow) */}
+                  <div className="hidden md:flex md:w-2/12 justify-center">
                     <div className="w-6 h-6 rounded-full bg-primary ring-4 ring-background shadow-md"></div>
                   </div>
-                  <div className={`md:w-5/12 p-4 rounded-lg shadow-lg bg-card ${index % 2 === 0 ? 'md:text-left' : 'md:text-right'}`}>
+                  
+                  {/* Dot for small screens (absolutely positioned) */}
+                  <div className="absolute left-3 top-1 w-6 h-6 rounded-full bg-primary ring-4 ring-background shadow-md md:hidden transform -translate-x-1/2">
+                  </div>
+
+                  {/* Content Card */}
+                  <div
+                    className={cn(
+                      "ml-10 p-4 rounded-lg shadow-lg bg-card text-left", // ml-10 for small screens to clear dot and line, text-left default
+                      "md:w-5/12 md:ml-0", // Reset margin for medium screens
+                      index % 2 === 0 ? "md:text-left" : "md:text-right" // Alternating text alignment for medium
+                    )}
+                  >
                     <h3 className="text-xl font-bold text-primary">{item.year} - {item.event}</h3>
                     <p className="text-muted-foreground mt-1">{item.description}</p>
                   </div>
