@@ -14,10 +14,22 @@ export const metadata: Metadata = {
 };
 
 const teamMembers = [
-  { name: "Alex Johnson", role: "Founder & CEO", avatarSrc: "https://placehold.co/100x100.png", avatarHint: "ceo portrait", initials: "AJ", linkedin: "#" },
-  { name: "Samantha Lee", role: "Chief Financial Analyst", avatarSrc: "https://placehold.co/100x100.png", avatarHint: "analyst portrait", initials: "SL", linkedin: "#" },
-  { name: "Michael Chen", role: "Head of Investment Strategy", avatarSrc: "https://placehold.co/100x100.png", avatarHint: "investor portrait", initials: "MC", linkedin: "#" },
-  { name: "Jessica Davis", role: "Client Relations Manager", avatarSrc: "https://placehold.co/100x100.png", avatarHint: "manager portrait", initials: "JD", linkedin: "#" },
+  {
+    name: "Akhil Paranjape",
+    role: "CEO/Founder",
+    avatarSrc: "https://placehold.co/100x100.png", // Replace with the actual URL of Naveen K R's photo once hosted
+    avatarHint: "CEO/Founder",
+    initials: "AP",
+    linkedin: "#" // Replace with actual LinkedIn URL if available
+  },
+  {
+    name: "Naveen K R",
+    role: "Senior Director",
+    avatarSrc: "https://placehold.co/100x100.png", // Replace with the actual URL of Naveen K R's photo once hosted
+    avatarHint: "senior director portrait",
+    initials: "NKR",
+    linkedin: "#" // Replace with actual LinkedIn URL if available
+  },
 ];
 
 const historyItems = [
