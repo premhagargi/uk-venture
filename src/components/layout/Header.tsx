@@ -1,13 +1,48 @@
+
+'use client';
+
 import Link from 'next/link';
 import { BarChartBig, Menu, Linkedin, Twitter, Facebook } from 'lucide-react';
 import { NAV_LINKS, APP_NAME } from '@/lib/constants';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetClose } from '@/components/ui/sheet';
+import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetClose } from '@/components/ui/sheet';
 import { Separator } from '@/components/ui/separator';
+import { useState, useEffect, useRef } from 'react';
+import { cn } from '@/lib/utils';
 
 export function Header() {
+  const [isVisible, setIsVisible] = useState(true);
+  const lastScrollYRef = useRef(0);
+  const headerHeightThreshold = 70; // A bit more than h-16 (64px)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY < headerHeightThreshold) {
+        setIsVisible(true);
+      } else if (currentScrollY > lastScrollYRef.current) { // Scrolling Down
+        setIsVisible(false);
+      } else { // Scrolling Up
+        setIsVisible(true);
+      }
+      lastScrollYRef.current = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [headerHeightThreshold]);
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header
+      className={cn(
+        "sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60",
+        "transition-transform duration-300 ease-in-out",
+        isVisible ? "translate-y-0" : "-translate-y-full"
+      )}
+    >
       <div className="container flex h-16 items-center justify-between px-4 md:px-6">
         <Link href="/" className="flex items-center gap-2" aria-label={`${APP_NAME} home page`}>
           <BarChartBig className="h-7 w-7 text-primary" />
@@ -61,29 +96,29 @@ export function Header() {
               <div className="mt-auto pt-6">
                 <Separator className="mb-6" />
                 <div className="flex justify-center items-center gap-6 px-2.5">
-                  <a 
-                    href="#" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    aria-label="LinkedIn profile of Axis Portfolio Pulse" 
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn profile of Axis Portfolio Pulse"
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
                     <Linkedin className="h-6 w-6" />
                   </a>
-                  <a 
-                    href="#" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    aria-label="Twitter profile of Axis Portfolio Pulse" 
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Twitter profile of Axis Portfolio Pulse"
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
                     <Twitter className="h-6 w-6" />
                   </a>
-                  <a 
-                    href="#" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    aria-label="Facebook page of Axis Portfolio Pulse" 
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook page of Axis Portfolio Pulse"
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
                     <Facebook className="h-6 w-6" />
