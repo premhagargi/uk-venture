@@ -85,11 +85,21 @@ export default {
   				to: {
   					height: '0'
   				}
-  			}
+  			},
+        'spread-in-tr': {
+          '0%': { clipPath: 'circle(0% at 100% 0%)' },
+          '100%': { clipPath: 'circle(150% at 100% 0%)' },
+        },
+        'spread-out-tr': {
+          '0%': { clipPath: 'circle(150% at 100% 0%)' },
+          '100%': { clipPath: 'circle(0% at 100% 0%)' },
+        },
   		},
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
-  			'accordion-up': 'accordion-up 0.2s ease-out'
+  			'accordion-up': 'accordion-up 0.2s ease-out',
+        'spread-in-tr': 'spread-in-tr 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards',
+        'spread-out-tr': 'spread-out-tr 0.3s cubic-bezier(0.5, 0, 0.75, 0) forwards',
   		}
   	}
   },
