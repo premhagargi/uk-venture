@@ -9,7 +9,7 @@ import { ChevronRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: `Our Services`,
-  description: `Explore ${APP_NAME}'s comprehensive financial services: Equity Investing, Derivatives Trading, Mutual Funds, IPOs, and more, designed for modern investors with a focus on technology, transparency, and trust.`,
+  description: `Explore {APP_NAME}'s comprehensive financial services: Equity Investing, Derivatives Trading, Mutual Funds, IPOs, and more, designed for modern investors with a focus on technology, transparency, and trust.`,
 };
 
 export default function ServicesPage() {
@@ -20,7 +20,7 @@ export default function ServicesPage() {
           Our Financial Services
         </h1>
         <p className="mt-4 max-w-3xl mx-auto text-muted-foreground md:text-xl">
-          At ${APP_NAME}, we offer comprehensive stock broking and investment solutions. We combine financial expertise with digital innovation to simplify wealth creation, focusing on technology, transparency, and trust.
+          At {APP_NAME}, we offer comprehensive stock broking and investment solutions. We combine financial expertise with digital innovation to simplify wealth creation, focusing on technology, transparency, and trust.
         </p>
       </div>
 

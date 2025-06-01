@@ -10,7 +10,7 @@ import { cn } from '@/lib/utils';
 
 export const metadata: Metadata = {
   title: `About Us`,
-  description: `Learn about ${APP_NAME}, founded in 2024, our mission to make investing easy and fair, our investment philosophy, and our commitment to client-centric financial empowerment.`,
+  description: `Learn about {APP_NAME}, founded in 2024, our mission to make investing easy and fair, our investment philosophy, and our commitment to client-centric financial empowerment.`,
 };
 
 const teamMembers = [
@@ -21,7 +21,7 @@ const teamMembers = [
 ];
 
 const historyItems = [
-  { year: "2024", event: "Foundation & Vision", description: `${APP_NAME} was founded as a cutting-edge financial services company, aiming to empower investors through technology, transparency, and trust.` },
+  { year: "2024", event: "Foundation & Vision", description: `{APP_NAME} was founded as a cutting-edge financial services company, aiming to empower investors through technology, transparency, and trust.` },
   { year: "Future", event: "Innovation & Growth", description: "Continuously enhancing our offerings and technology to lead in digital finance and client empowerment." },
 ];
 
@@ -37,10 +37,10 @@ export default function AboutPage() {
     <div className="container px-4 md:px-6 pt-12 md:pt-40 pb-16 md:pb-20 lg:pb-24">
       <div className="text-center mb-12 md:mb-16">
         <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl text-foreground">
-          About ${APP_NAME}
+          About {APP_NAME}
         </h1>
         <p className="mt-4 max-w-3xl mx-auto text-muted-foreground md:text-xl">
-          ${APP_NAME} was founded in 2024 as a Financial services company. It is a cutting edge financial services company offering comprehensive stock broking and investment solutions tailored to the needs of modern investors with a strong focus on technology, transparency and trust. ${APP_NAME} aims to empower individuals and institutional plans to make informed investment decisions. We combine financial expertise with digital innovation to simplify wealth creation for every individual.
+          {APP_NAME} was founded in 2024 as a Financial services company. It is a cutting edge financial services company offering comprehensive stock broking and investment solutions tailored to the needs of modern investors with a strong focus on technology, transparency and trust. {APP_NAME} aims to empower individuals and institutional plans to make informed investment decisions. We combine financial expertise with digital innovation to simplify wealth creation for every individual.
         </p>
       </div>
 
