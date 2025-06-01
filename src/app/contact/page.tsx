@@ -7,7 +7,7 @@ import { Mail, Phone, MapPin } from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: `Contact Us | ${APP_NAME}`,
+  title: `Contact Us`,
   description: `Get in touch with ${APP_NAME} for financial advice, support, or inquiries. Fill out our contact form or reach us via phone or email.`,
 };
 
@@ -22,7 +22,7 @@ export default function ContactPage() {
     <div className="container px-4 md:px-6 pt-12 md:pt-28 pb-16 md:pb-20 lg:pb-24">
       <div className="text-center mb-12 md:mb-16">
         <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl text-foreground">
-          Contact ${APP_NAME}
+          Contact {APP_NAME}
         </h1>
         <p className="mt-4 max-w-2xl mx-auto text-muted-foreground md:text-xl">
           We're here to help you with your financial journey. Reach out to us with any questions or to schedule a consultation.

@@ -5,7 +5,7 @@ import { Lightbulb } from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: `Smart Financial Insights | ${APP_NAME}`,
+  title: `Smart Financial Insights `,
   description: `Utilize our AI-driven tool on ${APP_NAME} to analyze your financial summary and receive key insights and potential areas of concern.`,
 };
 

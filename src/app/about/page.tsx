@@ -9,8 +9,8 @@ import type { Metadata } from 'next';
 import { cn } from '@/lib/utils';
 
 export const metadata: Metadata = {
-  title: `About Us | ${APP_NAME}`,
-  description: `Learn about ${APP_NAME}'s mission, history, and the dedicated team committed to your financial success.`,
+  title: `About Us`,
+  description: `Learn about {APP_NAME}'s mission, history, and the dedicated team committed to your financial success.`,
 };
 
 const teamMembers = [

@@ -5,7 +5,7 @@ import { SERVICES_DATA, APP_NAME } from '@/lib/constants';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: `Our Services | ${APP_NAME}`,
+  title: `Our Services `,
   description: `Explore the range of financial services offered by ${APP_NAME}, including financial planning, investment management, retirement planning, and insurance solutions.`,
 };
 
