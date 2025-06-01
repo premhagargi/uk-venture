@@ -33,7 +33,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}>
         <Header />
-        <main className="flex-grow pt-16 md:pt-[5.5rem]">{children}</main>
+        <main className="flex-grow pt-16 md:pt-0">{children}</main>
         <Footer />
         <Toaster />
       </body>
