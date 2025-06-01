@@ -33,9 +33,9 @@ const teamMembers = [
 ];
 
 const historyItems = [
-  { year: "2010", event: "Foundation & Vision", description: `${APP_NAME} was founded with a vision to democratize financial planning.` },
-  { year: "2015", event: "Expansion of Services", description: "Introduced comprehensive investment management and retirement solutions." },
-  { year: "2020", event: "Technology Integration", description: "Launched our first AI-driven financial insights tool for clients." },
+  { year: "2024", event: "Foundation & Vision", description: `${APP_NAME} was founded with a vision to democratize financial planning.` },
+  { year: "2024", event: "Expansion of Services", description: "Introduced comprehensive investment management and retirement solutions." },
+  { year: "2024", event: "Technology Integration", description: "Launched our first AI-driven financial insights tool for clients." },
   { year: "2024", event: "Continued Growth", description: "Celebrating over a decade of client success and financial empowerment." },
 ];
 
