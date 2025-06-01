@@ -1,5 +1,5 @@
 import type { LucideIcon } from 'lucide-react';
-import { Briefcase, LayoutDashboard, Users, Mail, Info, Sparkles, Landmark, LineChart, ShieldCheck, HomeIcon, Building, MessageSquare, UserCheck } from 'lucide-react';
+import { Briefcase, LayoutDashboard, Users, Mail, Info, Sparkles, Landmark, LineChart, ShieldCheck, HomeIcon, Building, MessageSquare, UserCheck, CreditCard, Rocket, Wallet, File } from 'lucide-react';
 
 export interface NavLink {
   href: string;
@@ -27,41 +27,69 @@ export interface Service {
 
 export const SERVICES_DATA: Service[] = [
   {
-    id: 'financial-planning',
-    title: 'Comprehensive Financial Planning',
-    description: 'Tailored strategies for your financial future, covering all aspects of your wealth.',
-    longDescription: 'Our comprehensive financial planning service provides a holistic view of your financial situation. We work with you to understand your goals, analyze your current standing, and develop a personalized roadmap. This includes retirement planning, investment strategy, risk management, and estate planning to ensure all pieces of your financial puzzle fit together perfectly.',
-    icon: Landmark,
-    imageSrc: 'https://placehold.co/600x400.png',
-    imageHint: 'finance strategy',
-  },
-  {
-    id: 'investment-management',
-    title: 'Investment Management',
-    description: 'Expert portfolio management to grow and protect your assets effectively.',
-    longDescription: 'Navigate the complexities of the market with our expert investment management services. We craft diversified portfolios aligned with your risk tolerance and financial objectives, continuously monitoring and adjusting to market changes. Our goal is to maximize your returns while safeguarding your capital for long-term growth.',
-    icon: LineChart,
-    imageSrc: 'https://placehold.co/600x400.png',
-    imageHint: 'stock market',
-  },
-  {
-    id: 'retirement-planning',
-    title: 'Retirement Planning',
-    description: 'Secure your golden years with our strategic retirement planning solutions.',
-    longDescription: 'Plan for a comfortable and secure retirement with our specialized retirement planning services. We help you estimate your retirement needs, optimize your savings, and create an income strategy for your post-work years. Whether you\'re just starting or nearing retirement, we provide the guidance you need.',
-    icon: HomeIcon,
-    imageSrc: 'https://placehold.co/600x400.png',
-    imageHint: 'retirement savings',
-  },
-  {
-    id: 'insurance-solutions',
-    title: 'Insurance Solutions',
-    description: 'Protect what matters most with our comprehensive insurance options.',
-    longDescription: 'Safeguard your family, assets, and future with our tailored insurance solutions. We assess your needs and offer a range of products, including life, health, and property insurance. Our aim is to provide you with peace of mind, knowing you\'re protected against unforeseen events.',
-    icon: ShieldCheck,
-    imageSrc: 'https://placehold.co/600x400.png',
-    imageHint: 'family protection',
-  },
+        id: 'mutual-funds',
+            title: 'Mutual Funds',
+                description: 'Invest with ease through professionally managed mutual funds.',
+                    longDescription: 'Let professional fund managers handle your investments with our mutual fund services. Benefit from diversified portfolios across various sectors, zero transaction costs, and high liquidity, allowing you to invest and withdraw with ease. Ideal for busy investors seeking professional management and long-term growth.',
+                        icon: Wallet,
+                            imageSrc: 'https://placehold.co/600x400.png',
+                                imageHint: 'mutual fund investment',
+                                  },
+                                    {
+                                        id: 'ipo-investing',
+                                            title: 'IPO Investing',
+                                                description: 'Participate in tomorrow’s growth stories with seamless IPO investments.',
+                                                    longDescription: 'Invest in initial public offerings (IPOs) effortlessly with our online platform. Join exciting companies as they list on the exchange, with zero hassle and no paperwork. Our service empowers you to seize opportunities in emerging businesses for potential high returns.',
+                                                        icon: Rocket,
+                                                            imageSrc: 'https://placehold.co/600x400.png',
+                                                                imageHint: 'ipo opportunities',
+                                                                  },
+                                                                    {
+                                                                        id: 'demat-account',
+                                                                            title: 'Demat Account',
+                                                                                description: 'Securely hold and manage your securities in a demat account.',
+                                                                                    longDescription: 'Open a demat account with UK Venture to securely store and manage your securities. Our platform simplifies the process, offering seamless access to your investments, real-time tracking, and integration with trading services for a streamlined investment experience.',
+                                                                                        icon: Briefcase,
+                                                                                            imageSrc: 'https://placehold.co/600x400.png',
+                                                                                                imageHint: 'demat account',
+                                                                                                  },
+                                                                                                    {
+                                                                                                        id: 'portfolio-management',
+                                                                                                            title: 'Portfolio Management Services',
+                                                                                                                description: 'Personalized portfolio management for optimized wealth growth.',
+                                                                                                                    longDescription: 'Our Portfolio Management Services (PMS) offer tailored investment strategies to maximize your wealth. With expert guidance, we design and manage portfolios aligned with your financial goals, leveraging cutting-edge technology and research to ensure long-term growth and risk management.',
+                                                                                                                        icon: LineChart,
+                                                                                                                            imageSrc: 'https://placehold.co/600x400.png',
+                                                                                                                                imageHint: 'portfolio management',
+                                                                                                                                  },
+                                                                                                                                    {
+                                                                                                                                        id: 'physical-to-demat',
+                                                                                                                                            title: 'Physical Shares to Demat',
+                                                                                                                                                description: 'Convert physical share certificates to digital demat format.',
+                                                                                                                                                    longDescription: 'Easily convert your physical share certificates into demat form with our streamlined service. Enjoy the convenience of digital management, secure storage, and easy trading of your securities, all supported by our expert team to ensure a hassle-free process.',
+                                                                                                                                                        icon: File,
+                                                                                                                                                            imageSrc: 'https://placehold.co/600x400.png',
+                                                                                                                                                                imageHint: 'share conversion',
+                                                                                                                                                                  },
+                                                                                                                                                                    {
+                                                                                                                                                                        id: 'free-consultancy',
+                                                                                                                                                                            title: 'Free Financial Consultancy',
+                                                                                                                                                                                description: 'Expert financial advice at no cost to guide your investments.',
+                                                                                                                                                                                    longDescription: 'Access our free financial consultancy service to receive personalized advice from our experts. We provide guidance on investments, financial planning, and risk management, empowering you to make informed decisions without any cost, tailored to your unique financial goals.',
+                                                                                                                                                                                        icon: Users,
+                                                                                                                                                                                            imageSrc: 'https://placehold.co/600x400.png',
+                                                                                                                                                                                                imageHint: 'financial advice',
+                                                                                                                                                                                                  },
+                                                                                                                                                                                                    {
+                                                                                                                                                                                                        id: 'mtf-funding',
+                                                                                                                                                                                                            title: 'Margin Trading Facility',
+                                                                                                                                                                                                                description: 'Boost your trading capacity with large MTF funding.',
+                                                                                                                                                                                                                    longDescription: 'Enhance your trading potential with our large Margin Trading Facility (MTF) funding. Available to eligible individuals and corporates, this service allows you to leverage your demat holdings for increased market exposure, supported by our robust digital platform and expert insights.',
+                                                                                                                                                                                                                        icon: CreditCard,
+                                                                                                                                                                                                                            imageSrc: 'https://placehold.co/600x400.png',
+                                                                                                                                                                                                                                imageHint: 'margin trading',
+                                                                                                                                                                                                                                  },
+  
 ];
 
 export interface Testimonial {
