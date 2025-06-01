@@ -80,7 +80,7 @@ export function Header() {
             </SheetTrigger>
             <SheetContent
               side="right"
-              className="!inset-auto !right-4 !top-4 !bottom-4 !h-auto max-h-[calc(100dvh-2rem)] !w-auto max-w-sm bg-card !rounded-xl !shadow-2xl flex flex-col p-6"
+              className="!inset-auto !right-4 !top-4 !bottom-4 !h-auto max-h-[calc(100dvh-2rem)] !w-auto max-w-md bg-card !rounded-xl !shadow-2xl flex flex-col p-6"
             >
               <SheetHeader>
                 <SheetTitle><span className="sr-only">{APP_NAME} Menu</span></SheetTitle>
