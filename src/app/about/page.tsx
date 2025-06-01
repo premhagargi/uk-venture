@@ -34,7 +34,7 @@ const investmentPhilosophyItems = [
 
 export default function AboutPage() {
   return (
-    <div className="container px-4 md:px-6 pt-12 md:pt-36 pb-16 md:pb-20 lg:pb-24">
+    <div className="container px-4 md:px-6 pt-12 md:pt-40 pb-16 md:pb-20 lg:pb-24">
       <div className="text-center mb-12 md:mb-16">
         <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl text-foreground">
           About ${APP_NAME}

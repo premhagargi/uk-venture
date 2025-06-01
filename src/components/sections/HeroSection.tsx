@@ -10,7 +10,7 @@ export function HeroSection() {
     <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-primary/10 via-background to-accent/10">
       <div className="container px-4 md:px-6">
         <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
-          <div className="flex flex-col justify-center space-y-6">
+          <div className="flex flex-col justify-center space-y-6 lg:pl-16 xl:pl-24">
             <div className="space-y-3 max-w-2xl">
               <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none xl:max-w-xl text-foreground">
                 Secure Your Financial Future with <span className="text-primary">{APP_NAME}</span>
