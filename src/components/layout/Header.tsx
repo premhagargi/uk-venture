@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { BarChartBig, Menu } from 'lucide-react';
 import { NAV_LINKS, APP_NAME } from '@/lib/constants';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetClose, SheetFooter } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetFooter, SheetClose, SheetTrigger } from '@/components/ui/sheet';
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
@@ -43,9 +43,9 @@ export function Header() {
   }, [headerHeightThreshold]);
 
   const pillAnimation = {
-    initial: { opacity: 0, y: -10 },
+    initial: { opacity: 0, y: -20 },
     animate: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 300, damping: 30 } },
-    exit: { opacity: 0, y: 10 },
+    exit: { opacity: 0, y: -20 },
   };
 
   return (
@@ -57,16 +57,13 @@ export function Header() {
     >
       {/* Mobile Header - Top Bar */}
       <div className="md:hidden flex items-center justify-between p-4 h-16 bg-background shadow-sm container mx-auto">
-        <Link href="/" className="flex items-center gap-2 shrink-0">
-          <div className="flex items-center justify-center w-8 h-8 bg-primary text-primary-foreground rounded-full">
-            <BarChartBig className="h-4 w-4" />
-          </div>
+        <Link href="/" className="flex items-center gap-2 shrink-0" onClick={() => setIsMobileSheetOpen(false)}>
           <span className="font-bold text-lg text-foreground">{APP_NAME}</span>
         </Link>
 
         <Sheet open={isMobileSheetOpen} onOpenChange={setIsMobileSheetOpen}>
           <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" className="text-foreground hover:bg-accent">
+            <Button variant="ghost" size="icon" className="text-foreground hover:bg-accent/10">
               <Menu className="h-6 w-6" />
               <span className="sr-only">Open menu</span>
             </Button>
@@ -108,7 +105,7 @@ export function Header() {
                   >
                     {isActive && (
                         <motion.div
-                            layoutId="active-mobile-pill"
+                            layoutId="active-mobile-pill" 
                             className="absolute inset-0 bg-primary rounded-full z-[-1]"
                             transition={{ type: 'spring', stiffness: 300, damping: 25 }}
                         />
@@ -130,25 +127,25 @@ export function Header() {
       <AnimatePresence>
       {isVisible && (
         <motion.div
-          className="hidden md:flex justify-center pt-4 sm:pt-6"
+          className="hidden md:flex justify-center pt-4 sm:pt-6" 
           initial="initial"
           animate="animate"
           exit="exit"
           variants={pillAnimation}
         >
           <motion.nav
-            className="flex items-center gap-1 p-1.5 bg-foreground/90 backdrop-blur-md rounded-full shadow-xl"
+            className="flex items-center gap-3 p-1.5 px-3 bg-foreground/90 backdrop-blur-md rounded-full shadow-xl"
             initial={{ y: -100, opacity: 0 }}
             animate={{ y: 0, opacity: 1, transition: { type: 'spring', stiffness: 200, damping: 25, delay: 0.1 } }}
           >
-            <Link href="/" className="flex-shrink-0">
+             <Link href="/" className="flex-shrink-0">
               <motion.div
-                className="flex items-center justify-center w-10 h-10 bg-background text-primary rounded-full cursor-pointer"
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 15 }}
+                className="text-background font-semibold text-lg px-3 py-1.5 rounded-full hover:bg-white/10 transition-colors"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => setActivePill('/')}
               >
-                <BarChartBig className="h-5 w-5" />
+                {APP_NAME}
               </motion.div>
             </Link>
 
@@ -160,7 +157,7 @@ export function Header() {
                     className={cn(
                       "relative px-4 py-1.5 text-sm font-medium rounded-full transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-foreground/90",
                       activePill === link.href
-                        ? "text-foreground" // Active text color
+                        ? "text-foreground" 
                         : "text-muted-foreground hover:text-background"
                     )}
                   >
@@ -176,7 +173,6 @@ export function Header() {
                 </Link>
               ))}
             </div>
-            {/* "Get Started" button removed as per previous request */}
           </motion.nav>
         </motion.div>
       )}

@@ -29,7 +29,7 @@ const historyItems = [
 
 export default function AboutPage() {
   return (
-    <div className="container px-4 md:px-6 py-12 md:py-16 lg:py-20 md:pt-20">
+    <div className="container px-4 md:px-6 pt-12 md:pt-28 pb-16 md:pb-20 lg:pb-24">
       <div className="text-center mb-12 md:mb-16">
         <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl text-foreground">
           About ${APP_NAME}
@@ -85,7 +85,7 @@ export default function AboutPage() {
             </p>
         </div>
          <div className="relative mt-8">
-            <div className="absolute top-0 bottom-0 w-0.5 bg-border left-3 md:left-1/2 md:w-1 md:-translate-x-1/2"></div>
+           <div className="absolute top-0 bottom-0 w-0.5 bg-border left-3 md:left-1/2 md:w-1 md:-translate-x-1/2"></div>
             <div className="space-y-8 md:space-y-12">
               {historyItems.map((item, index) => (
                 <div
