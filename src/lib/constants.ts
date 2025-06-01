@@ -1,5 +1,5 @@
 import type { LucideIcon } from 'lucide-react';
-import { Briefcase, LayoutDashboard, Users, Mail, Info, Sparkles, Landmark, LineChart, ShieldCheck, HomeIcon, Building, MessageSquare, UserCheck } from 'lucide-react';
+import { Briefcase, LayoutDashboard, Users, Mail, Info, Sparkles, Landmark, LineChart, ShieldCheck, HomeIcon, Building, MessageSquare, UserCheck, CreditCard, Rocket, Wallet, File } from 'lucide-react';
 
 export interface NavLink {
   href: string;
@@ -67,7 +67,7 @@ export const SERVICES_DATA: Service[] = [
                                                                                                                                             title: 'Physical Shares to Demat',
                                                                                                                                                 description: 'Convert physical share certificates to digital demat format.',
                                                                                                                                                     longDescription: 'Easily convert your physical share certificates into demat form with our streamlined service. Enjoy the convenience of digital management, secure storage, and easy trading of your securities, all supported by our expert team to ensure a hassle-free process.',
-                                                                                                                                                        icon: FileCertificate,
+                                                                                                                                                        icon: File,
                                                                                                                                                             imageSrc: 'https://placehold.co/600x400.png',
                                                                                                                                                                 imageHint: 'share conversion',
                                                                                                                                                                   },
@@ -89,7 +89,7 @@ export const SERVICES_DATA: Service[] = [
                                                                                                                                                                                                                             imageSrc: 'https://placehold.co/600x400.png',
                                                                                                                                                                                                                                 imageHint: 'margin trading',
                                                                                                                                                                                                                                   },
-  }
+  
 ];
 
 export interface Testimonial {
