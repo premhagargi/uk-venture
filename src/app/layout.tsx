@@ -29,29 +29,6 @@ const raleway = Raleway({
 //   description: `UK Venture: A cutting-edge financial services company offering comprehensive stock broking and investment solutions tailored to the needs of modern investors with a strong focus on technology, transparency and trust. We combine financial expertise with digital innovation to simplify wealth creation for every individual.`,
 // };
 
-const pageVariants = {
-  initial: {
-    opacity: 0,
-    y: 20,
-  },
-  animate: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: 'easeInOut',
-    },
-  },
-  exit: {
-    opacity: 0,
-    y: -20,
-    transition: {
-      duration: 0.3,
-      ease: 'easeInOut',
-    },
-  },
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -64,17 +41,7 @@ export default function RootLayout({
       <body className={`${raleway.variable} font-sans antialiased flex flex-col min-h-screen`}>
         <Header />
         <main className="flex-grow pt-16 md:pt-0">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={pathname}
-              variants={pageVariants}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-            >
-              {children}
-            </motion.div>
-          </AnimatePresence>
+          {children}
         </main>
         <Footer />
         <Toaster />
