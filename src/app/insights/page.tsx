@@ -57,18 +57,21 @@ export default function InsightsPage() {
   return (
     <motion.div
       className="container px-4 md:px-6 pt-12 md:pt-40 pb-16 md:pb-20 lg:pb-24"
-      initial="hidden"
-      whileInView="visible"
-      variants={sectionStaggerVariants}
-      viewport={{ once: true, amount: 0.05 }}
+      // Removed initial/whileInView/variants/viewport from page root
     >
-      <motion.div className="text-center mb-12 md:mb-16" variants={sentenceContainerVariants}>
+      <motion.div // This is the title/description block
+        className="text-center mb-12 md:mb-16"
+        initial="hidden"
+        animate="visible" // Changed from whileInView
+        variants={sentenceContainerVariants} // Staggers icon, h1, and p
+        viewport={{ amount: 0.05 }} // Keeps viewport for re-trigger if scrolled out and back
+      >
         <motion.div variants={iconVariants}>
           <Lightbulb className="h-16 w-16 text-primary mx-auto mb-4" />
         </motion.div>
         <motion.h1
           className="text-4xl font-bold tracking-tighter sm:text-5xl text-foreground"
-          variants={sentenceContainerVariants}
+          variants={sentenceContainerVariants} // For word-by-word within h1
         >
           {pageTitle.split(" ").map((word, index) => (
             <motion.span key={index} variants={wordChildVariants} style={{ display: "inline-block", marginRight: "0.25em"}}>{word}</motion.span>
@@ -81,14 +84,14 @@ export default function InsightsPage() {
          {pageDescription}
         </motion.p>
       </motion.div>
-      <motion.div variants={fadeInUpVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}>
+      <motion.div
+        initial="hidden"
+        whileInView="visible" // This is fine for content below the fold
+        variants={fadeInUpVariants}
+        viewport={{ once: true, amount: 0.1 }} // once:true is fine for sections below the fold
+      >
         <FinancialInsightsTool />
       </motion.div>
     </motion.div>
   );
 }
-
-// export const metadata: Metadata = {
-//   title: `Smart Financial Insights `,
-//   description: `Utilize our AI-driven tool on ${APP_NAME} to analyze your financial summary and receive key insights and potential areas of concern.`,
-// };

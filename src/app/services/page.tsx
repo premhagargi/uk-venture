@@ -59,31 +59,46 @@ export default function ServicesPage() {
   return (
     <motion.div
       className="container px-4 md:px-6 pt-12 md:pt-40 pb-16 md:pb-20 lg:pb-24"
-      initial="hidden"
-      whileInView="visible"
-      variants={sectionStaggerVariants}
-      viewport={{ once: true, amount: 0.05 }}
+      // Removed initial/whileInView/variants/viewport from page root
     >
-      <motion.div className="text-center mb-12 md:mb-16" variants={sentenceContainerVariants}>
-        <motion.h1 className="text-4xl font-bold tracking-tighter sm:text-5xl text-foreground" variants={sentenceContainerVariants}>
+      <motion.div // This is the title/description block
+        className="text-center mb-12 md:mb-16"
+        initial="hidden"
+        animate="visible" // Changed from whileInView
+        variants={sentenceContainerVariants} // Staggers h1 and p
+        viewport={{ amount: 0.05 }} // Keeps viewport for re-trigger if scrolled out and back
+      >
+        <motion.h1
+          className="text-4xl font-bold tracking-tighter sm:text-5xl text-foreground"
+          variants={sentenceContainerVariants} // For word-by-word within h1
+        >
           {pageTitle.split(" ").map((word, index) => (
             <motion.span key={index} variants={wordChildVariants} style={{ display: "inline-block", marginRight: "0.25em"}}>{word}</motion.span>
           ))}
         </motion.h1>
-        <motion.p className="mt-4 max-w-3xl mx-auto text-muted-foreground md:text-xl" variants={fadeInUpVariants}>
+        <motion.p
+          className="mt-4 max-w-3xl mx-auto text-muted-foreground md:text-xl"
+          variants={fadeInUpVariants}
+        >
           {pageDescription}
         </motion.p>
       </motion.div>
 
-      <div className="space-y-12 md:space-y-16">
+      <motion.div
+        className="space-y-12 md:space-y-16"
+        initial="hidden"
+        whileInView="visible"
+        variants={sectionStaggerVariants} // For staggering cards below
+        viewport={{ once: true, amount: 0.05 }} // once:true is fine for sections below the fold
+      >
         {SERVICES_DATA.map((service, index) => (
           <motion.div
             key={service.id}
             id={service.id}
-            variants={cardVariants(index)} // Use the cardVariants here
-            initial="hidden" // Ensure initial is set if variants are directly on motion.div
+            variants={cardVariants(index)}
+            initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.15 }} // amount for card visibility
+            viewport={{ once: true, amount: 0.15 }}
           >
             <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-xl">
               <div className={`grid md:grid-cols-2 gap-0 items-stretch`}>
@@ -128,12 +143,7 @@ export default function ServicesPage() {
             </Card>
           </motion.div>
         ))}
-      </div>
+      </motion.div>
     </motion.div>
   );
 }
-
-// export const metadata: Metadata = {
-//   title: `Our Services`,
-//   description: `Explore ${APP_NAME}'s comprehensive financial services: Equity Investing, Derivatives Trading, Mutual Funds, IPOs, and more, designed for modern investors with a focus on technology, transparency, and trust.`,
-// };

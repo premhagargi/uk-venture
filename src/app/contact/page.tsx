@@ -65,12 +65,15 @@ export default function ContactPage() {
   return (
     <motion.div
       className="container px-4 md:px-6 pt-12 md:pt-40 pb-16 md:pb-20 lg:pb-24"
-      initial="hidden"
-      whileInView="visible"
-      variants={sectionStaggerVariants}
-      viewport={{ once: true, amount: 0.05 }}
+      // Removed initial/whileInView/variants/viewport from page root
     >
-      <motion.div className="text-center mb-12 md:mb-16" variants={sentenceContainerVariants}>
+      <motion.div // This is the title/description block
+        className="text-center mb-12 md:mb-16"
+        initial="hidden"
+        animate="visible" // Changed from whileInView
+        variants={sentenceContainerVariants} // Staggers h1 and p
+        viewport={{ amount: 0.05 }} // Keeps viewport for re-trigger if scrolled out and back
+      >
         <motion.h1 className="text-4xl font-bold tracking-tighter sm:text-5xl text-foreground" variants={sentenceContainerVariants}>
           {pageTitle.split(" ").map((word, index) => (
             <motion.span key={index} variants={wordChildVariants} style={{ display: "inline-block", marginRight: "0.25em"}}>{word}</motion.span>
@@ -81,7 +84,13 @@ export default function ContactPage() {
         </motion.p>
       </motion.div>
 
-      <div className="grid md:grid-cols-5 gap-12">
+      <motion.div
+        className="grid md:grid-cols-5 gap-12"
+        initial="hidden"
+        whileInView="visible" // This is fine for content below the fold
+        variants={sectionStaggerVariants}
+        viewport={{ once: true, amount: 0.05 }}
+      >
         <motion.div className="md:col-span-3" variants={cardVariants(0)} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
           <Card className="shadow-xl rounded-xl">
             <CardHeader>
@@ -129,12 +138,7 @@ export default function ContactPage() {
             </CardContent>
           </Card>
         </motion.div>
-      </div>
+      </motion.div>
     </motion.div>
   );
 }
-
-// export const metadata: Metadata = {
-//   title: `Contact Us`,
-//   description: `Get in touch with ${APP_NAME} for financial advice, support, or inquiries. Fill out our contact form or reach us via phone or email.`,
-// };
