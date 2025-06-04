@@ -38,7 +38,7 @@ const paragraphVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.6, 0.01, -0.05, 0.95], delay: 0.2 }, // Reduced delay from 0.4
+    transition: { duration: 0.6, ease: [0.6, 0.01, 0.05, 0.95], delay: 0.2 }, // Reduced delay from 0.4
   },
 };
 
@@ -56,7 +56,7 @@ const imageVariants = {
   visible: {
     opacity: 1,
     scale: 1,
-    transition: { duration: 0.7, ease: [0.6, 0.01, -0.05, 0.95], delay: 0.1 }, // Reduced delay from 0.2
+    transition: { duration: 0.7, ease: [0.6, 0.01, 0.05, 0.95], delay: 0.1 }, // Reduced delay from 0.2
   },
 };
 

@@ -17,10 +17,10 @@ const sectionVariants = {
 
 const titleContainerVariants = {
   hidden: { opacity: 0 },
-  visible: {
+  visible: (i = 1) => ({ // Added custom prop for staggering delay
     opacity: 1,
-    transition: { staggerChildren: 0.07, delayChildren: 0.1 },
-  },
+    transition: { staggerChildren: 0.07, delayChildren: i * 0.1 },
+  }),
 };
 
 const wordChildVariants = {
@@ -37,7 +37,7 @@ const paragraphVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.6, 0.01, -0.05, 0.95], delay: 0.1 },
+    transition: { duration: 0.6, ease: [0.6, 0.01, 0.05, 0.95], delay: 0.1 },
   },
 };
 
@@ -67,10 +67,12 @@ export function TestimonialsSection() {
         <motion.div
           className="text-center mb-12"
           variants={titleContainerVariants} // This will stagger h2 and p
+          custom={0} // Pass custom prop for stagger delay index
         >
           <motion.h2
             className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-foreground"
             variants={titleContainerVariants} // For word-by-word inside
+            custom={1} // Pass custom prop for stagger delay index
           >
             {title.split(" ").map((word, index) => (
               <motion.span key={index} variants={wordChildVariants} style={{ display: "inline-block", marginRight: "0.25em"}}>{word}</motion.span>

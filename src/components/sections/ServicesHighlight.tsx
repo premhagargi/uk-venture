@@ -16,7 +16,15 @@ const sectionVariants = {
   },
 };
 
-const titleVariants = {
+const sentenceContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: (i = 1) => ({
+    opacity: 1,
+    transition: { staggerChildren: 0.07, delayChildren: i * 0.1 },
+  }),
+};
+
+const wordChildVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
@@ -30,7 +38,7 @@ const paragraphVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.6, 0.01, -0.05, 0.95], delay: 0.1 },
+    transition: { duration: 0.6, ease: [0.6, 0.01, 0.05, 0.95], delay: 0.1 },
   },
 };
 
@@ -54,32 +62,40 @@ const buttonContainerVariants = {
 
 export function ServicesHighlight() {
   const highlightedServices = SERVICES_DATA.slice(0, 3);
+  const sectionTitle = "Our Core Financial Services";
+  const sectionDescription = "Empowering you with comprehensive solutions for financial growth and security.";
+
 
   return (
-    <section className="py-12 md:py-24 lg:py-32 bg-background">
-      <motion.div
+    <motion.section
+      className="py-12 md:py-24 lg:py-32 bg-background"
+      initial="hidden"
+      whileInView="visible"
+      variants={sectionVariants}
+      viewport={{ once: true, amount: 0.1 }}
+    >
+      <div
         className="container px-4 md:px-6"
-        initial="hidden"
-        whileInView="visible"
-        variants={sectionVariants}
-        viewport={{ once: true, amount: 0.1 }}
       >
-        <div
+        <motion.div
           className="text-center mb-12"
+          variants={sentenceContainerVariants}
         >
           <motion.h2
             className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-foreground"
-            variants={titleVariants}
+            variants={sentenceContainerVariants}
           >
-            Our Core Financial Services
+            {sectionTitle.split(" ").map((word, index) => (
+                <motion.span key={index} variants={wordChildVariants} style={{ display: "inline-block", marginRight: "0.25em"}}>{word}</motion.span>
+            ))}
           </motion.h2>
           <motion.p
             className="mt-4 max-w-2xl mx-auto text-muted-foreground md:text-xl"
             variants={paragraphVariants}
           >
-            Empowering you with comprehensive solutions for financial growth and security.
+            {sectionDescription}
           </motion.p>
-        </div>
+        </motion.div>
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {highlightedServices.map((service, index) => (
             <motion.div
@@ -116,7 +132,7 @@ export function ServicesHighlight() {
             </Link>
           </Button>
         </motion.div>
-      </motion.div>
-    </section>
+      </div>
+    </motion.section>
   );
 }
