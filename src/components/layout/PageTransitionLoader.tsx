@@ -39,7 +39,7 @@ export function PageTransitionLoader() {
 
   return (
     <motion.div
-      className="fixed inset-0 z-[100] bg-accent flex items-center justify-center" // Changed background, added flex
+      className="fixed inset-0 z-[100] bg-black flex items-center justify-center" // Changed background, added flex
       variants={loaderVariants}
       initial="initial"
       animate="enter"
