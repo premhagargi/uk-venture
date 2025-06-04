@@ -4,9 +4,9 @@
 import { motion } from 'framer-motion';
 
 const loaderVariants = {
-  initial: { x: '-101%' }, // Start fully off-screen to the left
-  enter: { x: '0%', transition: { duration: 0.9, ease: [0.76, 0, 0.24, 1] } }, // Slide in to cover screen
-  exit: { x: '101%', transition: { duration: 0.9, ease: [0.76, 0, 0.24, 1], delay: 0.5 } }, // Slide out to the right after a delay
+  initial: { y: '101%' }, // Start fully off-screen at the bottom
+  enter: { y: '0%', transition: { duration: 0.9, ease: [0.76, 0, 0.24, 1] } }, // Slide in from bottom to cover screen
+  exit: { y: '-101%', transition: { duration: 0.9, ease: [0.76, 0, 0.24, 1], delay: 0.5 } }, // Slide out to the top after a delay
 };
 
 export function PageTransitionLoader() {
