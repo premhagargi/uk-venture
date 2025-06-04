@@ -156,7 +156,7 @@ export function Header() {
                     className={cn(
                       "relative px-4 py-1.5 text-sm font-medium rounded-full transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-black",
                       activePill === link.href
-                        ? "text-foreground" 
+                        ? "text-foreground"
                         : "text-background opacity-70 hover:opacity-100"
                     )}
                   >
