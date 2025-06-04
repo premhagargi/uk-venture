@@ -104,5 +104,12 @@
   }
   body {
     @apply bg-background text-foreground;
+    /* overflow: hidden; */ /* Potentially add this if scroll issues arise during transition */
+  }
+
+  body.disable-hover,
+  body.disable-hover * {
+    pointer-events: none !important;
+    /* cursor: wait !important; /* Optional: some users find this annoying */
   }
 }
