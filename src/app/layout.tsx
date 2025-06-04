@@ -20,9 +20,7 @@ const raleway = Raleway({
   display: 'swap',
 });
 
-// Metadata for client components is typically handled differently,
-// e.g. via generateMetadata in a parent server component or useEffect for document.title.
-// For this example, we'll keep the definition commented out for reference.
+// Metadata for client components is typically handled differently.
 // export const metadata: Metadata = {
 //   title: {
 //     default: APP_NAME,
@@ -37,39 +35,41 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const pathname = usePathname();
-  // State to control the loader's visibility (presence in AnimatePresence)
   const [isLoaderVisible, setIsLoaderVisible] = React.useState(false);
-  // State to hold the actual children to be rendered (updated after loader covers screen)
   const [displayedChildren, setDisplayedChildren] = React.useState(children);
-  // Key for AnimatePresence around content, to trigger its re-animation
   const [contentAnimationKey, setContentAnimationKey] = React.useState(pathname);
+  const [canShowContent, setCanShowContent] = React.useState(true); // Initially true for first load without transition
 
   React.useEffect(() => {
-    // Only trigger transition if the pathname actually changes from what content is keyed by
     if (pathname !== contentAnimationKey) {
+      setCanShowContent(false); // Hide current content immediately
       setIsLoaderVisible(true); // Show loader, triggers its 'enter' animation
       document.body.classList.add('disable-hover');
 
-      // Wait for loader to cover the screen (its 'enter' animation duration is 0.9s)
+      // Wait for loader to cover the screen
       const screenCoverTimer = setTimeout(() => {
-        // Update the children and key for the content area
-        // This swap happens "under" the full-screen loader
         setDisplayedChildren(children);
         setContentAnimationKey(pathname);
-
-        // Now that new content is staged, tell the loader to start its exit sequence.
-        // The loader's 'exit' variant has a 0.5s delay before it starts moving.
-        setIsLoaderVisible(false); // This will trigger loader's 'exit' animation via AnimatePresence
-      }, 900); // Duration of loader's 'enter' animation
+        // Loader will start its exit animation when isLoaderVisible becomes false
+        // Content visibility will be handled by onExitComplete of the loader
+        setIsLoaderVisible(false);
+      }, 900); // Duration of loader's 'enter' animation (0.9s)
 
       return () => {
         clearTimeout(screenCoverTimer);
       };
+    } else {
+      // For initial load or if path hasn't changed, ensure content is visible
+      // This handles the case where the page loads for the first time.
+      // The content is already `displayedChildren`, so we just ensure it's visible.
+       if (!isLoaderVisible) { // Only if not already in a transition
+         setCanShowContent(true);
+       }
     }
-  }, [pathname, children, contentAnimationKey]);
+  }, [pathname, children, contentAnimationKey, isLoaderVisible]);
 
   const handleLoaderExitAnimationComplete = () => {
-    // This callback is for AnimatePresence wrapping the loader
+    setCanShowContent(true); // Now allow new content to fade in
     document.body.classList.remove('disable-hover');
   };
 
@@ -82,15 +82,14 @@ export default function RootLayout({
           {isLoaderVisible && <PageTransitionLoader />}
         </AnimatePresence>
 
-        <main className="flex-grow pt-16 md:pt-0 relative"> {/* Added relative for motion.div context if needed */}
+        <main className="flex-grow pt-16 md:pt-0 relative">
           <AnimatePresence mode="wait">
             <motion.div
-              key={contentAnimationKey} // Keyed by pathname to trigger re-animation
+              key={contentAnimationKey}
               initial={{ opacity: 0 }}
-              // Content fade-in starts after loader entrance (0.9s) + loader exit's own delay (0.5s)
-              animate={{ opacity: 1, transition: { delay: 0.9 + 0.5, duration: 0.5 } }}
-              exit={{ opacity: 0, transition: { duration: 0.2 } }} // Old content fades out quickly
-              className="w-full h-full" // Ensure it takes up the main content area
+              animate={{ opacity: canShowContent ? 1 : 0, transition: { duration: 0.5, delay: canShowContent ? 0 : 0 } }}
+              exit={{ opacity: 0, transition: { duration: 0.2 } }}
+              className="w-full h-full"
             >
               {displayedChildren}
             </motion.div>
