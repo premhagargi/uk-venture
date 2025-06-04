@@ -213,7 +213,7 @@ export function FinancialInsightsTool() {
           <div className="space-y-6 mt-8">
             <Card
               ref={keyInsightsCardRef}
-              className="shadow-lg bg-gradient-to-br from-primary/5 via-background to-accent/5"
+              className="shadow-lg bg-card"
             >
               <CardHeader>
                 <CardTitle className="text-2xl flex items-center gap-3">
@@ -226,27 +226,27 @@ export function FinancialInsightsTool() {
               </CardContent>
             </Card>
 
-            <Card className="shadow-lg border-amber-500/50 bg-amber-500/5">
+            <Card className="shadow-lg border-border bg-muted">
               <CardHeader>
-                <CardTitle className="text-2xl flex items-center gap-3 text-amber-700 dark:text-amber-500">
+                <CardTitle className="text-2xl flex items-center gap-3 text-foreground">
                   <AlertTriangleIcon className="h-7 w-7" />
                   Potential Concerns
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-amber-800 dark:text-amber-400 whitespace-pre-wrap leading-relaxed">{analysisResult.potentialConcerns}</p>
+                <p className="text-muted-foreground whitespace-pre-wrap leading-relaxed">{analysisResult.potentialConcerns}</p>
               </CardContent>
             </Card>
 
-            <Card className="shadow-lg bg-blue-500/5 border-blue-500/50">
+            <Card className="shadow-lg bg-muted border-border">
               <CardHeader>
-                <CardTitle className="text-2xl flex items-center gap-3 text-blue-700 dark:text-blue-500">
+                <CardTitle className="text-2xl flex items-center gap-3 text-foreground">
                   <Lightbulb className="h-7 w-7" />
                   Steps to Take
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-blue-800 dark:text-blue-400 whitespace-pre-wrap leading-relaxed">{analysisResult.stepsToTake}</p>
+                <p className="text-muted-foreground whitespace-pre-wrap leading-relaxed">{analysisResult.stepsToTake}</p>
               </CardContent>
             </Card>
           </div>
