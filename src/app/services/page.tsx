@@ -5,46 +5,73 @@ import Image from 'next/image';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { SERVICES_DATA, APP_NAME } from '@/lib/constants';
-import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-// export const metadata: Metadata = { // Metadata should be static or generated via generateMetadata
-//   title: `Our Services`,
-//   description: `Explore ${APP_NAME}'s comprehensive financial services: Equity Investing, Derivatives Trading, Mutual Funds, IPOs, and more, designed for modern investors with a focus on technology, transparency, and trust.`,
-// };
+// Word-by-word animation variants
+const sentenceContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: (i = 1) => ({
+    opacity: 1,
+    transition: { staggerChildren: 0.05, delayChildren: i * 0.1 },
+  }),
+};
 
-const fadeInUp = {
-  initial: { opacity: 0, y: 30 },
-  whileInView: { opacity: 1, y: 0 },
-  transition: { duration: 0.5, ease: 'easeOut', staggerChildren: 0.1 }
+const wordChildVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", damping: 12, stiffness: 100 },
+  },
+};
+
+// General fade-in-up for paragraphs or less prominent elements
+const fadeInUpVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.6, 0.01, -0.05, 0.95], delay: 0.2 },
+  },
+};
+
+// Stagger children for sections
+const sectionStaggerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } }, // Faster stagger for cards
 };
 
 const cardVariants = (index: number) => ({
-  initial: { opacity: 0, y: 30 },
-  whileInView: {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
     opacity: 1,
     y: 0,
     transition: { delay: index * 0.1, duration: 0.5, ease: 'easeOut' }
   }
 });
 
+const pageTitle = "Our Financial Services";
+const pageDescription = `At ${APP_NAME}, we offer comprehensive stock broking and investment solutions. We combine financial expertise with digital innovation to simplify wealth creation, focusing on technology, transparency, and trust.`;
+
 export default function ServicesPage() {
   return (
     <motion.div
       className="container px-4 md:px-6 pt-12 md:pt-40 pb-16 md:pb-20 lg:pb-24"
-      initial="initial"
-      animate="whileInView"
-      variants={{ initial: {}, whileInView: {transition: {staggerChildren: 0.2}}}}
-      viewport={{ once: true, amount: 0.1 }}
+      initial="hidden"
+      whileInView="visible"
+      variants={sectionStaggerVariants}
+      viewport={{ once: true, amount: 0.05 }}
     >
-      <motion.div className="text-center mb-12 md:mb-16" variants={fadeInUp}>
-        <motion.h1 className="text-4xl font-bold tracking-tighter sm:text-5xl text-foreground" variants={fadeInUp}>
-          Our Financial Services
+      <motion.div className="text-center mb-12 md:mb-16" variants={sentenceContainerVariants}>
+        <motion.h1 className="text-4xl font-bold tracking-tighter sm:text-5xl text-foreground" variants={sentenceContainerVariants}>
+          {pageTitle.split(" ").map((word, index) => (
+            <motion.span key={index} variants={wordChildVariants} style={{ display: "inline-block", marginRight: "0.25em"}}>{word}</motion.span>
+          ))}
         </motion.h1>
-        <motion.p className="mt-4 max-w-3xl mx-auto text-muted-foreground md:text-xl" variants={fadeInUp}>
-          At {APP_NAME}, we offer comprehensive stock broking and investment solutions. We combine financial expertise with digital innovation to simplify wealth creation, focusing on technology, transparency, and trust.
+        <motion.p className="mt-4 max-w-3xl mx-auto text-muted-foreground md:text-xl" variants={fadeInUpVariants}>
+          {pageDescription}
         </motion.p>
       </motion.div>
 
@@ -53,10 +80,10 @@ export default function ServicesPage() {
           <motion.div
             key={service.id}
             id={service.id}
-            variants={cardVariants(index)}
-            initial="initial"
-            whileInView="whileInView"
-            viewport={{ once: true, amount: 0.2 }}
+            variants={cardVariants(index)} // Use the cardVariants here
+            initial="hidden" // Ensure initial is set if variants are directly on motion.div
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }} // amount for card visibility
           >
             <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-xl">
               <div className={`grid md:grid-cols-2 gap-0 items-stretch`}>

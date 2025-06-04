@@ -7,14 +7,59 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Separator } from '@/components/ui/separator';
 import { APP_NAME } from '@/lib/constants';
 import { Target, History, Users, Linkedin, Lightbulb, ShieldCheck, GraduationCap, TrendingUp, Handshake, Goal, UsersRound } from 'lucide-react';
-import type { Metadata } from 'next';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 
-// export const metadata: Metadata = { // Metadata should be static or generated via generateMetadata
-//   title: `About Us`,
-//   description: `Learn about ${APP_NAME}, founded in 2024, our mission to make investing easy and fair, our investment philosophy, and our commitment to client-centric financial empowerment.`,
-// };
+// Word-by-word animation variants
+const sentenceContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: (i = 1) => ({
+    opacity: 1,
+    transition: { staggerChildren: 0.05, delayChildren: i * 0.1 },
+  }),
+};
+
+const wordChildVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", damping: 12, stiffness: 100 },
+  },
+};
+
+// General fade-in-up for paragraphs or less prominent elements
+const fadeInUpVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.6, 0.01, -0.05, 0.95] },
+  },
+};
+
+// Stagger children for sections
+const sectionStaggerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.2 } },
+};
+
+const cardStaggerVariants = (index: number) => ({
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { delay: index * 0.1, duration: 0.5, ease: 'easeOut' }
+  }
+});
+
+const pageTitle = `About ${APP_NAME}`;
+const pageDescription = `${APP_NAME} was founded in 2024 as a Financial services company. It is a cutting edge financial services company offering comprehensive stock broking and investment solutions tailored to the needs of modern investors with a strong focus on technology, transparency and trust. ${APP_NAME}  aims to empower individuals and institutional plans to make informed investment decisions. We combine financial expertise with digital innovation to simplify wealth creation for every individual.`;
+
+const missionText = "Our goal is to make investing easy and fair for everyone by using technology to offer clear, accessible, and trustworthy financial services that help our clients grow their wealth over time.";
+const visionText = "Our vision is to be a top name in retail broking by using cutting-edge technology and standing out through exceptional customer experience, innovation, high productivity, and streamlined operations.";
+const philosophyMainText = "We believe that financial empowerment is right, not a privilege. Our philosophy is rooted in the idea of trust, knowledge and accessibility to form the foundation of successful investment. We are committed to simplifying finance through innovation, ensuring that every client - whether a first time investor or a seasoned trader - has access to the tools, guidance and support they need to grow their wealth with confidence.";
+const teamIntroText = "The dedicated professionals behind your financial success.";
 
 const teamMembers = [
   {
@@ -47,63 +92,57 @@ const investmentPhilosophyItems = [
   { title: "Long term Vision", description: "We aim not just for short-term gains but for lasting financial growth built on trust.", icon: Goal },
 ];
 
-const fadeInUp = {
-  initial: { opacity: 0, y: 30 },
-  whileInView: { opacity: 1, y: 0 },
-  transition: { duration: 0.5, ease: 'easeOut', staggerChildren: 0.1 }
-};
-
-const cardVariants = (index: number) => ({
-  initial: { opacity: 0, y: 30 },
-  whileInView: {
-    opacity: 1,
-    y: 0,
-    transition: { delay: index * 0.1, duration: 0.5, ease: 'easeOut' }
-  }
-});
-
-
 export default function AboutPage() {
   return (
     <motion.div
       className="container px-4 md:px-6 pt-12 md:pt-40 pb-16 md:pb-20 lg:pb-24"
-      initial="initial"
-      animate="whileInView"
-      variants={{ initial: {}, whileInView: {transition: {staggerChildren: 0.2}}}}
-      viewport={{ once: true, amount: 0.1 }}
+      initial="hidden"
+      whileInView="visible"
+      variants={sectionStaggerVariants}
+      viewport={{ once: true, amount: 0.05 }} // amount:0.05 for earlier trigger for the whole page
     >
-      <motion.div className="text-center mb-12 md:mb-16" variants={fadeInUp}>
-        <motion.h1 className="text-4xl font-bold tracking-tighter sm:text-5xl text-foreground" variants={fadeInUp}>
-          About {APP_NAME}
+      <motion.div className="text-center mb-12 md:mb-16" variants={sentenceContainerVariants}>
+        <motion.h1 className="text-4xl font-bold tracking-tighter sm:text-5xl text-foreground" variants={sentenceContainerVariants}>
+          {pageTitle.split(" ").map((word, index) => (
+            <motion.span key={index} variants={wordChildVariants} style={{ display: "inline-block", marginRight: "0.25em" }}>{word}</motion.span>
+          ))}
         </motion.h1>
-        <motion.p className="mt-4 max-w-3xl mx-auto text-muted-foreground md:text-xl" variants={fadeInUp}>
-          {APP_NAME} was founded in 2024 as a Financial services company. It is a cutting edge financial services company offering comprehensive stock broking and investment solutions tailored to the needs of modern investors with a strong focus on technology, transparency and trust. {APP_NAME}  aims to empower individuals and institutional plans to make informed investment decisions. We combine financial expertise with digital innovation to simplify wealth creation for every individual.
+        <motion.p className="mt-4 max-w-3xl mx-auto text-muted-foreground md:text-xl" variants={fadeInUpVariants}>
+          {pageDescription}
         </motion.p>
       </motion.div>
 
-      <motion.section className="mb-16" variants={fadeInUp}>
+      <motion.section className="mb-16" variants={sectionStaggerVariants}>
         <div className="grid md:grid-cols-2 gap-12 items-start">
-          <motion.div className="space-y-8" variants={fadeInUp}>
-            <motion.div variants={fadeInUp}>
+          <motion.div className="space-y-8" variants={sentenceContainerVariants}>
+            <motion.div variants={fadeInUpVariants}>
               <div className="flex items-center gap-4 mb-3">
                 <Target className="h-10 w-10 text-primary" />
-                <h2 className="text-3xl font-semibold text-foreground">Our Mission</h2>
+                <motion.h2 className="text-3xl font-semibold text-foreground" variants={sentenceContainerVariants}>
+                  {"Our Mission".split(" ").map((word, index) => (
+                    <motion.span key={index} variants={wordChildVariants} style={{ display: "inline-block", marginRight: "0.25em" }}>{word}</motion.span>
+                  ))}
+                </motion.h2>
               </div>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                Our goal is to make investing easy and fair for everyone by using technology to offer clear, accessible, and trustworthy financial services that help our clients grow their wealth over time.
-              </p>
+              <motion.p className="text-lg text-muted-foreground leading-relaxed" variants={fadeInUpVariants}>
+                {missionText}
+              </motion.p>
             </motion.div>
-            <motion.div variants={fadeInUp}>
+            <motion.div variants={fadeInUpVariants}>
               <div className="flex items-center gap-4 mb-3">
                  <Lightbulb className="h-10 w-10 text-primary" />
-                <h2 className="text-3xl font-semibold text-foreground">Our Vision</h2>
+                <motion.h2 className="text-3xl font-semibold text-foreground" variants={sentenceContainerVariants}>
+                  {"Our Vision".split(" ").map((word, index) => (
+                    <motion.span key={index} variants={wordChildVariants} style={{ display: "inline-block", marginRight: "0.25em" }}>{word}</motion.span>
+                  ))}
+                </motion.h2>
               </div>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                Our vision is to be a top name in retail broking by using cutting-edge technology and standing out through exceptional customer experience, innovation, high productivity, and streamlined operations.
-              </p>
+              <motion.p className="text-lg text-muted-foreground leading-relaxed" variants={fadeInUpVariants}>
+                {visionText}
+              </motion.p>
             </motion.div>
           </motion.div>
-           <motion.div variants={fadeInUp}>
+           <motion.div variants={fadeInUpVariants}>
             <Image
               src="https://placehold.co/600x400.png"
               width={600}
@@ -118,19 +157,23 @@ export default function AboutPage() {
 
       <Separator className="my-16" />
 
-      <motion.section className="mb-16" variants={fadeInUp}>
-        <motion.div className="text-center mb-10" variants={fadeInUp}>
+      <motion.section className="mb-16" variants={sectionStaggerVariants}>
+        <motion.div className="text-center mb-10" variants={sentenceContainerVariants}>
           <div className="inline-flex items-center gap-3 bg-primary/10 px-4 py-2 rounded-full mb-4">
             <TrendingUp className="h-6 w-6 text-primary" />
-            <h2 className="text-3xl font-semibold text-foreground">Our Investment Philosophy</h2>
+            <motion.h2 className="text-3xl font-semibold text-foreground" variants={sentenceContainerVariants}>
+              {"Our Investment Philosophy".split(" ").map((word, index) => (
+                <motion.span key={index} variants={wordChildVariants} style={{ display: "inline-block", marginRight: "0.25em" }}>{word}</motion.span>
+              ))}
+            </motion.h2>
           </div>
-          <motion.p className="mt-2 max-w-3xl mx-auto text-muted-foreground md:text-lg" variants={fadeInUp}>
-             We believe that financial empowerment is right, not a privilege. Our philosophy is rooted in the idea of trust, knowledge and accessibility to form the foundation of successful investment. We are committed to simplifying finance through innovation, ensuring that every client - whether a first time investor or a seasoned trader - has access to the tools, guidance and support they need to grow their wealth with confidence.
+          <motion.p className="mt-2 max-w-3xl mx-auto text-muted-foreground md:text-lg" variants={fadeInUpVariants}>
+             {philosophyMainText}
           </motion.p>
         </motion.div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
           {investmentPhilosophyItems.map((item, index) => (
-            <motion.div key={item.title} variants={cardVariants(index)} initial="initial" whileInView="whileInView" viewport={{ once: true, amount: 0.3 }}>
+            <motion.div key={item.title} variants={cardStaggerVariants(index)} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
               <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-xl h-full">
                 <CardHeader className="flex flex-row items-center gap-4">
                   <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center">
@@ -149,11 +192,15 @@ export default function AboutPage() {
 
       <Separator className="my-16" />
 
-      <motion.section className="mb-16" variants={fadeInUp}>
-         <motion.div className="text-center mb-10" variants={fadeInUp}>
+      <motion.section className="mb-16" variants={sectionStaggerVariants}>
+         <motion.div className="text-center mb-10" variants={sentenceContainerVariants}>
              <div className="inline-flex items-center gap-3 bg-primary/10 px-4 py-2 rounded-full mb-4">
                 <History className="h-6 w-6 text-primary" />
-                <h2 className="text-3xl font-semibold text-foreground">Our History</h2>
+                <motion.h2 className="text-3xl font-semibold text-foreground" variants={sentenceContainerVariants}>
+                  {"Our History".split(" ").map((word, index) => (
+                    <motion.span key={index} variants={wordChildVariants} style={{ display: "inline-block", marginRight: "0.25em" }}>{word}</motion.span>
+                  ))}
+                </motion.h2>
              </div>
         </motion.div>
          <div className="relative mt-8">
@@ -162,9 +209,9 @@ export default function AboutPage() {
               {historyItems.map((item, index) => (
                 <motion.div
                   key={item.year}
-                  variants={cardVariants(index)}
-                  initial="initial"
-                  whileInView="whileInView"
+                  variants={cardStaggerVariants(index)}
+                  initial="hidden"
+                  whileInView="visible"
                   viewport={{ once: true, amount: 0.3 }}
                   className={cn(
                     "relative",
@@ -196,19 +243,23 @@ export default function AboutPage() {
 
       <Separator className="my-16" />
 
-      <motion.section variants={fadeInUp}>
-        <motion.div className="text-center mb-12" variants={fadeInUp}>
+      <motion.section variants={sectionStaggerVariants}>
+        <motion.div className="text-center mb-12" variants={sentenceContainerVariants}>
           <div className="inline-flex items-center gap-3 bg-primary/10 px-4 py-2 rounded-full mb-4">
             <UsersRound className="h-8 w-8 text-primary" />
-            <h2 className="text-3xl font-semibold text-foreground">Meet Our Team</h2>
+            <motion.h2 className="text-3xl font-semibold text-foreground" variants={sentenceContainerVariants}>
+              {"Meet Our Team".split(" ").map((word, index) => (
+                <motion.span key={index} variants={wordChildVariants} style={{ display: "inline-block", marginRight: "0.25em" }}>{word}</motion.span>
+              ))}
+            </motion.h2>
           </div>
-          <motion.p className="mt-2 max-w-2xl mx-auto text-muted-foreground md:text-lg" variants={fadeInUp}>
-            The dedicated professionals behind your financial success.
+          <motion.p className="mt-2 max-w-2xl mx-auto text-muted-foreground md:text-lg" variants={fadeInUpVariants}>
+            {teamIntroText}
           </motion.p>
         </motion.div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {teamMembers.map((member, index) => (
-             <motion.div key={member.name} variants={cardVariants(index)} initial="initial" whileInView="whileInView" viewport={{ once: true, amount: 0.3 }}>
+             <motion.div key={member.name} variants={cardStaggerVariants(index)} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
               <Card className="text-center shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-xl h-full">
                 <CardContent className="p-6">
                   <Avatar className="w-24 h-24 mx-auto mb-4 ring-2 ring-primary ring-offset-2 ring-offset-background">
@@ -231,7 +282,7 @@ export default function AboutPage() {
   );
 }
 
-// export const metadata: Metadata = { // This can be uncommented if you want to keep static metadata here
+// export const metadata: Metadata = { 
 //   title: `About Us`,
 //   description: `Learn about ${APP_NAME}, founded in 2024, our mission to make investing easy and fair, our investment philosophy, and our commitment to client-centric financial empowerment.`,
 // };
