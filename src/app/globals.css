@@ -14,29 +14,29 @@
     --popover: 0 0% 100%; /* white */
     --popover-foreground: 0 0% 10%; /* near black */
 
-    --primary: 0 0% 10%; /* near black */
+    --primary: 262.1 83.3% 57.8%; /* Original Primary - e.g., a vibrant purple */
     --primary-foreground: 0 0% 100%; /* white */
 
-    --secondary: 0 0% 50%; /* mid gray */
-    --secondary-foreground: 0 0% 100%; /* white */
+    --secondary: 210 40% 96.1%; /* Original Secondary - e.g., a light blue/gray */
+    --secondary-foreground: 222.2 47.4% 11.2%; /* Original Secondary Foreground - e.g., a dark blue */
 
     --muted: 0 0% 95%; /* very light gray */
     --muted-foreground: 0 0% 40%; /* dark gray */
 
-    --accent: 0 0% 20%; /* dark gray */
+    --accent: 333 91% 48%; /* Original Accent - e.g., #AE275F */
     --accent-foreground: 0 0% 100%; /* white */
 
-    --destructive: 0 0% 10%; /* near black */
+    --destructive: 0 84.2% 60.2%; /* Original Destructive - e.g., a red */
     --destructive-foreground: 0 0% 100%; /* white */
 
     --border: 0 0% 85%; /* light gray */
     --input: 0 0% 85%; /* light gray */
-    --ring: 0 0% 50%; /* mid gray */
+    --ring: 262.1 83.3% 57.8%; /* Original Ring - matches primary */
 
-    --chart-1: 0 0% 20%; /* dark gray */
-    --chart-2: 0 0% 40%; /* mid-dark gray */
-    --chart-3: 0 0% 60%;  /* mid-light gray */
-    --chart-4: 0 0% 70%; /* light gray */
+    --chart-1: 220 70% 50%; /* Example blue */
+    --chart-2: 160 60% 45%; /* Example green */
+    --chart-3: 30 80% 55%;  /* Example orange */
+    --chart-4: 280 65% 60%; /* Example purple */
     --chart-5: 0 0% 80%;  /* very light gray */
     --radius: 0.5rem;
 
@@ -61,29 +61,29 @@
     --popover: 0 0% 15%; /* dark gray */
     --popover-foreground: 0 0% 100%; /* white */
 
-    --primary: 0 0% 90%; /* very light gray */
+    --primary: 262.1 83.3% 67.8%; /* Lighter primary for dark mode */
     --primary-foreground: 0 0% 10%; /* near black */
 
-    --secondary: 0 0% 50%; /* mid gray */
-    --secondary-foreground: 0 0% 10%; /* near black */
+    --secondary: 210 40% 16.1%; /* Darker secondary for dark mode */
+    --secondary-foreground: 0 0% 90%; /* very light gray */
 
     --muted: 0 0% 25%; /* darker gray */
     --muted-foreground: 0 0% 70%; /* lighter gray */
 
-    --accent: 0 0% 80%; /* light gray */
+    --accent: 333 91% 58%; /* Lighter accent for dark mode */
     --accent-foreground: 0 0% 10%; /* near black */
 
-    --destructive: 0 0% 90%; /* very light gray */
+    --destructive: 0 74.2% 70.2%; /* Lighter destructive for dark mode */
     --destructive-foreground: 0 0% 10%; /* near black */
 
     --border: 0 0% 30%; /* dark gray */
     --input: 0 0% 30%; /* dark gray */
-    --ring: 0 0% 60%; /* mid-light gray */
+    --ring: 262.1 83.3% 67.8%; /* Lighter ring for dark mode */
 
-    --chart-1: 0 0% 80%; 
-    --chart-2: 0 0% 70%;
-    --chart-3: 0 0% 60%;
-    --chart-4: 0 0% 50%;
+    --chart-1: 220 70% 60%; 
+    --chart-2: 160 60% 55%;
+    --chart-3: 30 80% 65%;
+    --chart-4: 280 65% 70%;
     --chart-5: 0 0% 40%;
 
     /* Dark Sidebar colors - derived from main dark theme for consistency */

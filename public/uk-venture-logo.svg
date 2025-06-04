@@ -1,13 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
-<g id="g872_3_">
-	<g id="g878_3_" transform="translate(152.12037,128.09225)">
-		<path id="path880_3_" fill="#000000" d="M667.4,636.8H477.3L361.9,435.5h190.1L667.4,636.8z"/>
-	</g>
-	<g id="g882_3_" transform="translate(119.40257,184.69385)">
-		<path id="path884_3_" fill="#000000" d="M393.9,50.4l95.3,163.9L278.6,580.2H88.9L393.9,50.4z"/>
-	</g>
-</g>
+<svg width="300" height="300" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="100" height="100" fill="none"/>
+<path d="M20 80L20 20L35 20L35 65L50 65L50 20L65 20L65 80L50 80L50 75L35 75L35 80L20 80Z" fill="#800000"/>
+<path d="M70 80L70 20L85 20L85 80L70 80Z" fill="#800000"/>
 </svg>

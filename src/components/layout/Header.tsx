@@ -140,7 +140,7 @@ export function Header() {
           >
              <Link href="/" className="flex-shrink-0" onClick={() => setActivePill('/')}>
               <motion.div
-                className="text-neutral-200 font-semibold text-lg px-3 py-1.5 rounded-full hover:bg-white/10 transition-colors"
+                className="text-background font-semibold text-lg px-3 py-1.5 rounded-full hover:bg-white/10 transition-colors"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -157,7 +157,7 @@ export function Header() {
                       "relative px-4 py-1.5 text-sm font-medium rounded-full transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-black",
                       activePill === link.href
                         ? "text-foreground" 
-                        : "text-neutral-200 opacity-70 hover:opacity-100"
+                        : "text-background opacity-70 hover:opacity-100"
                     )}
                   >
                     {activePill === link.href && (
