@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { BarChartBig, Menu } from 'lucide-react';
 import { NAV_LINKS, APP_NAME } from '@/lib/constants';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetHeader, SheetFooter, SheetClose, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetFooter, SheetClose, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
@@ -84,7 +84,7 @@ export function Header() {
                   <div className="p-3 bg-primary/10 rounded-full group-hover:bg-primary/20 transition-colors">
                     <BarChartBig className="h-10 w-10 text-primary" />
                   </div>
-                  <span className="font-bold text-2xl group-hover:text-primary transition-colors">{APP_NAME}</span>
+                  <SheetTitle className="font-bold text-2xl group-hover:text-primary transition-colors">{APP_NAME}</SheetTitle>
                 </Link>
               </SheetClose>
             </SheetHeader>
@@ -156,14 +156,14 @@ export function Header() {
                     className={cn(
                       "relative px-4 py-1.5 text-sm font-medium rounded-full transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-black",
                       activePill === link.href
-                        ? "text-foreground"
-                        : "text-background opacity-70 hover:opacity-100"
+                        ? "text-foreground" // Will use theme foreground (e.g., black on light, white on dark)
+                        : "text-neutral-200 opacity-70 hover:opacity-100" // Fixed light gray for contrast on black pill
                     )}
                   >
                     {activePill === link.href && (
                       <motion.div
                         layoutId="active-desktop-pill"
-                        className="absolute inset-0 bg-background rounded-full z-[-1]"
+                        className="absolute inset-0 bg-background rounded-full z-[-1]" // Will use theme background (e.g., white on light, dark on dark)
                         transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                       />
                     )}
