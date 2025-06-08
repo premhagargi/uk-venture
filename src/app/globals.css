@@ -5,45 +5,44 @@
 
 @layer base {
   :root {
-    --background: 330 63% 42%; /* #AE275F - UK Venture Base/Logo Color */
-    --foreground: 0 0% 100%;   /* White for text on dark background */
+    --background: 0 0% 100%; /* White background for the body */
+    --foreground: 222.2 84% 4.9%; /* Dark text for readability */
 
-    --card: 0 0% 100%; /* White - keep cards bright */
-    --card-foreground: 215 40% 25%; /* Dark Slate Gray for text on cards */
+    --card: 0 0% 100%; /* White for cards */
+    --card-foreground: 222.2 84% 4.9%; /* Dark text on cards */
 
-    --popover: 0 0% 100%; /* White */
-    --popover-foreground: 215 40% 25%; /* Consistent with card foreground */
+    --popover: 0 0% 100%; /* White for popovers */
+    --popover-foreground: 222.2 84% 4.9%; /* Dark text on popovers */
 
-    --primary: 338 88% 49%; /* #EB1165 - Brighter Pink/Magenta */
+    --primary: 338 88% 49%; /* #EB1165 - UK Venture Base/Logo Color Brighter */
     --primary-foreground: 0 0% 100%; /* White */
 
-    --secondary: 170 50% 50%; /* #48C9B0 - A muted, friendly teal/mint */
+    --secondary: 170 50% 50%; /* Muted Teal/Mint */
     --secondary-foreground: 215 40% 15%; /* Darker for contrast on secondary */
 
-    --muted: 220 20% 92%; /* #E2E8F0 - Light gray for muted backgrounds */
-    --muted-foreground: 0 0% 85%; /* Light gray for muted text on dark or light backgrounds */
+    --muted: 210 40% 96.1%; /* Light gray for muted backgrounds/elements */
+    --muted-foreground: 215.4 16.3% 46.9%; /* Darker gray for muted text */
 
-    --accent: 330 63% 42%; /* #AE275F - Darker Pink/Magenta (matches new background) */
-    --accent-foreground: 0 0% 100%; /* White */
+    --accent: 330 63% 95%; /* Very light pink, derived from #AE275F for subtle accents */
+    --accent-foreground: 330 63% 25%; /* Darker magenta for text on accent backgrounds */
 
-    --destructive: 0 72% 51%; /* #E53E3E - Standard red */
-    --destructive-foreground: 0 0% 98%; /* Almost White */
+    --destructive: 0 84.2% 60.2%; /* Standard red for destructive actions */
+    --destructive-foreground: 0 0% 98%; /* Almost white for text on destructive */
 
-    --border: 220 15% 88%; /* #DCDFE4 - Light Gray border */
-    --input: 220 15% 88%; /* Light Gray input border color */
-    --ring: 338 88% 59%; /* Brighter version of new primary #EB1165 */
+    --border: 214.3 31.8% 91.4%; /* Light gray for borders */
+    --input: 214.3 31.8% 91.4%; /* Light gray for input borders */
+    --ring: 338 88% 59%; /* Brighter version of primary for focus rings */
 
-
-    --chart-1: 220 70% 50%; /* Example blue */
-    --chart-2: 160 60% 45%; /* Example green */
-    --chart-3: 30 80% 55%;  /* Example orange */
-    --chart-4: 280 65% 60%; /* Example purple */
-    --chart-5: 0 0% 80%;  /* very light gray */
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 0 0% 80%;
     --radius: 0.5rem;
 
     /* Sidebar colors - derived from main theme for consistency */
-    --sidebar-background: var(--background); /* Will be #AE275F */
-    --sidebar-foreground: var(--foreground); /* Will be white */
+    --sidebar-background: var(--background); /* Will be white */
+    --sidebar-foreground: var(--foreground); /* Will be dark */
     --sidebar-primary: var(--primary);
     --sidebar-primary-foreground: var(--primary-foreground);
     --sidebar-accent: var(--accent);
@@ -53,33 +52,33 @@
   }
 
   .dark {
-    --background: 0 0% 10%; /* near black */
-    --foreground: 0 0% 100%; /* white */
+    --background: 222.2 84% 4.9%; /* Dark background for dark mode */
+    --foreground: 210 40% 98%;   /* Light text for dark mode */
 
-    --card: 0 0% 15%; /* dark gray */
-    --card-foreground: 0 0% 100%; /* white */
+    --card: 222.2 84% 4.9%; /* Dark cards */
+    --card-foreground: 210 40% 98%; /* Light text on dark cards */
 
-    --popover: 0 0% 15%; /* dark gray */
-    --popover-foreground: 0 0% 100%; /* white */
+    --popover: 222.2 84% 4.9%; /* Dark popovers */
+    --popover-foreground: 210 40% 98%; /* Light text on dark popovers */
 
-    --primary: 262.1 83.3% 67.8%; /* Lighter primary for dark mode */
-    --primary-foreground: 0 0% 10%; /* near black */
+    --primary: 338 80% 55%; /* Slightly adjusted primary for dark mode */
+    --primary-foreground: 0 0% 98%; /* Almost white for contrast on primary */
 
-    --secondary: 210 40% 16.1%; /* Darker secondary for dark mode */
-    --secondary-foreground: 0 0% 90%; /* very light gray */
+    --secondary: 170 45% 45%; /* Darker secondary for dark mode */
+    --secondary-foreground: 210 40% 98%; /* Light text on secondary */
 
-    --muted: 0 0% 25%; /* darker gray */
-    --muted-foreground: 0 0% 70%; /* lighter gray for muted text in dark mode */
+    --muted: 217.2 32.6% 17.5%; /* Darker gray for muted backgrounds */
+    --muted-foreground: 215 20.2% 65.1%; /* Lighter gray for muted text */
 
-    --accent: 333 91% 58%; /* Lighter accent for dark mode */
-    --accent-foreground: 0 0% 10%; /* near black */
+    --accent: 330 50% 20%; /* Darker magenta for accent in dark mode */
+    --accent-foreground: 0 0% 90%; /* Light gray text on dark accent */
 
-    --destructive: 0 74.2% 70.2%; /* Lighter destructive for dark mode */
-    --destructive-foreground: 0 0% 10%; /* near black */
+    --destructive: 0 62.8% 30.6%; /* Darker red for destructive */
+    --destructive-foreground: 0 0% 98%; /* Almost white text */
 
-    --border: 0 0% 30%; /* dark gray */
-    --input: 0 0% 30%; /* dark gray input border */
-    --ring: 262.1 83.3% 67.8%; /* Lighter ring for dark mode */
+    --border: 217.2 32.6% 17.5%; /* Darker border */
+    --input: 217.2 32.6% 17.5%;  /* Darker input border */
+    --ring: 338 75% 65%; /* Lighter ring for dark mode */
 
     --chart-1: 220 70% 60%;
     --chart-2: 160 60% 55%;
@@ -87,7 +86,7 @@
     --chart-4: 280 65% 70%;
     --chart-5: 0 0% 40%;
 
-    /* Dark Sidebar colors - derived from main dark theme for consistency */
+    /* Dark Sidebar colors */
     --sidebar-background: var(--background);
     --sidebar-foreground: var(--foreground);
     --sidebar-primary: var(--primary);
@@ -105,13 +104,10 @@
   }
   body {
     @apply bg-background text-foreground;
-    /* overflow: hidden; */ /* Potentially add this if scroll issues arise during transition */
   }
 
   body.disable-hover,
   body.disable-hover * {
     pointer-events: none !important;
-    /* cursor: wait !important; /* Optional: some users find this annoying */
   }
 }
-

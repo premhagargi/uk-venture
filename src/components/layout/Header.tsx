@@ -15,7 +15,7 @@ export function Header() {
   const [isMobileSheetOpen, setIsMobileSheetOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const lastScrollYRef = useRef(0);
-  const headerHeightThreshold = 80;
+  const headerHeightThreshold = 80; // Adjusted threshold for when header hides
   const pathname = usePathname();
   const [activePill, setActivePill] = useState(pathname);
 
@@ -56,7 +56,7 @@ export function Header() {
     >
       {/* Mobile Header - Top Bar */}
       <div className={cn(
-        "md:hidden flex items-center justify-between p-4 h-16 bg-card/90 backdrop-blur-sm shadow-md container mx-auto transition-transform duration-300 ease-in-out",
+        "md:hidden flex items-center justify-between p-4 h-16 bg-background/90 backdrop-blur-sm shadow-md container mx-auto transition-transform duration-300 ease-in-out",
         isVisible ? "translate-y-0" : "-translate-y-full"
       )}>
         <Link href="/" className="flex items-center gap-2 shrink-0" onClick={() => setIsMobileSheetOpen(false)}>
@@ -74,7 +74,7 @@ export function Header() {
             side="right"
             className={cn(
                 "!w-screen !h-screen !max-w-none !border-0",
-                "bg-card/80 backdrop-blur-md !rounded-none",
+                "bg-card/80 backdrop-blur-md !rounded-none", // Glass morphism for mobile sheet
                 "data-[state=open]:animate-spread-in-tr data-[state=closed]:animate-spread-out-tr",
                 "data-[state=closed]:duration-300 data-[state=open]:duration-500",
                 "p-6 flex flex-col"
@@ -125,7 +125,7 @@ export function Header() {
         </Sheet>
       </div>
 
-      {/* Desktop Header - Pill Shape Bar */}
+      {/* Desktop Header - Pill Shape Bar, container constrained */}
       <AnimatePresence>
       {isVisible && (
         <motion.div
@@ -180,4 +180,3 @@ export function Header() {
     </header>
   );
 }
-
