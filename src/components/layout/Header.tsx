@@ -72,7 +72,7 @@ export function Header() {
             side="right"
             className={cn(
                 "!w-screen !h-screen !max-w-none !border-0",
-                "bg-card/60 backdrop-blur-md !rounded-none", // Updated for glass morphism
+                "bg-card/80 backdrop-blur-md !rounded-none", // Updated for glass morphism
                 "data-[state=open]:animate-spread-in-tr data-[state=closed]:animate-spread-out-tr",
                 "data-[state=closed]:duration-300 data-[state=open]:duration-500",
                 "p-6 flex flex-col"
