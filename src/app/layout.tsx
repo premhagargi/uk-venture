@@ -63,7 +63,7 @@ export default function RootLayout({
           {isLoaderVisible && <PageTransitionLoader />}
         </AnimatePresence>
 
-        <main className="flex-grow pt-16 md:pt-[calc(4rem+1.5rem)] relative"> {/* Adjusted pt for header height + pill margin */}
+        <main className="flex-grow pt-16 md:pt-16 relative"> {/* Adjusted pt for header height */}
           <AnimatePresence mode="wait">
             <motion.div
               key={contentAnimationKey}
@@ -73,7 +73,7 @@ export default function RootLayout({
                 transition: { duration: showContent ? 0.5 : 0.1, ease: "easeOut" }
               }}
               exit={{ opacity: 0, transition: { duration: 0.1 } }}
-              className="container mx-auto px-2 sm:px-4 md:px-6 flex flex-col flex-grow gap-4 md:gap-6 pb-4 md:pb-6" // Added pb for consistency
+              className="w-full flex flex-col flex-grow gap-4 md:gap-6 lg:gap-8 p-4 md:p-6 lg:p-8" // Outer padding for sections
             >
               {displayedChildren}
             </motion.div>
@@ -85,4 +85,3 @@ export default function RootLayout({
     </html>
   );
 }
-

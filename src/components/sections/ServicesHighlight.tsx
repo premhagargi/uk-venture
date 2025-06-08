@@ -68,14 +68,14 @@ export function ServicesHighlight() {
 
   return (
     <motion.section
-      className="w-full bg-card rounded-2xl shadow-xl overflow-hidden p-6 md:p-8" // Standardized padding
+      className="w-full bg-card rounded-2xl shadow-xl overflow-hidden p-6 md:p-8"
       initial="hidden"
       whileInView="visible"
       variants={sectionVariants}
       viewport={{ once: true, amount: 0.1 }}
     >
       <motion.div
-        className="text-center mb-10 md:mb-12" // Adjusted margin bottom
+        className="text-center mb-10 md:mb-12"
         variants={sentenceContainerVariants}
         initial="hidden"
         whileInView="visible"

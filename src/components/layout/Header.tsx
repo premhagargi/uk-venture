@@ -129,14 +129,15 @@ export function Header() {
       <AnimatePresence>
       {isVisible && (
         <motion.div
-          className="hidden md:block container mx-auto px-2 sm:px-4 md:px-6" // Matched padding with layout.tsx
+          className="hidden md:block" // Outer div for positioning/animation, no container here
           initial="initial"
           animate="animate"
           exit="exit"
           variants={headerBarAnimation}
         >
           <nav
-            className="w-full bg-card/80 backdrop-blur-md shadow-xl rounded-full flex items-center justify-between h-14 px-3 sm:px-4 my-3" // Added w-full
+            className="container mx-auto px-3 sm:px-4 my-3 bg-card/80 backdrop-blur-md shadow-xl rounded-full flex items-center justify-between h-14"
+            // Nav is the pill, container mx-auto here, specific px
           >
              <Link href="/" className="flex-shrink-0" onClick={() => setActivePill('/')}>
               <motion.div
@@ -158,7 +159,7 @@ export function Header() {
                       activePill === link.href
                         ? "text-primary-foreground"
                         : "text-muted-foreground hover:text-foreground",
-                      "focus-visible:ring-offset-background"
+                      "focus-visible:ring-offset-background" // Offset from the page's background
                     )}
                   >
                     {activePill === link.href && (

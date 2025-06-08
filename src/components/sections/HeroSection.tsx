@@ -66,7 +66,7 @@ const heroTitleSpan = "Modern Investors";
 export function HeroSection() {
   return (
     <motion.section
-      className="w-full bg-card rounded-2xl shadow-xl overflow-hidden p-6 md:p-8 lg:py-12 xl:py-16" // Adjusted padding
+      className="w-full bg-card rounded-2xl shadow-xl overflow-hidden p-6 md:p-8"
       initial="hidden"
       whileInView="visible"
       variants={sectionRootVariants}
@@ -76,8 +76,8 @@ export function HeroSection() {
         <motion.div
           className="flex flex-col justify-center space-y-6"
           variants={sentenceContainerVariants}
-          custom={0} // Pass custom prop if sentenceContainerVariants uses it
-          initial="hidden" // Add initial and animate for direct children of sectionRootVariants
+          custom={0}
+          initial="hidden"
           animate="visible"
         >
           <motion.h1
@@ -133,7 +133,7 @@ export function HeroSection() {
 
         <motion.div
           variants={imageVariants}
-          initial="hidden" // Add initial and animate for direct children of sectionRootVariants
+          initial="hidden"
           animate="visible"
           className="flex justify-center items-center lg:order-last"
         >
