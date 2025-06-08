@@ -57,67 +57,75 @@ export function TestimonialsSection() {
 
   return (
     <motion.section
-      className="bg-card rounded-2xl shadow-xl overflow-hidden"
+      className="w-full bg-card rounded-2xl shadow-xl overflow-hidden p-6 md:p-8" // Standardized padding
       initial="hidden"
       whileInView="visible"
       variants={sectionVariants}
       viewport={{ once: true, amount: 0.1 }}
     >
-      <div className="container px-4 md:px-6 py-12 md:py-16 lg:py-20">
-        <motion.div
-          className="text-center mb-12"
+      <motion.div
+        className="text-center mb-10 md:mb-12" // Adjusted margin bottom
+        variants={titleContainerVariants}
+        custom={0}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ amount: 0.2 }}
+      >
+        <motion.h2
+          className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-foreground"
           variants={titleContainerVariants}
-          custom={0}
+          custom={1}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ amount: 0.2 }}
         >
-          <motion.h2
-            className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-foreground"
-            variants={titleContainerVariants}
-            custom={1}
-          >
-            {title.split(" ").map((word, index) => (
-              <motion.span key={index} variants={wordChildVariants} style={{ display: "inline-block", marginRight: "0.25em"}}>{word}</motion.span>
-            ))}
-          </motion.h2>
-          <motion.p
-            className="mt-4 max-w-2xl mx-auto text-muted-foreground md:text-xl"
-            variants={paragraphVariants}
-          >
-            {description}
-          </motion.p>
-        </motion.div>
-        <div className="grid gap-8 md:grid-cols-1 lg:grid-cols-3">
-          {TESTIMONIALS_DATA.map((testimonial, index) => (
-            <motion.div
-              key={testimonial.id}
-              custom={index}
-              variants={cardVariants}
-            >
-              <Card className="flex flex-col justify-between shadow-lg hover:shadow-xl transition-shadow duration-300 h-full rounded-xl">
-                <CardHeader>
-                  <testimonial.icon className="h-8 w-8 text-primary mb-4" />
-                </CardHeader>
-                <CardContent className="flex-grow">
-                  <p className="text-lg italic text-foreground">"{testimonial.quote}"</p>
-                </CardContent>
-                <CardFooter className="mt-4 pt-4 border-t">
-                  <div className="flex items-center gap-4">
-                    <Avatar className="h-12 w-12">
-                      <AvatarImage src={testimonial.avatarSrc} alt={testimonial.author} data-ai-hint={testimonial.avatarHint} />
-                      <AvatarFallback>{testimonial.author.substring(0, 2).toUpperCase()}</AvatarFallback>
-                    </Avatar>
-                    <div>
-                      <p className="font-semibold text-foreground">{testimonial.author}</p>
-                      <p className="text-sm text-muted-foreground">{testimonial.company}</p>
-                    </div>
-                  </div>
-                </CardFooter>
-              </Card>
-            </motion.div>
+          {title.split(" ").map((word, index) => (
+            <motion.span key={index} variants={wordChildVariants} style={{ display: "inline-block", marginRight: "0.25em"}}>{word}</motion.span>
           ))}
-        </div>
+        </motion.h2>
+        <motion.p
+          className="mt-4 max-w-2xl mx-auto text-muted-foreground md:text-xl"
+          variants={paragraphVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ amount: 0.2 }}
+        >
+          {description}
+        </motion.p>
+      </motion.div>
+      <div className="grid gap-8 md:grid-cols-1 lg:grid-cols-3">
+        {TESTIMONIALS_DATA.map((testimonial, index) => (
+          <motion.div
+            key={testimonial.id}
+            custom={index}
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <Card className="flex flex-col justify-between shadow-lg hover:shadow-xl transition-shadow duration-300 h-full rounded-xl">
+              <CardHeader>
+                <testimonial.icon className="h-8 w-8 text-primary mb-4" />
+              </CardHeader>
+              <CardContent className="flex-grow">
+                <p className="text-lg italic text-foreground">"{testimonial.quote}"</p>
+              </CardContent>
+              <CardFooter className="mt-4 pt-4 border-t">
+                <div className="flex items-center gap-4">
+                  <Avatar className="h-12 w-12">
+                    <AvatarImage src={testimonial.avatarSrc} alt={testimonial.author} data-ai-hint={testimonial.avatarHint} />
+                    <AvatarFallback>{testimonial.author.substring(0, 2).toUpperCase()}</AvatarFallback>
+                  </Avatar>
+                  <div>
+                    <p className="font-semibold text-foreground">{testimonial.author}</p>
+                    <p className="text-sm text-muted-foreground">{testimonial.company}</p>
+                  </div>
+                </div>
+              </CardFooter>
+            </Card>
+          </motion.div>
+        ))}
       </div>
     </motion.section>
   );
 }
-
-    

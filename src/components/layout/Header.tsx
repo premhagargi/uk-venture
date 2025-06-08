@@ -74,7 +74,7 @@ export function Header() {
             side="right"
             className={cn(
                 "!w-screen !h-screen !max-w-none !border-0",
-                "bg-card/80 backdrop-blur-md !rounded-none", // Changed from bg-card/60
+                "bg-card/80 backdrop-blur-md !rounded-none",
                 "data-[state=open]:animate-spread-in-tr data-[state=closed]:animate-spread-out-tr",
                 "data-[state=closed]:duration-300 data-[state=open]:duration-500",
                 "p-6 flex flex-col"
@@ -128,15 +128,15 @@ export function Header() {
       {/* Desktop Header - Pill Shape Bar */}
       <AnimatePresence>
       {isVisible && (
-        <motion.div // This is now the centered container for the pill
-          className="hidden md:block container mx-auto"
+        <motion.div
+          className="hidden md:block container mx-auto px-2 sm:px-4 md:px-6" // Matched padding with layout.tsx
           initial="initial"
           animate="animate"
           exit="exit"
           variants={headerBarAnimation}
         >
-          <nav // This is the actual pill
-            className="bg-card/80 backdrop-blur-md shadow-xl rounded-full flex items-center justify-between h-14 px-3 sm:px-4 my-3"
+          <nav
+            className="w-full bg-card/80 backdrop-blur-md shadow-xl rounded-full flex items-center justify-between h-14 px-3 sm:px-4 my-3" // Added w-full
           >
              <Link href="/" className="flex-shrink-0" onClick={() => setActivePill('/')}>
               <motion.div
@@ -156,15 +156,15 @@ export function Header() {
                     className={cn(
                       "relative px-3 py-1.5 text-sm font-medium rounded-full transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
                       activePill === link.href
-                        ? "text-primary-foreground" // Text on primary active pill
-                        : "text-muted-foreground hover:text-foreground", // Inactive links
-                      "focus-visible:ring-offset-background" // Adjusted ring offset
+                        ? "text-primary-foreground"
+                        : "text-muted-foreground hover:text-foreground",
+                      "focus-visible:ring-offset-background"
                     )}
                   >
                     {activePill === link.href && (
                       <motion.div
                         layoutId="active-desktop-pill"
-                        className="absolute inset-0 bg-primary rounded-full z-[-1]" // Active indicator pill bg
+                        className="absolute inset-0 bg-primary rounded-full z-[-1]"
                         transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                       />
                     )}

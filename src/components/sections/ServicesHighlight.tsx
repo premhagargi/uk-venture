@@ -68,73 +68,82 @@ export function ServicesHighlight() {
 
   return (
     <motion.section
-      className="bg-card rounded-2xl shadow-xl overflow-hidden"
+      className="w-full bg-card rounded-2xl shadow-xl overflow-hidden p-6 md:p-8" // Standardized padding
       initial="hidden"
       whileInView="visible"
       variants={sectionVariants}
       viewport={{ once: true, amount: 0.1 }}
     >
-      <div
-        className="container px-4 md:px-6 py-12 md:py-16 lg:py-20"
+      <motion.div
+        className="text-center mb-10 md:mb-12" // Adjusted margin bottom
+        variants={sentenceContainerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ amount: 0.2 }}
       >
-        <motion.div
-          className="text-center mb-12"
+        <motion.h2
+          className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-foreground"
           variants={sentenceContainerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ amount: 0.2 }}
         >
-          <motion.h2
-            className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-foreground"
-            variants={sentenceContainerVariants}
-          >
-            {sectionTitle.split(" ").map((word, index) => (
-                <motion.span key={index} variants={wordChildVariants} style={{ display: "inline-block", marginRight: "0.25em"}}>{word}</motion.span>
-            ))}
-          </motion.h2>
-          <motion.p
-            className="mt-4 max-w-2xl mx-auto text-muted-foreground md:text-xl"
-            variants={paragraphVariants}
-          >
-            {sectionDescription}
-          </motion.p>
-        </motion.div>
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {highlightedServices.map((service, index) => (
-            <motion.div
-              key={service.id}
-              custom={index}
-              variants={cardVariants}
-            >
-              <Card className="flex flex-col shadow-lg hover:shadow-xl transition-shadow duration-300 h-full rounded-xl">
-                <CardHeader className="items-center text-center">
-                  <div className="p-3 rounded-full bg-primary/10 text-primary mb-4">
-                    <service.icon className="h-10 w-10" />
-                  </div>
-                  <CardTitle className="text-2xl">{service.title}</CardTitle>
-                </CardHeader>
-                <CardContent className="flex-grow text-center flex flex-col">
-                  <CardDescription className="text-base mb-6 flex-grow">{service.description}</CardDescription>
-                  <Button variant="link" asChild className="text-primary hover:text-primary/80 mt-auto">
-                    <Link href={`/services#${service.id}`}>
-                      Learn More <ArrowRight className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
-                </CardContent>
-              </Card>
-            </motion.div>
+          {sectionTitle.split(" ").map((word, index) => (
+              <motion.span key={index} variants={wordChildVariants} style={{ display: "inline-block", marginRight: "0.25em"}}>{word}</motion.span>
           ))}
-        </div>
-        <motion.div
-          className="mt-12 text-center"
-          variants={buttonContainerVariants}
+        </motion.h2>
+        <motion.p
+          className="mt-4 max-w-2xl mx-auto text-muted-foreground md:text-xl"
+          variants={paragraphVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ amount: 0.2 }}
         >
-          <Button asChild size="lg" variant="outline" className="shadow-sm hover:shadow-md transition-shadow">
-            <Link href="/services">
-              View All Services
-            </Link>
-          </Button>
-        </motion.div>
+          {sectionDescription}
+        </motion.p>
+      </motion.div>
+      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {highlightedServices.map((service, index) => (
+          <motion.div
+            key={service.id}
+            custom={index}
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <Card className="flex flex-col shadow-lg hover:shadow-xl transition-shadow duration-300 h-full rounded-xl">
+              <CardHeader className="items-center text-center">
+                <div className="p-3 rounded-full bg-primary/10 text-primary mb-4">
+                  <service.icon className="h-10 w-10" />
+                </div>
+                <CardTitle className="text-2xl">{service.title}</CardTitle>
+              </CardHeader>
+              <CardContent className="flex-grow text-center flex flex-col">
+                <CardDescription className="text-base mb-6 flex-grow">{service.description}</CardDescription>
+                <Button variant="link" asChild className="text-primary hover:text-primary/80 mt-auto">
+                  <Link href={`/services#${service.id}`}>
+                    Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+          </motion.div>
+        ))}
       </div>
+      <motion.div
+        className="mt-12 text-center"
+        variants={buttonContainerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ amount: 0.2 }}
+      >
+        <Button asChild size="lg" variant="outline" className="shadow-sm hover:shadow-md transition-shadow">
+          <Link href="/services">
+            View All Services
+          </Link>
+        </Button>
+      </motion.div>
     </motion.section>
   );
 }
-
-    
