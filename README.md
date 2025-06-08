@@ -1,4 +1,4 @@
-# Fir.
+git sta# Fir.
 ebase Studio
 
 This is a NextJS starter in Firebase Studio.
