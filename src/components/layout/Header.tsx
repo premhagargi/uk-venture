@@ -56,7 +56,7 @@ export function Header() {
     >
       {/* Mobile Header - Top Bar */}
       <div className={cn(
-        "md:hidden flex items-center justify-between p-4 h-16 bg-background shadow-sm container mx-auto transition-transform duration-300 ease-in-out",
+        "md:hidden flex items-center justify-between p-4 h-16 bg-card/90 backdrop-blur-sm shadow-md container mx-auto transition-transform duration-300 ease-in-out",
         isVisible ? "translate-y-0" : "-translate-y-full"
       )}>
         <Link href="/" className="flex items-center gap-2 shrink-0" onClick={() => setIsMobileSheetOpen(false)}>
@@ -129,15 +129,14 @@ export function Header() {
       <AnimatePresence>
       {isVisible && (
         <motion.div
-          className="hidden md:block" // Outer div for positioning/animation, no container here
+          className="hidden md:block container mx-auto px-3 sm:px-4" 
           initial="initial"
           animate="animate"
           exit="exit"
           variants={headerBarAnimation}
         >
           <nav
-            className="container mx-auto px-3 sm:px-4 my-3 bg-card/80 backdrop-blur-md shadow-xl rounded-full flex items-center justify-between h-14"
-            // Nav is the pill, container mx-auto here, specific px
+            className="my-3 bg-card/80 backdrop-blur-md shadow-xl rounded-full flex items-center justify-between h-14 px-3 sm:px-4"
           >
              <Link href="/" className="flex-shrink-0" onClick={() => setActivePill('/')}>
               <motion.div
@@ -159,7 +158,7 @@ export function Header() {
                       activePill === link.href
                         ? "text-primary-foreground"
                         : "text-muted-foreground hover:text-foreground",
-                      "focus-visible:ring-offset-background" // Offset from the page's background
+                      "focus-visible:ring-offset-background" 
                     )}
                   >
                     {activePill === link.href && (
@@ -181,3 +180,4 @@ export function Header() {
     </header>
   );
 }
+
