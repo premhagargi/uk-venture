@@ -38,7 +38,7 @@ const paragraphVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.6, 0.01, 0.05, 0.95], delay: 0.2 }, // Reduced delay from 0.4
+    transition: { duration: 0.6, ease: [0.6, 0.01, 0.05, 0.95], delay: 0.2 },
   },
 };
 
@@ -47,7 +47,7 @@ const buttonsVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: 'easeOut', delay: 0.3 }, // Reduced delay from 0.6
+    transition: { duration: 0.5, ease: 'easeOut', delay: 0.3 },
   },
 };
 
@@ -56,7 +56,7 @@ const imageVariants = {
   visible: {
     opacity: 1,
     scale: 1,
-    transition: { duration: 0.7, ease: [0.6, 0.01, 0.05, 0.95], delay: 0.1 }, // Reduced delay from 0.2
+    transition: { duration: 0.7, ease: [0.6, 0.01, 0.05, 0.95], delay: 0.1 },
   },
 };
 
@@ -66,24 +66,23 @@ const heroTitleSpan = "Modern Investors";
 export function HeroSection() {
   return (
     <motion.section
-      className="w-full pt-16 md:pt-40 py-12 md:py-24 lg:py-32 bg-gradient-to-br from-primary/5 via-background to-accent/10 overflow-hidden"
+      className="w-full bg-card rounded-2xl shadow-xl overflow-hidden"
       initial="hidden"
       whileInView="visible"
       variants={sectionRootVariants}
-      viewport={{ once: true, amount: 0.05 }} // amount:0.05 for earlier trigger for the whole section
+      viewport={{ once: true, amount: 0.05 }}
     >
-      <div className="container px-4 md:px-6">
+      <div className="container px-4 md:px-6 py-12 md:py-16 lg:py-20">
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 items-center">
-          {/* Left Column: Text and Buttons */}
           <motion.div
             className="flex flex-col justify-center space-y-6"
-            variants={sentenceContainerVariants} // This will stagger its direct children (h1, p, buttons div)
-            custom={0} // Pass custom prop for staggering if sentenceContainerVariants uses it
+            variants={sentenceContainerVariants}
+            custom={0}
           >
             <motion.h1
               className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none xl:max-w-xl text-foreground"
-              variants={sentenceContainerVariants} // This variant staggers the words inside
-              custom={1} // Custom prop for staggering delay index
+              variants={sentenceContainerVariants}
+              custom={1}
             >
               {heroTitleLine1.split(" ").map((word, index) => (
                 <motion.span key={`word1-${index}`} variants={wordChildVariants} style={{ display: "inline-block", marginRight: "0.25em" }}>
@@ -122,18 +121,17 @@ export function HeroSection() {
             </motion.div>
           </motion.div>
 
-          {/* Right Column: Image */}
           <motion.div
             variants={imageVariants}
-            className="flex justify-center items-center lg:order-last" // Ensure image alignment
+            className="flex justify-center items-center lg:order-last"
           >
             <Image
               src="/uk-venture-logo.svg"
-              width={450} // Slightly increased for better presence
+              width={450}
               height={450}
               alt="UK Venture Logo"
               className="mx-auto aspect-square object-contain max-h-[250px] sm:max-h-[300px] md:max-h-[350px] lg:max-h-[400px]"
-              priority // Added priority for LCP
+              priority
             />
           </motion.div>
         </div>
@@ -141,3 +139,5 @@ export function HeroSection() {
     </motion.section>
   );
 }
+
+    

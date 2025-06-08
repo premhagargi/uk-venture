@@ -9,7 +9,6 @@ import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-// Word-by-word animation variants
 const sentenceContainerVariants = {
   hidden: { opacity: 0 },
   visible: (i = 1) => ({
@@ -27,7 +26,6 @@ const wordChildVariants = {
   },
 };
 
-// General fade-in-up for paragraphs or less prominent elements
 const fadeInUpVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
@@ -37,10 +35,9 @@ const fadeInUpVariants = {
   },
 };
 
-// Stagger children for sections
 const sectionStaggerVariants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } }, // Faster stagger for cards
+  visible: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
 };
 
 const cardVariants = (index: number) => ({
@@ -57,20 +54,17 @@ const pageDescription = `At ${APP_NAME}, we offer comprehensive stock broking an
 
 export default function ServicesPage() {
   return (
-    <motion.div
-      className="container px-4 md:px-6 pt-12 md:pt-40 pb-16 md:pb-20 lg:pb-24"
-      // Removed initial/whileInView/variants/viewport from page root
-    >
-      <motion.div // This is the title/description block
-        className="text-center mb-12 md:mb-16"
+    <motion.div>
+      <motion.div
+        className="bg-card rounded-2xl shadow-xl p-6 md:p-8 text-center"
         initial="hidden"
-        animate="visible" // Changed from whileInView
-        variants={sentenceContainerVariants} // Staggers h1 and p
-        viewport={{ amount: 0.05 }} // Keeps viewport for re-trigger if scrolled out and back
+        animate="visible"
+        variants={sentenceContainerVariants}
+        viewport={{ amount: 0.05 }}
       >
         <motion.h1
           className="text-4xl font-bold tracking-tighter sm:text-5xl text-foreground"
-          variants={sentenceContainerVariants} // For word-by-word within h1
+          variants={sentenceContainerVariants}
         >
           {pageTitle.split(" ").map((word, index) => (
             <motion.span key={index} variants={wordChildVariants} style={{ display: "inline-block", marginRight: "0.25em"}}>{word}</motion.span>
@@ -85,11 +79,11 @@ export default function ServicesPage() {
       </motion.div>
 
       <motion.div
-        className="space-y-12 md:space-y-16"
+        className="space-y-4 md:space-y-6 lg:space-y-8" // Replaced outer bg-card with space-y for individual service cards
         initial="hidden"
         whileInView="visible"
-        variants={sectionStaggerVariants} // For staggering cards below
-        viewport={{ once: true, amount: 0.05 }} // once:true is fine for sections below the fold
+        variants={sectionStaggerVariants}
+        viewport={{ once: true, amount: 0.05 }}
       >
         {SERVICES_DATA.map((service, index) => (
           <motion.div
@@ -99,8 +93,9 @@ export default function ServicesPage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.15 }}
+            className="bg-card rounded-2xl shadow-xl overflow-hidden" // Apply detached style to each service card container
           >
-            <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-xl">
+            <Card className="overflow-hidden shadow-none transition-shadow duration-300 rounded-2xl border-0"> {/* Remove default card shadow if parent has one */}
               <div className={`grid md:grid-cols-2 gap-0 items-stretch`}>
                 <div className={`p-6 md:p-8 flex flex-col justify-center ${index % 2 !== 0 ? 'md:col-start-2' : ''}`}>
                   <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-6">
@@ -147,3 +142,5 @@ export default function ServicesPage() {
     </motion.div>
   );
 }
+
+    

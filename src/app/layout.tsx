@@ -29,55 +29,51 @@ export default function RootLayout({
   const [isLoaderVisible, setIsLoaderVisible] = React.useState(false);
   const [displayedChildren, setDisplayedChildren] = React.useState(children);
   const [contentAnimationKey, setContentAnimationKey] = React.useState(pathname);
-  const [showContent, setShowContent] = React.useState(true); // true for initial load
+  const [showContent, setShowContent] = React.useState(true);
 
   React.useEffect(() => {
-    // Only trigger transition if the pathname has actually changed.
-    // contentAnimationKey holds the pathname of the currently displayed content.
     if (pathname !== contentAnimationKey) {
-      setShowContent(false); // Trigger fast fade-out of current content
-      setIsLoaderVisible(true); // Start loader's 'enter' animation
+      setShowContent(false);
+      setIsLoaderVisible(true);
       document.body.classList.add('disable-hover');
 
-      // After loader's enter animation duration (0.9s)
       const screenCoverTimer = setTimeout(() => {
-        setDisplayedChildren(children);   // Update to new page's children
-        setContentAnimationKey(pathname); // Change key for AnimatePresence to handle new content.
-                                          // New content mounts with initial opacity 0 and showContent still false.
-        setIsLoaderVisible(false); // Trigger loader's 'exit' animation
-      }, 900); // Duration of loader's 'enter' animation
+        setDisplayedChildren(children);
+        setContentAnimationKey(pathname);
+        setIsLoaderVisible(false);
+      }, 900);
 
       return () => {
         clearTimeout(screenCoverTimer);
       };
     }
-  }, [pathname, children, contentAnimationKey]); // contentAnimationKey is needed to detect actual route change
+  }, [pathname, children, contentAnimationKey]);
 
   const handleLoaderExitAnimationComplete = () => {
-    setShowContent(true); // Now, allow the new content to fade in
+    setShowContent(true);
     document.body.classList.remove('disable-hover');
   };
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn(raleway.variable, "font-sans antialiased flex flex-col min-h-screen")}>
+      <body className={cn(raleway.variable, "font-sans antialiased flex flex-col min-h-screen bg-background")}>
         <Header />
 
         <AnimatePresence onExitComplete={handleLoaderExitAnimationComplete}>
           {isLoaderVisible && <PageTransitionLoader />}
         </AnimatePresence>
 
-        <main className="flex-grow pt-16 md:pt-0 relative">
+        <main className="flex-grow pt-16 md:pt-[calc(4rem+1rem)] relative"> {/* 4rem header + 1rem gap approx for md:pt-20 */}
           <AnimatePresence mode="wait">
             <motion.div
               key={contentAnimationKey}
               initial={{ opacity: 0 }}
               animate={{
                 opacity: showContent ? 1 : 0,
-                transition: { duration: showContent ? 0.5 : 0.1, ease: "easeOut" } // 0.5s fade-in, 0.1s fade-out
+                transition: { duration: showContent ? 0.5 : 0.1, ease: "easeOut" }
               }}
-              exit={{ opacity: 0, transition: { duration: 0.1 } }} // Quick exit for old content instance
-              className="w-full h-full"
+              exit={{ opacity: 0, transition: { duration: 0.1 } }}
+              className="w-full h-full p-2 sm:p-4 md:p-6 flex flex-col gap-4 md:gap-6"
             >
               {displayedChildren}
             </motion.div>
@@ -89,3 +85,5 @@ export default function RootLayout({
     </html>
   );
 }
+
+    

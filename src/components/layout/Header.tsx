@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { BarChartBig, Menu } from 'lucide-react';
 import { NAV_LINKS, APP_NAME } from '@/lib/constants';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetHeader, SheetFooter, SheetClose, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetFooter, SheetClose, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
@@ -42,21 +42,23 @@ export function Header() {
     };
   }, [headerHeightThreshold]);
 
-  const pillAnimation = {
+  const headerBarAnimation = {
     initial: { opacity: 0, y: -20 },
     animate: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 300, damping: 30 } },
-    exit: { opacity: 0, y: -20 },
+    exit: { opacity: 0, y: -20, transition: { duration: 0.2 } },
   };
 
   return (
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ease-in-out",
-        isVisible ? "translate-y-0" : "-translate-y-full"
       )}
     >
       {/* Mobile Header - Top Bar */}
-      <div className="md:hidden flex items-center justify-between p-4 h-16 bg-background shadow-sm container mx-auto">
+      <div className={cn(
+        "md:hidden flex items-center justify-between p-4 h-16 bg-background shadow-sm container mx-auto transition-transform duration-300 ease-in-out",
+        isVisible ? "translate-y-0" : "-translate-y-full"
+      )}>
         <Link href="/" className="flex items-center gap-2 shrink-0" onClick={() => setIsMobileSheetOpen(false)}>
           <span className="font-bold text-lg text-foreground">{APP_NAME}</span>
         </Link>
@@ -72,7 +74,7 @@ export function Header() {
             side="right"
             className={cn(
                 "!w-screen !h-screen !max-w-none !border-0",
-                "bg-card/80 backdrop-blur-md !rounded-none", // Updated for glass morphism
+                "bg-card/60 backdrop-blur-md !rounded-none",
                 "data-[state=open]:animate-spread-in-tr data-[state=closed]:animate-spread-out-tr",
                 "data-[state=closed]:duration-300 data-[state=open]:duration-500",
                 "p-6 flex flex-col"
@@ -123,24 +125,20 @@ export function Header() {
         </Sheet>
       </div>
 
-      {/* Desktop Header - Pill Navigation */}
+      {/* Desktop Header - Full Width Bar */}
       <AnimatePresence>
       {isVisible && (
         <motion.div
-          className="hidden md:flex justify-center pt-4 sm:pt-6"
+          className="hidden md:block bg-black backdrop-blur-md shadow-xl w-full"
           initial="initial"
           animate="animate"
           exit="exit"
-          variants={pillAnimation}
+          variants={headerBarAnimation}
         >
-          <motion.nav
-            className="flex items-center gap-4 p-1.5 px-5 bg-black backdrop-blur-md rounded-full shadow-xl"
-            initial={{ y: -100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1, transition: { type: 'spring', stiffness: 200, damping: 25, delay: 0.1 } }}
-          >
+          <nav className="container mx-auto flex items-center justify-between h-16">
              <Link href="/" className="flex-shrink-0" onClick={() => setActivePill('/')}>
               <motion.div
-                className="text-background font-semibold text-lg px-3 py-1.5 rounded-full hover:bg-white/10 transition-colors"
+                className="text-white font-semibold text-lg px-4 py-2 rounded-full hover:bg-white/20 transition-colors"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -156,14 +154,14 @@ export function Header() {
                     className={cn(
                       "relative px-4 py-1.5 text-sm font-medium rounded-full transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-black",
                       activePill === link.href
-                        ? "text-foreground" // Will use theme foreground (e.g., black on light, white on dark)
-                        : "text-neutral-200 opacity-70 hover:opacity-100" // Fixed light gray for contrast on black pill
+                        ? "text-foreground" // Will be white text from theme on black bg
+                        : "text-neutral-200 opacity-70 hover:opacity-100" // inactive links
                     )}
                   >
                     {activePill === link.href && (
                       <motion.div
                         layoutId="active-desktop-pill"
-                        className="absolute inset-0 bg-background rounded-full z-[-1]" // Will use theme background (e.g., white on light, dark on dark)
+                        className="absolute inset-0 bg-background rounded-full z-[-1]" // bg-background will be light
                         transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                       />
                     )}
@@ -172,7 +170,7 @@ export function Header() {
                 </Link>
               ))}
             </div>
-          </motion.nav>
+          </nav>
         </motion.div>
       )}
       </AnimatePresence>

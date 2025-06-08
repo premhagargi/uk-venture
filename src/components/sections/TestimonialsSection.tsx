@@ -17,7 +17,7 @@ const sectionVariants = {
 
 const titleContainerVariants = {
   hidden: { opacity: 0 },
-  visible: (i = 1) => ({ // Added custom prop for staggering delay
+  visible: (i = 1) => ({
     opacity: 1,
     transition: { staggerChildren: 0.07, delayChildren: i * 0.1 },
   }),
@@ -57,22 +57,22 @@ export function TestimonialsSection() {
 
   return (
     <motion.section
-      className="py-12 md:py-24 lg:py-32 bg-muted/50"
+      className="bg-card rounded-2xl shadow-xl overflow-hidden"
       initial="hidden"
       whileInView="visible"
       variants={sectionVariants}
       viewport={{ once: true, amount: 0.1 }}
     >
-      <div className="container px-4 md:px-6">
+      <div className="container px-4 md:px-6 py-12 md:py-16 lg:py-20">
         <motion.div
           className="text-center mb-12"
-          variants={titleContainerVariants} // This will stagger h2 and p
-          custom={0} // Pass custom prop for stagger delay index
+          variants={titleContainerVariants}
+          custom={0}
         >
           <motion.h2
             className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-foreground"
-            variants={titleContainerVariants} // For word-by-word inside
-            custom={1} // Pass custom prop for stagger delay index
+            variants={titleContainerVariants}
+            custom={1}
           >
             {title.split(" ").map((word, index) => (
               <motion.span key={index} variants={wordChildVariants} style={{ display: "inline-block", marginRight: "0.25em"}}>{word}</motion.span>
@@ -91,9 +91,6 @@ export function TestimonialsSection() {
               key={testimonial.id}
               custom={index}
               variants={cardVariants}
-              // initial="hidden" // Already handled by parent's whileInView and variants
-              // whileInView="visible"
-              // viewport={{ once: true, amount: 0.2 }} // Viewport on individual cards can be fine-tuned if needed
             >
               <Card className="flex flex-col justify-between shadow-lg hover:shadow-xl transition-shadow duration-300 h-full rounded-xl">
                 <CardHeader>
@@ -122,3 +119,5 @@ export function TestimonialsSection() {
     </motion.section>
   );
 }
+
+    

@@ -68,14 +68,14 @@ export function ServicesHighlight() {
 
   return (
     <motion.section
-      className="py-12 md:py-24 lg:py-32 bg-background"
+      className="bg-card rounded-2xl shadow-xl overflow-hidden"
       initial="hidden"
       whileInView="visible"
       variants={sectionVariants}
       viewport={{ once: true, amount: 0.1 }}
     >
       <div
-        className="container px-4 md:px-6"
+        className="container px-4 md:px-6 py-12 md:py-16 lg:py-20"
       >
         <motion.div
           className="text-center mb-12"
@@ -103,7 +103,7 @@ export function ServicesHighlight() {
               custom={index}
               variants={cardVariants}
             >
-              <Card className="flex flex-col shadow-lg hover:shadow-xl transition-shadow duration-300 h-full">
+              <Card className="flex flex-col shadow-lg hover:shadow-xl transition-shadow duration-300 h-full rounded-xl">
                 <CardHeader className="items-center text-center">
                   <div className="p-3 rounded-full bg-primary/10 text-primary mb-4">
                     <service.icon className="h-10 w-10" />
@@ -136,3 +136,5 @@ export function ServicesHighlight() {
     </motion.section>
   );
 }
+
+    

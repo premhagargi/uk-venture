@@ -6,7 +6,6 @@ import { APP_NAME } from '@/lib/constants';
 import { Lightbulb } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-// Word-by-word animation variants
 const sentenceContainerVariants = {
   hidden: { opacity: 0 },
   visible: (i = 1) => ({
@@ -24,7 +23,6 @@ const wordChildVariants = {
   },
 };
 
-// General fade-in-up for paragraphs or less prominent elements
 const fadeInUpVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
@@ -43,35 +41,26 @@ const iconVariants = {
   },
 }
 
-// Stagger children for sections
-const sectionStaggerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.2, delayChildren: 0.1 } },
-};
-
 const pageTitle = "Unlock Your Financial Potential";
 const pageDescription = `Our Smart Financial Insights tool uses advanced AI to analyze your financial situation and provide actionable advice. Understand your finances better and make smarter decisions.`;
 
 
 export default function InsightsPage() {
   return (
-    <motion.div
-      className="container px-4 md:px-6 pt-12 md:pt-40 pb-16 md:pb-20 lg:pb-24"
-      // Removed initial/whileInView/variants/viewport from page root
-    >
-      <motion.div // This is the title/description block
-        className="text-center mb-12 md:mb-16"
+    <motion.div>
+      <motion.div
+        className="bg-card rounded-2xl shadow-xl p-6 md:p-8 text-center"
         initial="hidden"
-        animate="visible" // Changed from whileInView
-        variants={sentenceContainerVariants} // Staggers icon, h1, and p
-        viewport={{ amount: 0.05 }} // Keeps viewport for re-trigger if scrolled out and back
+        animate="visible"
+        variants={sentenceContainerVariants}
+        viewport={{ amount: 0.05 }}
       >
         <motion.div variants={iconVariants}>
           <Lightbulb className="h-16 w-16 text-primary mx-auto mb-4" />
         </motion.div>
         <motion.h1
           className="text-4xl font-bold tracking-tighter sm:text-5xl text-foreground"
-          variants={sentenceContainerVariants} // For word-by-word within h1
+          variants={sentenceContainerVariants}
         >
           {pageTitle.split(" ").map((word, index) => (
             <motion.span key={index} variants={wordChildVariants} style={{ display: "inline-block", marginRight: "0.25em"}}>{word}</motion.span>
@@ -84,14 +73,18 @@ export default function InsightsPage() {
          {pageDescription}
         </motion.p>
       </motion.div>
+
       <motion.div
+        className="bg-card rounded-2xl shadow-xl p-6 md:p-8" // FinancialInsightsTool is already a Card, so this wraps it.
         initial="hidden"
-        whileInView="visible" // This is fine for content below the fold
+        whileInView="visible"
         variants={fadeInUpVariants}
-        viewport={{ once: true, amount: 0.1 }} // once:true is fine for sections below the fold
+        viewport={{ once: true, amount: 0.1 }}
       >
         <FinancialInsightsTool />
       </motion.div>
     </motion.div>
   );
 }
+
+    

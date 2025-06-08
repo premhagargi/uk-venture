@@ -4,13 +4,11 @@
 import Image from 'next/image';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
 import { APP_NAME } from '@/lib/constants';
 import { Target, History, Users, Linkedin, Lightbulb, ShieldCheck, GraduationCap, TrendingUp, Handshake, Goal, UsersRound } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 
-// Word-by-word animation variants
 const sentenceContainerVariants = {
   hidden: { opacity: 0 },
   visible: (i = 1) => ({
@@ -28,7 +26,6 @@ const wordChildVariants = {
   },
 };
 
-// General fade-in-up for paragraphs or less prominent elements
 const fadeInUpVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
@@ -38,7 +35,6 @@ const fadeInUpVariants = {
   },
 };
 
-// Stagger children for sections
 const sectionStaggerVariants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.2 } },
@@ -62,22 +58,8 @@ const philosophyMainText = "We believe that financial empowerment is right, not 
 const teamIntroText = "The dedicated professionals behind your financial success.";
 
 const teamMembers = [
-  {
-    name: "Hrishikesh Terani",
-    role: "CEO/Founder",
-    avatarSrc: "https://placehold.co/100x100.png",
-    avatarHint: "CEO/Founder",
-    initials: "AP",
-    linkedin: "#"
-  },
-  {
-    name: "Naveen K R",
-    role: "Senior Director",
-    avatarSrc: "https://placehold.co/100x100.png",
-    avatarHint: "senior director portrait",
-    initials: "NKR",
-    linkedin: "#"
-  },
+  { name: "Hrishikesh Terani", role: "CEO/Founder", avatarSrc: "https://placehold.co/100x100.png", avatarHint: "CEO Founder", initials: "AP", linkedin: "#" },
+  { name: "Naveen K R", role: "Senior Director", avatarSrc: "https://placehold.co/100x100.png", avatarHint: "senior director portrait", initials: "NKR", linkedin: "#" },
 ];
 
 const historyItems = [
@@ -94,14 +76,14 @@ const investmentPhilosophyItems = [
 
 export default function AboutPage() {
   return (
-    <motion.div
-      className="container px-4 md:px-6 pt-12 md:pt-40 pb-16 md:pb-20 lg:pb-24"
-      initial="hidden"
-      whileInView="visible"
-      variants={sectionStaggerVariants}
-      viewport={{ once: true, amount: 0.05 }} // amount:0.05 for earlier trigger for the whole page
-    >
-      <motion.div className="text-center mb-12 md:mb-16" variants={sentenceContainerVariants}>
+    <motion.div>
+      <motion.div
+        className="bg-card rounded-2xl shadow-xl p-6 md:p-8 text-center"
+        variants={sentenceContainerVariants}
+        initial="hidden"
+        animate="visible"
+        viewport={{ amount: 0.05 }}
+      >
         <motion.h1 className="text-4xl font-bold tracking-tighter sm:text-5xl text-foreground" variants={sentenceContainerVariants}>
           {pageTitle.split(" ").map((word, index) => (
             <motion.span key={index} variants={wordChildVariants} style={{ display: "inline-block", marginRight: "0.25em" }}>{word}</motion.span>
@@ -112,7 +94,13 @@ export default function AboutPage() {
         </motion.p>
       </motion.div>
 
-      <motion.section className="mb-16" variants={sectionStaggerVariants}>
+      <motion.section
+        className="bg-card rounded-2xl shadow-xl p-6 md:p-8"
+        variants={sectionStaggerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.05 }}
+      >
         <div className="grid md:grid-cols-2 gap-12 items-start">
           <motion.div className="space-y-8" variants={sentenceContainerVariants}>
             <motion.div variants={fadeInUpVariants}>
@@ -155,9 +143,13 @@ export default function AboutPage() {
         </div>
       </motion.section>
 
-      <Separator className="my-16" />
-
-      <motion.section className="mb-16" variants={sectionStaggerVariants}>
+      <motion.section
+        className="bg-card rounded-2xl shadow-xl p-6 md:p-8"
+        variants={sectionStaggerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.05 }}
+      >
         <motion.div className="text-center mb-10" variants={sentenceContainerVariants}>
           <div className="inline-flex items-center gap-3 bg-primary/10 px-4 py-2 rounded-full mb-4">
             <TrendingUp className="h-6 w-6 text-primary" />
@@ -190,9 +182,13 @@ export default function AboutPage() {
         </div>
       </motion.section>
 
-      <Separator className="my-16" />
-
-      <motion.section className="mb-16" variants={sectionStaggerVariants}>
+      <motion.section
+        className="bg-card rounded-2xl shadow-xl p-6 md:p-8"
+        variants={sectionStaggerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.05 }}
+      >
          <motion.div className="text-center mb-10" variants={sentenceContainerVariants}>
              <div className="inline-flex items-center gap-3 bg-primary/10 px-4 py-2 rounded-full mb-4">
                 <History className="h-6 w-6 text-primary" />
@@ -227,7 +223,7 @@ export default function AboutPage() {
                   </div>
                   <div
                     className={cn(
-                      "ml-10 p-4 rounded-lg shadow-lg bg-card text-left",
+                      "ml-10 p-4 rounded-lg shadow-lg bg-muted text-left", // Changed bg-card to bg-muted for contrast if outer section is bg-card
                       "md:w-5/12 md:ml-0",
                       index % 2 === 0 ? "md:text-left" : "md:text-right"
                     )}
@@ -241,9 +237,13 @@ export default function AboutPage() {
         </div>
       </motion.section>
 
-      <Separator className="my-16" />
-
-      <motion.section variants={sectionStaggerVariants}>
+      <motion.section
+        className="bg-card rounded-2xl shadow-xl p-6 md:p-8"
+        variants={sectionStaggerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.05 }}
+      >
         <motion.div className="text-center mb-12" variants={sentenceContainerVariants}>
           <div className="inline-flex items-center gap-3 bg-primary/10 px-4 py-2 rounded-full mb-4">
             <UsersRound className="h-8 w-8 text-primary" />
@@ -282,7 +282,4 @@ export default function AboutPage() {
   );
 }
 
-// export const metadata: Metadata = { 
-//   title: `About Us`,
-//   description: `Learn about ${APP_NAME}, founded in 2024, our mission to make investing easy and fair, our investment philosophy, and our commitment to client-centric financial empowerment.`,
-// };
+    
