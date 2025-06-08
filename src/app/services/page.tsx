@@ -54,17 +54,17 @@ const pageDescription = `At ${APP_NAME}, we offer comprehensive stock broking an
 
 export default function ServicesPage() {
   return (
-    <motion.div>
+    <>
       <motion.div
-        className="bg-card rounded-2xl shadow-xl p-6 md:p-8 text-center"
-        initial="hidden"
-        animate="visible"
+        className="bg-card p-6 md:p-8 text-center"
+        animate="visible" // Changed from whileInView
         variants={sentenceContainerVariants}
         viewport={{ amount: 0.05 }}
       >
         <motion.h1
           className="text-4xl font-bold tracking-tighter sm:text-5xl text-foreground"
           variants={sentenceContainerVariants}
+          viewport={{ amount: 0.2 }} // Keep viewport for child animations
         >
           {pageTitle.split(" ").map((word, index) => (
             <motion.span key={index} variants={wordChildVariants} style={{ display: "inline-block", marginRight: "0.25em"}}>{word}</motion.span>
@@ -73,13 +73,14 @@ export default function ServicesPage() {
         <motion.p
           className="mt-4 max-w-3xl mx-auto text-muted-foreground md:text-xl"
           variants={fadeInUpVariants}
+          viewport={{ amount: 0.2 }} // Keep viewport for child animations
         >
           {pageDescription}
         </motion.p>
       </motion.div>
 
       <motion.div
-        className="space-y-4 md:space-y-6 lg:space-y-8" // Replaced outer bg-card with space-y for individual service cards
+        className="space-y-4 md:space-y-6 lg:space-y-8" 
         initial="hidden"
         whileInView="visible"
         variants={sectionStaggerVariants}
@@ -93,9 +94,9 @@ export default function ServicesPage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.15 }}
-            className="bg-card rounded-2xl shadow-xl overflow-hidden" // Apply detached style to each service card container
+            className="bg-card rounded-2xl shadow-xl overflow-hidden" 
           >
-            <Card className="overflow-hidden shadow-none transition-shadow duration-300 rounded-2xl border-0"> {/* Remove default card shadow if parent has one */}
+            <Card className="overflow-hidden shadow-none transition-shadow duration-300 rounded-2xl border-0"> 
               <div className={`grid md:grid-cols-2 gap-0 items-stretch`}>
                 <div className={`p-6 md:p-8 flex flex-col justify-center ${index % 2 !== 0 ? 'md:col-start-2' : ''}`}>
                   <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-6">
@@ -139,8 +140,6 @@ export default function ServicesPage() {
           </motion.div>
         ))}
       </motion.div>
-    </motion.div>
+    </>
   );
 }
-
-    

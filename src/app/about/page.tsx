@@ -76,9 +76,9 @@ const investmentPhilosophyItems = [
 
 export default function AboutPage() {
   return (
-    <motion.div>
+    <>
       <motion.div
-        className="bg-card rounded-2xl shadow-xl p-6 md:p-8 text-center"
+        className="bg-card p-6 md:p-8 text-center"
         variants={sentenceContainerVariants}
         initial="hidden"
         animate="visible"
@@ -223,7 +223,7 @@ export default function AboutPage() {
                   </div>
                   <div
                     className={cn(
-                      "ml-10 p-4 rounded-lg shadow-lg bg-muted text-left", // Changed bg-card to bg-muted for contrast if outer section is bg-card
+                      "ml-10 p-4 rounded-lg shadow-lg bg-muted text-left", 
                       "md:w-5/12 md:ml-0",
                       index % 2 === 0 ? "md:text-left" : "md:text-right"
                     )}
@@ -278,8 +278,6 @@ export default function AboutPage() {
           ))}
         </div>
       </motion.section>
-    </motion.div>
+    </>
   );
 }
-
-    

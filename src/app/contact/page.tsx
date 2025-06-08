@@ -60,20 +60,19 @@ const contactDetails = [
 
 export default function ContactPage() {
   return (
-    <motion.div>
+    <>
       <motion.div
-        className="bg-card rounded-2xl shadow-xl p-6 md:p-8 text-center"
-        initial="hidden"
-        animate="visible"
+        className="bg-card p-6 md:p-8 text-center"
+        animate="visible" // Changed from initial/whileInView
         variants={sentenceContainerVariants}
         viewport={{ amount: 0.05 }}
       >
-        <motion.h1 className="text-4xl font-bold tracking-tighter sm:text-5xl text-foreground" variants={sentenceContainerVariants}>
+        <motion.h1 className="text-4xl font-bold tracking-tighter sm:text-5xl text-foreground" variants={sentenceContainerVariants} viewport={{ amount: 0.2 }}>
           {pageTitle.split(" ").map((word, index) => (
             <motion.span key={index} variants={wordChildVariants} style={{ display: "inline-block", marginRight: "0.25em"}}>{word}</motion.span>
           ))}
         </motion.h1>
-        <motion.p className="mt-4 max-w-2xl mx-auto text-muted-foreground md:text-xl" variants={fadeInUpVariants}>
+        <motion.p className="mt-4 max-w-2xl mx-auto text-muted-foreground md:text-xl" variants={fadeInUpVariants} viewport={{ amount: 0.2 }}>
           {pageDescription}
         </motion.p>
       </motion.div>
@@ -135,8 +134,6 @@ export default function ContactPage() {
             </motion.div>
         </div>
       </motion.div>
-    </motion.div>
+    </>
   );
 }
-
-    

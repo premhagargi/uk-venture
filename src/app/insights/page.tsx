@@ -47,20 +47,20 @@ const pageDescription = `Our Smart Financial Insights tool uses advanced AI to a
 
 export default function InsightsPage() {
   return (
-    <motion.div>
+    <>
       <motion.div
-        className="bg-card rounded-2xl shadow-xl p-6 md:p-8 text-center"
-        initial="hidden"
-        animate="visible"
+        className="bg-card p-6 md:p-8 text-center"
+        animate="visible" // Changed from initial/whileInView
         variants={sentenceContainerVariants}
         viewport={{ amount: 0.05 }}
       >
-        <motion.div variants={iconVariants}>
+        <motion.div variants={iconVariants} viewport={{ amount: 0.2 }}>
           <Lightbulb className="h-16 w-16 text-primary mx-auto mb-4" />
         </motion.div>
         <motion.h1
           className="text-4xl font-bold tracking-tighter sm:text-5xl text-foreground"
           variants={sentenceContainerVariants}
+          viewport={{ amount: 0.2 }}
         >
           {pageTitle.split(" ").map((word, index) => (
             <motion.span key={index} variants={wordChildVariants} style={{ display: "inline-block", marginRight: "0.25em"}}>{word}</motion.span>
@@ -69,13 +69,14 @@ export default function InsightsPage() {
         <motion.p
           className="mt-4 max-w-2xl mx-auto text-muted-foreground md:text-xl"
           variants={fadeInUpVariants}
+          viewport={{ amount: 0.2 }}
         >
          {pageDescription}
         </motion.p>
       </motion.div>
 
       <motion.div
-        className="bg-card rounded-2xl shadow-xl p-6 md:p-8" // FinancialInsightsTool is already a Card, so this wraps it.
+        className="bg-card rounded-2xl shadow-xl p-6 md:p-8" 
         initial="hidden"
         whileInView="visible"
         variants={fadeInUpVariants}
@@ -83,8 +84,6 @@ export default function InsightsPage() {
       >
         <FinancialInsightsTool />
       </motion.div>
-    </motion.div>
+    </>
   );
 }
-
-    
