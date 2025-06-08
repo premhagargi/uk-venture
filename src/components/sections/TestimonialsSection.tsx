@@ -57,7 +57,7 @@ export function TestimonialsSection() {
 
   return (
     <motion.section
-      className="relative z-20 -mt-12 md:-mt-16 lg:-mt-20 w-full bg-card rounded-2xl shadow-xl overflow-hidden p-6 md:p-8"
+      className="w-full bg-card rounded-2xl shadow-xl overflow-hidden p-6 md:p-8"
       initial="hidden"
       whileInView="visible"
       variants={sectionVariants}
