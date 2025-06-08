@@ -66,7 +66,7 @@ const heroTitleSpan = "Modern Investors";
 export function HeroSection() {
   return (
     <motion.section
-      className="w-full bg-card rounded-2xl shadow-xl overflow-hidden p-6 md:p-8"
+      className="relative z-0 w-full bg-card rounded-2xl shadow-xl overflow-hidden p-6 md:p-8"
       initial="hidden"
       whileInView="visible"
       variants={sectionRootVariants}

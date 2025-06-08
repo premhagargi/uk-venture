@@ -68,7 +68,7 @@ export function ServicesHighlight() {
 
   return (
     <motion.section
-      className="w-full bg-card rounded-2xl shadow-xl overflow-hidden p-6 md:p-8"
+      className="relative z-10 -mt-12 md:-mt-16 lg:-mt-20 w-full bg-card rounded-2xl shadow-xl overflow-hidden p-6 md:p-8"
       initial="hidden"
       whileInView="visible"
       variants={sectionVariants}

@@ -1,3 +1,4 @@
+
 import { HeroSection } from '@/components/sections/HeroSection';
 import { ServicesHighlight } from '@/components/sections/ServicesHighlight';
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
@@ -11,10 +12,10 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <>
+    <div className="relative">
       <HeroSection />
       <ServicesHighlight />
       <TestimonialsSection />
-    </>
+    </div>
   );
 }
