@@ -1,8 +1,6 @@
-
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { APP_NAME } from '@/lib/constants';
@@ -51,15 +49,6 @@ const buttonsVariants = {
   },
 };
 
-const imageVariants = {
-  hidden: { opacity: 0, scale: 0.9 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 0.7, ease: [0.6, 0.01, 0.05, 0.95], delay: 0.1 },
-  },
-};
-
 const heroTitleLine1 = "Cutting-Edge Financial Services for";
 const heroTitleSpan = "Modern Investors";
 
@@ -72,9 +61,9 @@ export function HeroSection() {
       variants={sectionRootVariants}
       viewport={{ once: true, amount: 0.05 }}
     >
-      <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 items-center">
+      <div className="grid gap-8 lg:grid-cols-1 lg:gap-12 items-center">
         <motion.div
-          className="flex flex-col justify-center space-y-6"
+          className="flex flex-col justify-center space-y-6 text-center items-center"
           variants={sentenceContainerVariants}
           custom={0}
           initial="hidden"
@@ -129,22 +118,6 @@ export function HeroSection() {
               </Link>
             </Button>
           </motion.div>
-        </motion.div>
-
-        <motion.div
-          variants={imageVariants}
-          initial="hidden"
-          animate="visible"
-          className="flex justify-center items-center lg:order-last"
-        >
-          <Image
-            src="/uk-venture-logo.svg"
-            width={450}
-            height={450}
-            alt="UK Venture Logo"
-            className="mx-auto aspect-square object-contain max-h-[250px] sm:max-h-[300px] md:max-h-[350px] lg:max-h-[400px]"
-            priority
-          />
         </motion.div>
       </div>
     </motion.section>
