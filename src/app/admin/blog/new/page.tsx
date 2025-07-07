@@ -26,7 +26,7 @@ export default function NewBlogPostPage() {
         <CardHeader>
           <CardTitle className="text-3xl">Create a New Blog Post</CardTitle>
           <CardDescription>
-            Fill out the form below to publish a new article to the blog. For storage, we can use Firebase Firestore for the post data and Firebase Storage for images.
+            Fill out the form below to publish a new article to the blog. The post data will be stored using Firebase Firestore.
           </CardDescription>
         </CardHeader>
         <CardContent>

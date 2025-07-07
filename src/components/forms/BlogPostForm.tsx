@@ -17,7 +17,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Loader2, Upload } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 import { useTransition } from 'react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
@@ -26,7 +26,6 @@ const blogPostFormSchema = z.object({
   description: z.string().min(20, { message: 'Description must be at least 20 characters.' }),
   category: z.string().min(3, { message: 'Please select a category.' }),
   author: z.string().min(2, { message: 'Author name must be at least 2 characters.' }),
-  image: z.any().refine(files => files?.length === 1, 'Image is required.'),
 });
 
 type BlogPostFormValues = z.infer<typeof blogPostFormSchema>;
@@ -44,8 +43,6 @@ export function BlogPostForm() {
       author: '',
     },
   });
-  
-  const fileRef = form.register("image");
 
   function onSubmit(data: BlogPostFormValues) {
     startTransition(async () => {
@@ -54,7 +51,6 @@ export function BlogPostForm() {
       formData.append('description', data.description);
       formData.append('category', data.category);
       formData.append('author', data.author);
-      formData.append('image', data.image[0]);
 
       try {
         const response = await fetch('/api/blog', {
@@ -163,26 +159,6 @@ export function BlogPostForm() {
                 )}
             />
         </div>
-
-        <FormField
-          control={form.control}
-          name="image"
-          render={({ field }) => {
-            return (
-              <FormItem>
-                <FormLabel>Cover Image</FormLabel>
-                <FormControl>
-                  <div className="relative">
-                    <Input type="file" className="pl-12" {...fileRef} accept="image/png, image/jpeg, image/gif" />
-                    <Upload className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                  </div>
-                </FormControl>
-                <FormDescription>Upload a cover image for the blog post (e.g., JPG, PNG).</FormDescription>
-                <FormMessage />
-              </FormItem>
-            );
-          }}
-        />
 
         <Button type="submit" disabled={isPending} size="lg" className="w-full md:w-auto">
           {isPending ? (

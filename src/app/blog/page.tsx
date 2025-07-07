@@ -1,9 +1,8 @@
 
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
-import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Newspaper, CalendarDays, AlertTriangle } from 'lucide-react';
@@ -63,33 +62,27 @@ interface BlogPost {
   description: string;
   category: string;
   author: string;
-  imageUrl: string;
   createdAt: Timestamp;
   slug: string;
 }
 
 const LoadingSkeleton = () => (
     <Card className="flex flex-col h-full overflow-hidden rounded-xl shadow-lg">
-      <CardHeader className="p-0">
-        <div className="relative aspect-video">
-          <Skeleton className="h-full w-full" />
+      <CardHeader className="p-6">
+        <div className="space-y-3">
+            <Skeleton className="h-5 w-24 rounded-full" />
+            <Skeleton className="h-6 w-full" />
+            <Skeleton className="h-6 w-3/4" />
         </div>
       </CardHeader>
-      <CardContent className="p-6 flex-grow flex flex-col">
-        <div className="mb-4">
-          <Skeleton className="h-5 w-24 rounded-full" />
-        </div>
-        <div className="space-y-2 flex-grow mb-4">
-          <Skeleton className="h-6 w-full" />
-          <Skeleton className="h-6 w-3/4" />
-        </div>
+      <CardContent className="p-6 pt-0 flex-grow">
          <div className="space-y-2">
           <Skeleton className="h-4 w-full" />
           <Skeleton className="h-4 w-full" />
           <Skeleton className="h-4 w-2/3" />
         </div>
       </CardContent>
-      <CardFooter className="p-6 pt-0 border-t mt-auto">
+      <CardFooter className="p-6 pt-4 border-t mt-auto">
         <div className="flex items-center justify-between w-full">
           <div className="flex items-center gap-2">
             <Skeleton className="h-8 w-8 rounded-full" />
@@ -187,28 +180,18 @@ export default function BlogPage() {
           posts.map((post, index) => (
             <motion.div key={post.id} variants={cardVariants(index)}>
               <Card className="flex flex-col h-full overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
-                <div className="block cursor-pointer">
-                  <div className="relative aspect-video">
-                    <Image
-                      src={post.imageUrl}
-                      alt={post.title}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                </div>
-                <CardContent className="p-6 flex-grow flex flex-col">
-                  <div className="mb-4">
-                    <Badge variant="secondary">{post.category}</Badge>
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground mb-2 flex-grow cursor-pointer hover:text-primary transition-colors">
-                      {post.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm line-clamp-3 mb-4">
+                <CardHeader className="p-6">
+                    <Badge variant="secondary" className="w-fit">{post.category}</Badge>
+                    <CardTitle className="text-xl pt-2 hover:text-primary transition-colors cursor-pointer">
+                        {post.title}
+                    </CardTitle>
+                </CardHeader>
+                <CardContent className="p-6 pt-0 flex-grow">
+                  <p className="text-muted-foreground text-sm line-clamp-3">
                     {post.description}
                   </p>
                 </CardContent>
-                <CardFooter className="p-6 pt-0 border-t mt-auto">
+                <CardFooter className="p-6 pt-4 border-t mt-auto">
                   <div className="flex items-center justify-between w-full text-sm text-muted-foreground">
                       <div className="flex items-center gap-2">
                           <Avatar className="h-8 w-8">
