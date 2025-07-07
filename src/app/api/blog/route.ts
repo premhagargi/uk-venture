@@ -18,11 +18,12 @@ export async function POST(request: Request) {
     }
 
     // Convert file to buffer to handle it reliably on the server
-    const imageBuffer = await imageFile.arrayBuffer();
+    const arrayBuffer = await imageFile.arrayBuffer();
+    const buffer = Buffer.from(arrayBuffer);
 
     // Upload image to Firebase Storage with explicit content type
     const storageRef = ref(storage, `blog-images/${Date.now()}_${imageFile.name}`);
-    await uploadBytes(storageRef, imageBuffer, { contentType: imageFile.type });
+    await uploadBytes(storageRef, buffer, { contentType: imageFile.type });
     const imageUrl = await getDownloadURL(storageRef);
 
     // Save blog post to Firestore
@@ -39,8 +40,9 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ success: true, message: 'Blog post created successfully' });
   } catch (error) {
-    console.error('Error creating blog post:', error);
+    console.error('Upload Error:', JSON.stringify(error, null, 2));
     const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
     return NextResponse.json({ success: false, message: errorMessage }, { status: 500 });
   }
+  
 }
