@@ -178,38 +178,40 @@ export default function BlogPage() {
             </div>
         ) : (
           posts.map((post, index) => (
-            <motion.div key={post.id} variants={cardVariants(index)}>
-              <Card className="flex flex-col h-full overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
-                <CardHeader className="p-6">
-                    <Badge variant="secondary" className="w-fit">{post.category}</Badge>
-                    <CardTitle className="text-xl pt-2 hover:text-primary transition-colors cursor-pointer">
-                        {post.title}
-                    </CardTitle>
-                </CardHeader>
-                <CardContent className="p-6 pt-0 flex-grow">
-                  <p className="text-muted-foreground text-sm line-clamp-3">
-                    {post.description}
-                  </p>
-                </CardContent>
-                <CardFooter className="p-6 pt-4 border-t mt-auto">
-                  <div className="flex items-center justify-between w-full text-sm text-muted-foreground">
-                      <div className="flex items-center gap-2">
-                          <Avatar className="h-8 w-8">
-                              <AvatarImage src={undefined} alt={post.author} />
-                              <AvatarFallback>{post.author.split(' ').map(n => n[0]).join('').toUpperCase()}</AvatarFallback>
-                          </Avatar>
-                          <span>{post.author}</span>
-                      </div>
-                       <div className="flex items-center gap-1.5">
-                          <CalendarDays className="h-4 w-4" />
-                          <time dateTime={post.createdAt.toDate().toISOString()}>
-                              {format(post.createdAt.toDate(), 'MMM d, yyyy')}
-                          </time>
-                      </div>
-                  </div>
-                </CardFooter>
-              </Card>
-            </motion.div>
+            <Link key={post.id} href={`/blog/${post.slug}`} legacyBehavior>
+              <motion.div variants={cardVariants(index)} className="cursor-pointer h-full">
+                <Card className="flex flex-col h-full overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                  <CardHeader className="p-6">
+                      <Badge variant="secondary" className="w-fit">{post.category}</Badge>
+                      <CardTitle className="text-xl pt-2 hover:text-primary transition-colors">
+                          {post.title}
+                      </CardTitle>
+                  </CardHeader>
+                  <CardContent className="p-6 pt-0 flex-grow">
+                    <p className="text-muted-foreground text-sm line-clamp-3">
+                      {post.description}
+                    </p>
+                  </CardContent>
+                  <CardFooter className="p-6 pt-4 border-t mt-auto">
+                    <div className="flex items-center justify-between w-full text-sm text-muted-foreground">
+                        <div className="flex items-center gap-2">
+                            <Avatar className="h-8 w-8">
+                                <AvatarImage src={undefined} alt={post.author} />
+                                <AvatarFallback>{post.author.split(' ').map(n => n[0]).join('').toUpperCase()}</AvatarFallback>
+                            </Avatar>
+                            <span>{post.author}</span>
+                        </div>
+                         <div className="flex items-center gap-1.5">
+                            <CalendarDays className="h-4 w-4" />
+                            <time dateTime={post.createdAt.toDate().toISOString()}>
+                                {format(post.createdAt.toDate(), 'MMM d, yyyy')}
+                            </time>
+                        </div>
+                    </div>
+                  </CardFooter>
+                </Card>
+              </motion.div>
+            </Link>
           ))
         )}
       </motion.div>
