@@ -12,10 +12,10 @@ export function Footer() {
 
   return (
     <footer className="bg-card text-card-foreground border-t">
-      <div className="container mx-auto px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div className="container mx-auto px-6 lg:px-8 py-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
-          <div className="space-y-4">
+          <div className="space-y-3">
             <Link href="/" className="inline-flex items-center gap-2">
                <BarChartBig className="h-8 w-8 text-primary" />
               <span className="text-xl font-bold text-foreground">{APP_NAME}</span>
@@ -27,7 +27,7 @@ export function Footer() {
 
           {/* Navigation Links */}
           <div>
-            <h3 className="text-lg font-semibold text-foreground mb-4">Quick Links</h3>
+            <h3 className="text-lg font-semibold text-foreground mb-3">Quick Links</h3>
             <ul className="space-y-2">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
@@ -44,8 +44,8 @@ export function Footer() {
 
           {/* Contact Information */}
           <div>
-            <h3 className="text-lg font-semibold text-foreground mb-4">Contact Us</h3>
-            <ul className="space-y-3 text-sm">
+            <h3 className="text-lg font-semibold text-foreground mb-3">Contact Us</h3>
+            <ul className="space-y-2 text-sm">
               {contactDetails.map((item, index) => (
                  <li key={index} className="flex items-start gap-3">
                    <item.icon className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
@@ -63,7 +63,7 @@ export function Footer() {
           
           {/* Social Links */}
           <div>
-            <h3 className="text-lg font-semibold text-foreground mb-4">Follow Us</h3>
+            <h3 className="text-lg font-semibold text-foreground mb-3">Follow Us</h3>
             <div className="flex space-x-4">
                <a href="#" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                  <Linkedin className="h-6 w-6" />
@@ -77,7 +77,7 @@ export function Footer() {
 
       <Separator className="bg-border/50" />
 
-      <div className="container mx-auto px-6 lg:px-8 py-6">
+      <div className="container mx-auto px-6 lg:px-8 py-4">
         <div className="flex flex-col sm:flex-row justify-between items-center text-center sm:text-left">
           <p className="text-sm text-muted-foreground">
             &copy; {new Date().getFullYear()} {APP_NAME}. All rights reserved.
