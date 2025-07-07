@@ -12,28 +12,28 @@ export function Footer() {
 
   return (
     <footer className="bg-card text-card-foreground border-t">
-      <div className="container mx-auto px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="container mx-auto px-4 lg:px-6 py-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
           {/* Company Info */}
-          <div className="space-y-3">
+          <div className="space-y-2">
             <Link href="/" className="inline-flex items-center gap-2">
-               <BarChartBig className="h-8 w-8 text-primary" />
-              <span className="text-xl font-bold text-foreground">{APP_NAME}</span>
+              <BarChartBig className="h-7 w-7 text-primary" />
+              <span className="text-lg font-bold text-foreground">{APP_NAME}</span>
             </Link>
-            <p className="text-muted-foreground text-sm">
+            <p className="text-muted-foreground text-xs leading-relaxed">
               Cutting-edge financial services for modern investors, focusing on technology, transparency, and trust.
             </p>
           </div>
 
           {/* Navigation Links */}
           <div>
-            <h3 className="text-lg font-semibold text-foreground mb-3">Quick Links</h3>
-            <ul className="space-y-2">
+            <h3 className="text-sm font-semibold text-foreground mb-2">Quick Links</h3>
+            <ul className="space-y-1">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                    className="text-muted-foreground hover:text-primary transition-colors text-xs"
                   >
                     {link.label}
                   </Link>
@@ -44,31 +44,31 @@ export function Footer() {
 
           {/* Contact Information */}
           <div>
-            <h3 className="text-lg font-semibold text-foreground mb-3">Contact Us</h3>
-            <ul className="space-y-2 text-sm">
+            <h3 className="text-sm font-semibold text-foreground mb-2">Contact Us</h3>
+            <ul className="space-y-1 text-xs">
               {contactDetails.map((item, index) => (
-                 <li key={index} className="flex items-start gap-3">
-                   <item.icon className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                   {item.href ? (
-                      <a href={item.href} className="text-muted-foreground hover:text-primary transition-colors break-all">
-                        {item.value}
-                      </a>
-                   ) : (
-                     <p className="text-muted-foreground break-all">{item.value}</p>
-                   )}
-                 </li>
+                <li key={index} className="flex items-start gap-2">
+                  <item.icon className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                  {item.href ? (
+                    <a href={item.href} className="text-muted-foreground hover:text-primary transition-colors break-all">
+                      {item.value}
+                    </a>
+                  ) : (
+                    <p className="text-muted-foreground break-all">{item.value}</p>
+                  )}
+                </li>
               ))}
             </ul>
           </div>
-          
+
           {/* Social Links */}
           <div>
-            <h3 className="text-lg font-semibold text-foreground mb-3">Follow Us</h3>
-            <div className="flex space-x-4">
-               <a href="#" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-                 <Linkedin className="h-6 w-6" />
-                 <span className="sr-only">LinkedIn</span>
-               </a>
+            <h3 className="text-sm font-semibold text-foreground mb-2">Follow Us</h3>
+            <div className="flex space-x-3">
+              <a href="#" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                <Linkedin className="h-5 w-5" />
+                <span className="sr-only">LinkedIn</span>
+              </a>
               {/* Add other social links here */}
             </div>
           </div>
@@ -77,13 +77,13 @@ export function Footer() {
 
       <Separator className="bg-border/50" />
 
-      <div className="container mx-auto px-6 lg:px-8 py-4">
-        <div className="flex flex-col sm:flex-row justify-between items-center text-center sm:text-left">
-          <p className="text-sm text-muted-foreground">
+      <div className="container mx-auto px-4 lg:px-6 py-3">
+        <div className="flex flex-col sm:flex-row justify-between items-center text-center sm:text-left space-y-1 sm:space-y-0">
+          <p className="text-xs text-muted-foreground">
             &copy; {new Date().getFullYear()} {APP_NAME}. All rights reserved.
           </p>
-          <p className="text-sm text-muted-foreground mt-2 sm:mt-0">
-             Built with professionalism by <a href="#" className="hover:text-primary">AD Chariot</a>.
+          <p className="text-xs text-muted-foreground">
+            Built with professionalism by <a href="#" className="hover:text-primary">AD Chariot</a>.
           </p>
         </div>
       </div>
