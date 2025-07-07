@@ -12,6 +12,7 @@ import { useState, useEffect } from 'react';
 import { collection, getDocs, query, orderBy, Timestamp } from 'firebase/firestore';
 import { db } from '@/lib/firebase/config';
 import { Skeleton } from '@/components/ui/skeleton';
+import { cn } from '@/lib/utils';
 
 const sentenceContainerVariants = {
   hidden: { opacity: 0 },
@@ -183,7 +184,7 @@ export default function BlogPage() {
                 <Card className="flex flex-col h-full overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
                   <CardHeader className="p-6">
                       <Badge variant="secondary" className="w-fit">{post.category}</Badge>
-                      <CardTitle className="text-xl pt-2 hover:text-primary transition-colors">
+                      <CardTitle className="text-xl pt-2 hover:text-primary transition-colors break-words">
                           {post.title}
                       </CardTitle>
                   </CardHeader>
