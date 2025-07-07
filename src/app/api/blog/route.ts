@@ -17,13 +17,13 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: false, message: 'Missing required fields' }, { status: 400 });
     }
 
-    // Convert file to buffer to handle it reliably on the server
+    // Get the ArrayBuffer directly from the file
     const arrayBuffer = await imageFile.arrayBuffer();
-    const buffer = Buffer.from(arrayBuffer);
 
     // Upload image to Firebase Storage with explicit content type
     const storageRef = ref(storage, `blog-images/${Date.now()}_${imageFile.name}`);
-    await uploadBytes(storageRef, buffer, { contentType: imageFile.type });
+    // Pass the ArrayBuffer directly, as it's a supported type
+    await uploadBytes(storageRef, arrayBuffer, { contentType: imageFile.type });
     const imageUrl = await getDownloadURL(storageRef);
 
     // Save blog post to Firestore
