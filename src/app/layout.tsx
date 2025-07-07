@@ -33,6 +33,18 @@ export default function RootLayout({
 
   React.useEffect(() => {
     if (pathname !== contentAnimationKey) {
+      const isNavigatingToBlogPost = pathname.startsWith('/blog/') && pathname !== '/blog';
+
+      // For blog post pages, we skip the full page loader for a faster experience.
+      // We just update the children and the animation key, and `AnimatePresence`
+      // will handle the fade-out/fade-in transition of the content.
+      if (isNavigatingToBlogPost) {
+        setDisplayedChildren(children);
+        setContentAnimationKey(pathname);
+        return;
+      }
+
+      // Default loader logic for all other page transitions
       setShowContent(false);
       setIsLoaderVisible(true);
       document.body.classList.add('disable-hover');
