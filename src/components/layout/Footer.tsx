@@ -41,6 +41,14 @@ export function Footer() {
                     </Link>
                   </li>
                 ))}
+                <li>
+                  <Link
+                    href="/admin/blog/new"
+                    className="text-muted-foreground hover:text-primary transition-colors text-xs"
+                  >
+                    Create Post
+                  </Link>
+                </li>
               </ul>
             </div>
 
