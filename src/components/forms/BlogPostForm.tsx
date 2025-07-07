@@ -31,23 +31,6 @@ const blogPostFormSchema = z.object({
 
 type BlogPostFormValues = z.infer<typeof blogPostFormSchema>;
 
-// This is a placeholder for a server action.
-async function submitBlogPost(data: BlogPostFormValues): Promise<{ success: boolean; message: string }> {
-  // In a real app, you would:
-  // 1. Upload the image file to a service like Firebase Storage.
-  // 2. Get the public URL of the uploaded image.
-  // 3. Save the blog post data (including the image URL) to a database like Firestore.
-  console.log('Blog Post Data to be submitted:', {
-    ...data,
-    image: data.image[0].name, // Just logging the file name for now
-  });
-
-  // Simulate API call
-  await new Promise(resolve => setTimeout(resolve, 1500));
-
-  return { success: true, message: 'Blog post has been created successfully! (Placeholder)' };
-}
-
 export function BlogPostForm() {
   const { toast } = useToast();
   const [isPending, startTransition] = useTransition();
@@ -66,25 +49,40 @@ export function BlogPostForm() {
 
   function onSubmit(data: BlogPostFormValues) {
     startTransition(async () => {
+      const formData = new FormData();
+      formData.append('title', data.title);
+      formData.append('description', data.description);
+      formData.append('category', data.category);
+      formData.append('author', data.author);
+      formData.append('image', data.image[0]);
+
       try {
-        const result = await submitBlogPost(data);
+        const response = await fetch('/api/blog', {
+          method: 'POST',
+          body: formData,
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.message || 'Failed to create post');
+        }
+        
+        const result = await response.json();
+
         if (result.success) {
           toast({
             title: 'Post Created!',
-            description: result.message,
+            description: 'Your blog post has been successfully created.',
           });
           form.reset();
         } else {
-          toast({
-            title: 'Error',
-            description: result.message,
-            variant: 'destructive',
-          });
+          throw new Error(result.message || 'An unknown error occurred');
         }
       } catch (error) {
+        const errorMessage = error instanceof Error ? error.message : 'An unexpected error occurred.';
         toast({
           title: 'Error',
-          description: 'An unexpected error occurred. Please try again.',
+          description: errorMessage,
           variant: 'destructive',
         });
       }
@@ -175,7 +173,7 @@ export function BlogPostForm() {
                 <FormLabel>Cover Image</FormLabel>
                 <FormControl>
                   <div className="relative">
-                    <Input type="file" className="pl-12" {...fileRef} />
+                    <Input type="file" className="pl-12" {...fileRef} accept="image/png, image/jpeg, image/gif" />
                     <Upload className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                   </div>
                 </FormControl>
