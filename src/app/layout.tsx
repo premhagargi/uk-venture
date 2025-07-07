@@ -34,11 +34,10 @@ export default function RootLayout({
   React.useEffect(() => {
     if (pathname !== contentAnimationKey) {
       const isNavigatingToBlogPost = pathname.startsWith('/blog/') && pathname !== '/blog';
+      const isNavigatingFromBlogPost = contentAnimationKey.startsWith('/blog/') && contentAnimationKey !== '/blog' && pathname === '/blog';
 
-      // For blog post pages, we skip the full page loader for a faster experience.
-      // We just update the children and the animation key, and `AnimatePresence`
-      // will handle the fade-out/fade-in transition of the content.
-      if (isNavigatingToBlogPost) {
+      // For blog-related navigations, we skip the full page loader for a faster experience.
+      if (isNavigatingToBlogPost || isNavigatingFromBlogPost) {
         setDisplayedChildren(children);
         setContentAnimationKey(pathname);
         return;
