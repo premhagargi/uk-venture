@@ -42,7 +42,7 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error('Upload Error:', JSON.stringify(error, null, 2));
     const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
-    return NextResponse.json({ success: false, message: errorMessage }, { status: 500 });
+    return NextResponse.json({ success: false, message: errorMessage, errorDetails: error }, { status: 500 });
   }
   
 }
