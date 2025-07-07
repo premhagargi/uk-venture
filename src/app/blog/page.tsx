@@ -189,7 +189,7 @@ export default function BlogPage() {
                       </CardTitle>
                   </CardHeader>
                   <CardContent className="p-6 pt-0 flex-grow">
-                    <p className="text-muted-foreground text-sm line-clamp-3">
+                    <p className="text-muted-foreground text-sm line-clamp-3 break-words">
                       {post.description}
                     </p>
                   </CardContent>
