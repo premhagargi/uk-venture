@@ -51,7 +51,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
       </div>
 
       <header className="mb-8">
-        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground mb-4">{post.title}</h1>
+        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground mb-4 break-words">{post.title}</h1>
         <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-muted-foreground text-sm">
           <div className="flex items-center gap-2">
             <Avatar className="h-8 w-8">
