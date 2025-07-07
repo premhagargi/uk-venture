@@ -1,5 +1,5 @@
 import type { LucideIcon } from 'lucide-react';
-import { Briefcase, LayoutDashboard, Users, Mail, Info, Sparkles, Landmark, LineChart, ShieldCheck, HomeIcon, Building, MessageSquare, UserCheck, CreditCard, Rocket, Wallet, FileText, TrendingUp, Layers, UsersRound, Target, Lightbulb, Handshake, GraduationCap, Goal } from 'lucide-react';
+import { Briefcase, LayoutDashboard, Users, Mail, Info, Sparkles, Landmark, LineChart, ShieldCheck, HomeIcon, Building, MessageSquare, UserCheck, CreditCard, Rocket, Wallet, FileText, TrendingUp, Layers, UsersRound, Target, Lightbulb, Handshake, GraduationCap, Goal, Newspaper } from 'lucide-react';
 
 export interface NavLink {
   href: string;
@@ -11,6 +11,7 @@ export const NAV_LINKS: NavLink[] = [
   { href: '/', label: 'Home', icon: LayoutDashboard },
   { href: '/services', label: 'Services', icon: Briefcase },
   { href: '/about', label: 'About Us', icon: Info },
+  { href: '/blog', label: 'Blog', icon: Newspaper },
   { href: '/contact', label: 'Contact', icon: Mail },
   { href: '/insights', label: 'Insights', icon: Sparkles },
 ];
