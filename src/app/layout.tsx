@@ -25,39 +25,30 @@ export default function RootLayout({
 }>) {
   const pathname = usePathname();
   const [isLoading, setIsLoading] = useState(false);
-  const [isExiting, setIsExiting] = useState(false);
 
   useEffect(() => {
+    // This effect is now simplified to only handle the loader visibility
     let timer: NodeJS.Timeout;
-    const handleRouteChangeStart = (url: string) => {
-      // Special case for blog navigation
-      const isNavigatingWithinBlog =
-        (pathname.startsWith('/blog/') && url === '/blog') ||
-        (pathname === '/blog' && url.startsWith('/blog/'));
+    const isNavigatingWithinBlog = (
+        (pathname.startsWith('/blog/') && pathname !== '/blog') ||
+        (pathname === '/blog' && (window.history.state?.url?.startsWith('/blog/')))
+      );
 
-      if (!isNavigatingWithinBlog) {
-        setIsLoading(true);
-      }
-    };
 
-    const handleRouteChangeComplete = () => {
-      timer = setTimeout(() => {
-        setIsLoading(false);
-        setIsExiting(false);
-      }, 750);
-    };
-
-    // Use a custom event or other mechanism if Next.js events are not available/reliable in App Router
-    // For simplicity, we'll simulate it based on pathname change
-    if (pathname) {
-      handleRouteChangeStart(pathname);
-      handleRouteChangeComplete();
+    if (isNavigatingWithinBlog) {
+      setIsLoading(false);
+      return;
     }
-    
+
+    setIsLoading(true);
+    timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 750); // Duration of the loader
+
     // Cleanup on component unmount
     return () => clearTimeout(timer);
-
   }, [pathname]);
+
 
   useEffect(() => {
     // This effect handles the disable-hover class on body
@@ -65,11 +56,13 @@ export default function RootLayout({
     if (isLoading) {
       document.body.classList.add('disable-hover');
     } else {
+      // Delay removal to match animation exit
       setTimeout(() => {
         document.body.classList.remove('disable-hover');
-      }, 500); // delay to match exit animation
+      }, 500); 
     }
   }, [isLoading]);
+
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -82,7 +75,6 @@ export default function RootLayout({
           <div className="w-full flex flex-col flex-grow gap-4 md:gap-6 lg:gap-8 p-4 md:p-6 lg:p-8">
             <AnimatePresence
               mode="wait"
-              onExitComplete={() => setIsExiting(false)}
             >
               <motion.div
                 key={pathname}
