@@ -52,7 +52,7 @@ export const SERVICES_DATA: Service[] = [
     description: 'Your money in professional hands. Let professionals manage your investments.',
     longDescription: 'Too busy to track your investment? Let professionals do it for you. With UK Venture\'s mutual fund services, benefit from professionally managed and diversified portfolios. Enjoy high liquidity, zero transaction costs, and the assurance of SEBI regulation to protect your interests.',
     icon: Wallet,
-    imageSrc: '/mutualfunds.webp',
+    imageSrc: '/mutualfunds.jpg',
     imageHint: 'mutual fund investment',
     features: [
         "Professionally Managed: Professional Fund Managers smartly invest your money by picking investment opportunities.",
@@ -68,7 +68,7 @@ export const SERVICES_DATA: Service[] = [
     description: 'Participate in tomorrow’s growth stories with seamless IPO investments.',
     longDescription: 'Be a part of tomorrow’s growth stories. Excited about a company getting listed on the exchange and want to participate in it? Invest in Initial Public Offerings (IPOs) online with UK Venture. Enjoy a hassle-free, zero-paperwork process to seize opportunities in emerging businesses.',
     icon: Rocket,
-    imageSrc: 'https://placehold.co/600x400.png',
+    imageSrc: '/ipo.jpg',
     imageHint: 'ipo opportunities',
   },
   {
@@ -77,7 +77,7 @@ export const SERVICES_DATA: Service[] = [
     description: 'Securely hold and manage your securities in a digital demat account.',
     longDescription: 'Open a demat account with UK Venture to securely store and manage your securities in a digital format. Our platform simplifies the process, offering seamless access to your investments, real-time tracking, and integration with trading services for a streamlined investment experience.',
     icon: Briefcase,
-    imageSrc: 'https://placehold.co/600x400.png',
+    imageSrc: '/demataccount.jpg',
     imageHint: 'demat account secure',
   },
   {
@@ -86,7 +86,7 @@ export const SERVICES_DATA: Service[] = [
     description: 'Personalized portfolio management for optimized wealth growth and expert guidance.',
     longDescription: 'Our Portfolio Management Services (PMS) offer tailored investment strategies to maximize your wealth. With expert guidance, we design and manage portfolios aligned with your financial goals, leveraging cutting-edge technology and research to ensure long-term growth and risk management.',
     icon: LineChart,
-    imageSrc: 'https://placehold.co/600x400.png',
+    imageSrc: '/portfoliomanagement.jpg',
     imageHint: 'portfolio optimization chart',
   },
   {
@@ -95,7 +95,7 @@ export const SERVICES_DATA: Service[] = [
     description: 'Convert your physical share certificates to digital demat format easily.',
     longDescription: 'Easily convert your physical share certificates into demat form with our streamlined service. Enjoy the convenience of digital management, secure storage, and easy trading of your securities, all supported by our expert team to ensure a hassle-free process.',
     icon: FileText,
-    imageSrc: 'https://placehold.co/600x400.png',
+    imageSrc: '/physicaltodemat.jpg',
     imageHint: 'document conversion digital',
   },
   {
@@ -104,7 +104,7 @@ export const SERVICES_DATA: Service[] = [
     description: 'Expert financial advice at no cost to guide your investment decisions.',
     longDescription: 'Access our free financial consultancy service to receive personalized advice from our experts. We provide guidance on investments, financial planning, and risk management, empowering you to make informed decisions without any cost, tailored to your unique financial goals.',
     icon: UsersRound,
-    imageSrc: 'https://placehold.co/600x400.png',
+    imageSrc: '/business-people-working-with-ipad-high-angle.jpg',
     imageHint: 'financial advisor meeting',
   },
   {
@@ -113,7 +113,7 @@ export const SERVICES_DATA: Service[] = [
     description: 'Boost your trading capacity with substantial Margin Trading Facility (MTF) funding.',
     longDescription: 'Enhance your trading potential with our large Margin Trading Facility (MTF) funding. Available to eligible individuals and corporates, this service allows you to leverage your demat holdings for increased market exposure, supported by our robust digital platform and expert insights.',
     icon: CreditCard,
-    imageSrc: 'https://placehold.co/600x400.png',
+    imageSrc: '/mtffunding.jpg',
     imageHint: 'margin trading graph',
   },
 ];
