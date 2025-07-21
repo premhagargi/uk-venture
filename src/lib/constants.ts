@@ -34,7 +34,7 @@ export const SERVICES_DATA: Service[] = [
     description: 'Invest in stocks with a platform empowering you with education, data, and research.',
     longDescription: 'Investing in stocks was never this simple. UK Venture provides the platform that empowers you with everything you need to trade stocks, be it financial education, market data, or high-quality research - you get it all in one place. Make informed decisions and build your equity portfolio with confidence.',
     icon: TrendingUp,
-    imageSrc: 'https://placehold.co/600x400.png',
+    imageSrc: '/equityinvesting.png',
     imageHint: 'stock market chart',
   },
   {
@@ -43,7 +43,7 @@ export const SERVICES_DATA: Service[] = [
     description: 'Hedge or speculate on price movements with powerful trading platforms for Futures & Options.',
     longDescription: 'Hedge or speculate on the price movement of stocks with UK Venture\'s derivatives trading services. Whether you are an equity trader, new to derivatives, or a seasoned veteran, we can help you pursue your trading strategies with our powerful trading platforms. Our offerings include Futures & Options to manage risk and capitalize on market opportunities.',
     icon: Layers,
-    imageSrc: 'https://placehold.co/600x400.png',
+    imageSrc: '/derivatives.png',
     imageHint: 'financial derivatives graph',
   },
   {
@@ -52,7 +52,7 @@ export const SERVICES_DATA: Service[] = [
     description: 'Your money in professional hands. Let professionals manage your investments.',
     longDescription: 'Too busy to track your investment? Let professionals do it for you. With UK Venture\'s mutual fund services, benefit from professionally managed and diversified portfolios. Enjoy high liquidity, zero transaction costs, and the assurance of SEBI regulation to protect your interests.',
     icon: Wallet,
-    imageSrc: 'https://placehold.co/600x400.png',
+    imageSrc: '/mutualfunds.webp',
     imageHint: 'mutual fund investment',
     features: [
         "Professionally Managed: Professional Fund Managers smartly invest your money by picking investment opportunities.",
