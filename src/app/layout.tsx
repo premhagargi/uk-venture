@@ -8,7 +8,7 @@ import { Footer } from '@/components/layout/Footer';
 import { Toaster } from '@/components/ui/toaster';
 import React, { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { PageTransitionLoader } from '@/components/layout/PageTransitionLoader';
 import { cn } from '@/lib/utils';
 
