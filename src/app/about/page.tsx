@@ -58,8 +58,8 @@ const philosophyMainText = "We believe that financial empowerment is right, not 
 const teamIntroText = "The dedicated professionals behind your financial success.";
 
 const teamMembers = [
-  { name: "Hrishikesh Terani", role: "CEO/Founder", avatarSrc: "https://placehold.co/100x100.png", avatarHint: "CEO Founder", initials: "AP", linkedin: "#" },
-  { name: "Naveen K R", role: "Senior Director", avatarSrc: "https://placehold.co/100x100.png", avatarHint: "senior director portrait", initials: "NKR", linkedin: "#" },
+  { name: "Hrishikesh Terani", role: "CEO/Founder", avatarSrc: "https://placehold.co/100x100.png", avatarHint: "Hrishikesh Terani", initials: "HT", linkedin: "#" },
+  { name: "Naveen K R", role: "Senior Director", avatarSrc: "https://placehold.co/100x100.png", avatarHint: "Naveen K R", initials: "NKR", linkedin: "#" },
 ];
 
 const historyItems = [
