@@ -57,9 +57,7 @@ const visionText = "Our vision is to be a top name in retail broking by using cu
 const philosophyMainText = "We believe that financial empowerment is right, not a privilege. Our philosophy is rooted in the idea of trust, knowledge and accessibility to form the foundation of successful investment. We are committed to simplifying finance through innovation, ensuring that every client - whether a first time investor or a seasoned trader - has access to the tools, guidance and support they need to grow their wealth with confidence.";
 const teamIntroText = "The dedicated professionals behind your financial success.";
 
-const teamMembers = [
-  { name: "Naveen K R", role: "Senior Director", avatarSrc: "https://placehold.co/100x100.png", avatarHint: "Naveen K R", initials: "NKR", linkedin: "#" },
-];
+const teamMembers: any[] = [];
 
 const hrishikesh = {
   name: "Hrishikesh Terani",
@@ -321,5 +319,3 @@ export default function AboutPage() {
     </>
   );
 }
-
-    
