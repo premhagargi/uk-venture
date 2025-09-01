@@ -58,9 +58,16 @@ const philosophyMainText = "We believe that financial empowerment is right, not 
 const teamIntroText = "The dedicated professionals behind your financial success.";
 
 const teamMembers = [
-  { name: "Hrishikesh Terani", role: "CEO/Founder", avatarSrc: "https://placehold.co/100x100.png", avatarHint: "Hrishikesh Terani", initials: "HT", linkedin: "#" },
   { name: "Naveen K R", role: "Senior Director", avatarSrc: "https://placehold.co/100x100.png", avatarHint: "Naveen K R", initials: "NKR", linkedin: "#" },
 ];
+
+const hrishikesh = {
+  name: "Hrishikesh Terani",
+  role: "CEO/Founder",
+  imageSrc: "https://firebasestorage.googleapis.com/v0/b/app-hosting-project-214488346618.appspot.com/o/images%2F1bb4486d-3174-4b53-b09e-715f5d888e04?alt=media&token=e93a726f-40e9-4e48-9173-9828b8a51480",
+  bio: "Hrishikesh Terani, the visionary founder of UK Venture, brings a wealth of expertise and a passion for empowering investors. With a deep understanding of market dynamics and a commitment to leveraging technology, he leads the company with a focus on transparency, innovation, and client success. His mission is to make sophisticated investment strategies accessible to everyone, simplifying the path to financial growth.",
+  linkedin: "#",
+};
 
 const historyItems = [
   { year: "2024", event: "Foundation & Vision", description: `${APP_NAME} was founded as a cutting-edge financial services company, aiming to empower investors through technology, transparency, and trust.` },
@@ -223,7 +230,7 @@ export default function AboutPage() {
                   </div>
                   <div
                     className={cn(
-                      "ml-10 p-4 rounded-lg shadow-lg bg-muted text-left", 
+                      "ml-10 p-4 rounded-lg shadow-lg bg-muted text-left",
                       "md:w-5/12 md:ml-0",
                       index % 2 === 0 ? "md:text-left" : "md:text-right"
                     )}
@@ -257,9 +264,42 @@ export default function AboutPage() {
             {teamIntroText}
           </motion.p>
         </motion.div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+        {/* Hrishikesh Terani's Featured Card */}
+        <motion.div
+          variants={cardStaggerVariants(0)}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          className="mb-12"
+        >
+          <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-xl overflow-hidden">
+            <div className="grid md:grid-cols-2 items-center">
+              <div className="relative w-full h-80 md:h-full">
+                <Image
+                  src={hrishikesh.imageSrc}
+                  alt={hrishikesh.name}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-3xl font-bold text-foreground">{hrishikesh.name}</h3>
+                <p className="text-lg text-primary font-semibold mb-4">{hrishikesh.role}</p>
+                <p className="text-muted-foreground mb-4">{hrishikesh.bio}</p>
+                <a href={hrishikesh.linkedin} target="_blank" rel="noopener noreferrer" className="inline-block text-muted-foreground hover:text-primary">
+                  <Linkedin className="h-6 w-6" />
+                  <span className="sr-only">LinkedIn Profile</span>
+                </a>
+              </div>
+            </div>
+          </Card>
+        </motion.div>
+
+        {/* Other Team Members */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {teamMembers.map((member, index) => (
-             <motion.div key={member.name} variants={cardStaggerVariants(index)} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
+             <motion.div key={member.name} variants={cardStaggerVariants(index + 1)} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
               <Card className="text-center shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-xl h-full">
                 <CardContent className="p-6">
                   <Avatar className="w-24 h-24 mx-auto mb-4 ring-2 ring-primary ring-offset-2 ring-offset-background">
@@ -281,3 +321,5 @@ export default function AboutPage() {
     </>
   );
 }
+
+    
