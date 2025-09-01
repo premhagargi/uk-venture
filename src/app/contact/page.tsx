@@ -53,9 +53,9 @@ const pageTitle = `Contact ${APP_NAME}`;
 const pageDescription = "We're here to help you with your financial journey. Reach out to us with any questions or to schedule a consultation.";
 
 const contactDetails = [
-  { icon: Phone, label: "Phone", value: "+1 (555) 123-4567", href: "tel:+15551234567" },
-  { icon: Mail, label: "Email", value: "support@ukventure.com", href: "mailto:support@ukventure.com" },
-  { icon: MapPin, label: "Address", value: "123 Finance Street, Wealth City, TX 75001" },
+  { icon: Phone, label: "Phone", value: "+91 7411386561", href: "tel:+917411386561" },
+  { icon: Mail, label: "Email", value: "ukadvisory1009@gmail.com", href: "mailto:ukadvisory1009@gmail.com" },
+  { icon: MapPin, label: "Address", value: "Ajanta Complex, CTS No 1505, B-1, Beside Satkar Hotel, Maruti Galli, Belagavi - 590001" },
 ];
 
 export default function ContactPage() {

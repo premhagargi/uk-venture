@@ -1,3 +1,4 @@
+
 import { APP_NAME, NAV_LINKS } from '@/lib/constants';
 import Link from 'next/link';
 import { Mail, Phone, MapPin, Linkedin, BarChartBig } from 'lucide-react';
@@ -5,9 +6,9 @@ import { Separator } from '@/components/ui/separator';
 
 export function Footer() {
   const contactDetails = [
-    { icon: Phone, value: "+1 (555) 123-4567", href: "tel:+15551234567" },
-    { icon: Mail, value: "support@ukventure.com", href: "mailto:support@ukventure.com" },
-    { icon: MapPin, value: "123 Finance Street, Wealth City, TX 75001" },
+    { icon: Phone, value: "+91 7411386561", href: "tel:+917411386561" },
+    { icon: Mail, value: "ukadvisory1009@gmail.com", href: "mailto:ukadvisory1009@gmail.com" },
+    { icon: MapPin, value: "Ajanta Complex, CTS No 1505, B-1, Beside Satkar Hotel, Maruti Galli, Belagavi - 590001" },
   ];
 
   return (
