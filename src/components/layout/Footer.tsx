@@ -94,9 +94,6 @@ export function Footer() {
           <p className="text-xs text-muted-foreground">
             &copy; {new Date().getFullYear()} {APP_NAME}. All rights reserved.
           </p>
-          <p className="text-xs text-muted-foreground">
-            Built with professionalism by <a href="#" className="hover:text-primary">AD Chariot</a>.
-          </p>
         </div>
       </div>
     </footer>
