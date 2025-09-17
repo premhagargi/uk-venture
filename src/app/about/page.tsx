@@ -137,7 +137,7 @@ export default function AboutPage() {
           </motion.div>
            <motion.div variants={fadeInUpVariants}>
             <Image
-              src="https://placehold.co/600x400.png"
+              src="https://i.ibb.co/4Ry3Y2HR/c61b1af7-0992-43f8-8e64-869db05f84f1.jpg"
               width={600}
               height={400}
               alt="Team discussing strategy"
@@ -320,4 +320,5 @@ export default function AboutPage() {
   );
 }
 
+    
     
