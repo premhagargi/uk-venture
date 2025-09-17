@@ -62,7 +62,7 @@ const teamMembers: any[] = [];
 const hrishikesh = {
   name: "Hrishikesh Terani",
   role: "CEO/Founder",
-  imageSrc: "https://firebasestorage.googleapis.com/v0/b/app-hosting-project-214488346618.appspot.com/o/images%2F1bb4486d-3174-4b53-b09e-715f5d888e04?alt=media&token=e93a726f-40e9-4e48-9173-9828b8a51480",
+  imageSrc: "https://i.ibb.co/8LB30RrP/Whats-App-Image-2025-09-01-at-13-29-15.jpg",
   bio: "Hrishikesh Terani, the visionary founder of UK Venture, brings a wealth of expertise and a passion for empowering investors. With a deep understanding of market dynamics and a commitment to leveraging technology, he leads the company with a focus on transparency, innovation, and client success. His mission is to make sophisticated investment strategies accessible to everyone, simplifying the path to financial growth.",
   linkedin: "#",
 };
@@ -319,3 +319,5 @@ export default function AboutPage() {
     </>
   );
 }
+
+    
