@@ -142,7 +142,7 @@ export default function AboutPage() {
               height={400}
               alt="Team discussing strategy"
               data-ai-hint="team strategy meeting"
-              className="rounded-xl shadow-xl object-cover aspect-[3/2]"
+              className="rounded-xl shadow-xl object-contain w-full h-full"
             />
           </motion.div>
         </div>
@@ -319,6 +319,3 @@ export default function AboutPage() {
     </>
   );
 }
-
-    
-    
